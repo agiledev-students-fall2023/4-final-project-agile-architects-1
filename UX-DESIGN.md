@@ -19,7 +19,7 @@ Image view of fridge, each item is represented with an icon of the user's choice
 <img src="./ux-design/wireframes/Fridge.png" alt="filename" style="zoom:67%;" />
 
 
-### Fridge Details (short ver.)
+### Fridge Details
 Scrollable tabular view of fridge, listing information about each item inside.
 <img src="./ux-design/wireframes/Fridge Details (short ver.).png" alt="filename" style="zoom:67%;" />
 
@@ -29,7 +29,7 @@ Prompts the user to enter information about ingredient in their fridge ———
 <img src="./ux-design/wireframes/Add ingredient.png" alt="filename" style="zoom:67%;" />
 
 
-### Plan Meals (Home Page)
+### Home Page
 Home page showing the ingredients in user's fridge with top expiring dates, as well as their most recent plan of meals. Both notes are clickable, and lead you into the detail pages.
 <img src="./ux-design/wireframes/Plan Meals (Home Page).png" alt="filename" style="zoom:67%;" />
 

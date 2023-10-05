@@ -6,6 +6,11 @@
 
 
 
+## Site Map
+<img src="./ux-design/wireframes/Site Map.png" alt="filename" style="zoom:67%;" />
+
+
+
 ## Wireframes
 
 
@@ -75,14 +80,13 @@ Page for creating a new meal invite post, prompting the user to enter all inform
 
 
 ### Log In
-Log in page.
+Log in page. Click the sign up button to switch to the register page.
 <img src="./ux-design/wireframes/Log In.png" alt="filename" style="zoom:67%;" />
 
 
 ### Register Account
-Register page.
+Register page. Click the log in button to switch to the login page.
 <img src="./ux-design/wireframes/Register Account.png" alt="filename" style="zoom:67%;" />
 
-## Site Map
-<img src="./ux-design/wireframes/Site Map.png" alt="filename" style="zoom:67%;" />
+
 

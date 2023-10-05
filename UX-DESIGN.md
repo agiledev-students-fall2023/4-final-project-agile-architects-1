@@ -9,45 +9,44 @@
 ## Wireframes
 
 
-### Account Profile 
-![Account Profile](./ux-design/wireframes/Account Profile.png)
+### Account Profile
+<img src="./ux-design/wireframes/Account Profile.png" alt="filename" style="zoom:67%;" />
 
 ### Add ingredient
-![Add ingredient](./ux-design/wireframes/Add ingredient.png)
+<img src="./ux-design/wireframes/Add ingredient.png" alt="filename" style="zoom:67%;" />
 
 ### Browse Ingredients (full page ver.)
-![Browse Ingredients (full page ver.)](./ux-design/wireframes/Browse Ingredients (full page ver.).png)
+<img src="./ux-design/wireframes/Browse Ingredients (full page ver.).png" alt="filename" style="zoom:67%;" />
 
 ### Fridge Details (short ver.)
-![Fridge Details (short ver.)](./ux-design/wireframes/Fridge Details (short ver.).png)
+<img src="./ux-design/wireframes/Fridge Details (short ver.).png" alt="filename" style="zoom:67%;" />
 
 ### Fridge
-![Fridge](./ux-design/wireframes/Fridge.png)
+<img src="./ux-design/wireframes/Fridge.png" alt="filename" style="zoom:67%;" />
 
 ### Ingrediant Details
-
-![Ingrediant Details](./ux-design/wireframes/Ingrediant Details.png)
+<img src="./ux-design/wireframes/Ingrediant Details.png" alt="filename" style="zoom:67%;" />
 
 ### Ingredient Details
-![Ingredient Details](./ux-design/wireframes/Ingredient Details.png)
+<img src="./ux-design/wireframes/Ingredient Details.png" alt="filename" style="zoom:67%;" />
 
 ### Invite Details
-![Invite Details](./ux-design/wireframes/Invite Details.png)
+<img src="./ux-design/wireframes/Invite Details.png" alt="filename" style="zoom:67%;" />
 
 ### Log In
-![Log In](./ux-design/wireframes/Log In.png)
+<img src="./ux-design/wireframes/Log In.png" alt="filename" style="zoom:67%;" />
 
 ### New Ingredient Post
-![New Ingredient Post](./ux-design/wireframes/New Ingredient Post.png)
+<img src="./ux-design/wireframes/New Ingredient Post.png" alt="filename" style="zoom:67%;" />
 
 ### New Invite
-![New Invite](./ux-design/wireframes/New Invite.png)
+<img src="./ux-design/wireframes/New Invite.png" alt="filename" style="zoom:67%;" />
 
 ### Plan Meals (Home Page)
-![Plan Meals (Home Page)](./ux-design/wireframes/Plan Meals (Home Page).png)
+<img src="./ux-design/wireframes/Plan Meals (Home Page).png" alt="filename" style="zoom:67%;" />
 
 ### Recommend Recipes
-![Recommend Recipes](./ux-design/wireframes/Recommend Recipes.png)
+<img src="./ux-design/wireframes/Recommend Recipes.png" alt="filename" style="zoom:67%;" />
 
 ### Register Account
-![Register Account](./ux-design/wireframes/Register Account.png)
+<img src="./ux-design/wireframes/Register Account.png" alt="filename" style="zoom:67%;" />

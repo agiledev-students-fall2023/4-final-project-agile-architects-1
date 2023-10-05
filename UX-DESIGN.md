@@ -30,8 +30,13 @@ Prompts the user to enter information about ingredient in their fridge ———
 
 
 ### Plan Meals (Home Page)
-Page for planning future meal contents, allows users to type in cuisines of their choice, or ask for recommendation based on their fridge ingredients. The layout is a notebook, each page for a day, and the user can flip back and forward to get to another day.
+Home page showing the ingredients in user's fridge with top expiring dates, as well as their most recent plan of meals. Both notes are clickable, and lead you into the detail pages.
 <img src="./ux-design/wireframes/Plan Meals (Home Page).png" alt="filename" style="zoom:67%;" />
+
+
+### Plan Meals Details
+Page for planning future meal contents, allows users to type in cuisines of their choice, or ask for recommendation based on their fridge ingredients. The layout is a notebook, each page for a day, and the user can flip back and forward to get to another day.
+<img src="./ux-design/wireframes/Plan Meals.png" alt="filename" style="zoom:67%;" />
 
 
 ### Recommend Recipes
@@ -52,6 +57,11 @@ Details of an ingredient sales post. Includes key info in the seller's profile, 
 ### New Ingredient Post
 Page for creating a new ingredient post, prompting the user to enter all information needed.
 <img src="./ux-design/wireframes/New Ingredient Post.png" alt="filename" style="zoom:67%;" />
+
+
+### Browse Meal Invites
+A place where all meal invite posts nearby can be browsed. Each page can be opened for more details.
+<img src="./ux-design/wireframes/Browse Meal Invites (short ver.).png" alt="filename" style="zoom:67%;" />
 
 
 ### Invite Details

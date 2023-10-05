@@ -84,5 +84,5 @@ Register page.
 <img src="./ux-design/wireframes/Register Account.png" alt="filename" style="zoom:67%;" />
 
 ## Site Map
-<img src="./ux-design/wireframes/Site Map" alt="filename" style="zoom:67%;" />
+<img src="./ux-design/wireframes/Site Map.png" alt="filename" style="zoom:67%;" />
 

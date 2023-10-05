@@ -7,7 +7,8 @@
 
 
 ## Site Map
-<img src="./ux-design/wireframes/Site Map.png" alt="filename" style="zoom:67%;" />
+This is the site map of the app. The structures of all the pages in the site map are shown in the Wireframes section below.
+<img src="./ux-design/wireframes/Site Map.png" alt="filename"/>
 
 
 

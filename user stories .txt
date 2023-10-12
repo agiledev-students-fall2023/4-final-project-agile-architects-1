@@ -14,4 +14,7 @@
 13. As a user, I want to be able to participate in environmental challenges and earn rewards.
 14. As a user, I want to be able to view my earned badges and points.
 15. As a user, I want to be able to redeem rewards or discounts from partner businesses.
+16. As a user, I want to be able to submit following and friendship requests to other users. 
+17. As a user, I want to be able to view comments and ratings of food and meals provided by other users. 
+18. As a user, I want to be able to see the purchasing and expiration dates of food and meals provided by other users. 
 

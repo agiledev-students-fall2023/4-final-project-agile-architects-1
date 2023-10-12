@@ -38,6 +38,11 @@ Prompts the user to enter information about ingredient in their fridge ———
 
 <img src="./ux-design/wireframes/Add ingredient.png" alt="filename" style="zoom:67%;" />
 
+### Update ingredient
+In this page, user can edit the information for the existing ingredients,
+including expiring dates, name, quantities and other notes.
+
+<img src="./ux-design/wireframes/Update ingredient.png" alt="filename" style="zoom:67%;" />
 
 ### Home Page
 Home page showing the ingredients in user's fridge with top expiring dates, as well as their most recent plan of meals. Both notes are clickable, and lead you into the detail pages.

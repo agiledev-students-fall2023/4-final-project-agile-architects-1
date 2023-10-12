@@ -5,10 +5,16 @@ Tired of throwing away forgotten food that have gone bad? Bought Too much food t
 
 WasteWise is a web app that allows userst to record and keep track of current items in their fridge and their expiration dates. Given the ingredients, the app makes recipe recommendations. The user can register and login. The user can also browse community posts about meals or ingredients they can purchase from their friends. Once logged in, they can also submit inquires and respond to these posts. 
 
+## Team members
 
+Gefei Gong
+Siyu Bi
+Kevin Huang
+Lucy Sun
 
 ## Instructions for building and testing 
 (will update with that information once the project reaches that stage)
+
 
 
 ## App designs

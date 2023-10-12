@@ -7,10 +7,10 @@ WasteWise is a web app that allows userst to record and keep track of current it
 
 ## Team members
 
-Gefei Gong
-Siyu Bi
-Kevin Huang
-Lucy Sun
+* Gefei Gong
+* Siyu Bi
+* Kevin Huang
+* Lucy Sun
 
 ## Instructions for building and testing 
 (will update with that information once the project reaches that stage)

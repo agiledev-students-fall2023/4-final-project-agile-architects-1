@@ -16,7 +16,6 @@ WasteWise is a web app that allows userst to record and keep track of current it
 (will update with that information once the project reaches that stage)
 
 
-
 ## App designs
 ### App Map 
 
@@ -24,69 +23,12 @@ WasteWise is a web app that allows userst to record and keep track of current it
 
 ### Wireframes
 
-/ - Home page for WasteWise app, provides overview for available food and recommended Recipe
+* See the [UX-design](./UX-DESIGN.md) documentation.
 
-![home](ux-design/wireframes/Plan%20Meals%20(Home%20Page).png)
+### Prototype
 
-/ - Plan Meals page for breakfast, lunch, and dinner recommendations
+* See the [UX-design](./UX-DESIGN.md) documentation.
 
-![planMeals](ux-design/wireframes/Plan%20Meals.png)
-
-/ - Recommend Recipes with the current ingredients. 
-
-![recommendedRecipes](ux-design/wireframes/Recommend%20Recipes.png)
-
-/ - View community posts about ingredients. 
-
-![browseIngredients](ux-design/wireframes/Browse%20Ingredients%20(full%20page%20ver.).png)
-
-/ - View ingredient Details. 
-
-![browseIngredients/IngredientDetails](ux-design/wireframes/Ingredient%20Details.png)
-
-/ - Post ingredients. 
-
-![browseIngredients/AddIngredients](ux-design/wireframes/Add%20ingredient.png)
-
-/ - View fridge. 
-
-![myFridge](ux-design/wireframes/Fridge.png)
-
-/ - View fridge ingredients in list form
-
-![myFridge/FridgeDetails](ux-design/wireframes/Ingredient%20Details.png)
-
-/ - View ingredient Details. 
-
-![myFridge/UpdateIngredient](ux-design/wireframes/Update%20Ingredient.png)
-
-/ - View fridge ingredients in list form
-
-![myFridge/AddIngredient](ux-design/wireframes/Add%20ingredient.png)
-
-/ - View Account Profile
-
-![accountProfile](ux-design/wireframes/Account%20Profile.png)
-
-/ - Login page. 
-
-![login](ux-design/wireframes/Log%20In.png)
-
-/ - Register new user. 
-
-![login/register](ux-design/wireframes/Register%20Account.png)
-
-/ - Browse Meal invites. 
-
-![browseMealInvites](ux-design/wireframes/Browse%20Meal%20Invites%20(short%20ver.).png)
-
-/ - View meal invite and RSPV or comment. 
-
-![browseMealInvites/InvtedDetails](ux-design/wireframes/Invite%20Details.png)
-
-/ - Create new invite. 
-
-![browseMealInvites/NewInvite](ux-design/wireframes/New%20Invite.png)
 
 
 This repository will be used for team projects.

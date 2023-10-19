@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import './App.css';
 
+import Home from './routes/Home';
+import MyFridge from './routes/MyFridge';
+import MyProfile from './routes/MyProfile';
+import PlanMeal from './routes/PlanMeal';
+import BrowseIngredients from './routes/Ingredients';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/browse" element={<BrowseIngredients />} />
+                <Route path="/fridge" element={<MyFridge />} />
+                <Route path="/plan" element={<PlanMeal />} />
+                <Route path="/profile" element={<MyProfile />} />
+            </Routes>
+
+            <nav className="Navigation-Bar">
+                <Link className="nav-item" to="/">Home</Link>
+                <Link className="nav-item" to="/browse">Browse Ingredients</Link>
+                <Link className="nav-item" to="/fridge">My Fridge</Link>
+                <Link className="nav-item" to="/plan">Plan Meal</Link>
+                <Link className="nav-item" to="/profile">My Profile</Link>
+            </nav>
+        </Router>
+    );
 }
 
 export default App;

@@ -11,7 +11,7 @@ WasteWise is a web app that allows userst to record and keep track of current it
 * [Gefei Gong](https://github.com/Gong2047)
 * [Siyu Bi](https://github.com/SiyuBi)
 * [Kevin Huang](https://github.com/kevin-huang-cc)
-* Lucy Sun
+* [Lucy Sun](https://github.com/lucys-s/)
 
 ## Instructions for building and testing 
 (will update with that information once the project reaches that stage)

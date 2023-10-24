@@ -7,3 +7,25 @@
     position: absolute;
     bottom: 0;
 }
+
+.Top-Nav{
+    justify-content: space-around;
+    display: flex;
+    padding: 1rem;
+    background-color: lightgrey;
+    opacity: .7;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.login-button {
+    background-color: rgb(143, 143, 143);
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
+    margin-left: auto;
+}

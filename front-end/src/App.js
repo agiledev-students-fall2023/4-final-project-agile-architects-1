@@ -31,7 +31,7 @@ function App() {
                 <Link className="nav-item" to="/browse">Browse Ingredients</Link>
                 <Link className="nav-item" to="/fridge">My Fridge</Link>
                 <Link className="nav-item" to="/plan">Plan Meal</Link>
-
+                <Link className="nav-item" to="/profile">My Profile</Link>
             </nav>
 
 

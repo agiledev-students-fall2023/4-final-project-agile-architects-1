@@ -1,0 +1,22 @@
+.login-button {
+    background-color: #d9d9d9;
+    border-radius: 50px;
+    height: 33px;
+    position: relative;
+    width: 69px;
+  }
+  
+  .login-button .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 9px;
+    white-space: nowrap;
+    width: 35px;
+  }
+  

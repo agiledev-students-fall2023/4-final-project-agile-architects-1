@@ -9,7 +9,7 @@ import MyProfile from './routes/MyProfile';
 import PlanMeal from './routes/PlanMeal';
 import BrowseIngredients from './routes/Ingredients';
 import Login from './routes/Login';
-import LoginButton from './routes/components/LoginButton';
+import LoginButton from './components/LoginButton';
 import Register from './routes/Register';
 
 
@@ -23,6 +23,7 @@ function MainContent() {
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
             )
         }
+            <div className="App-Header">{location.pathname}</div>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/browse" element={<BrowseIngredients />} />

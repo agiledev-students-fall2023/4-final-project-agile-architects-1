@@ -10,24 +10,3 @@
 
 
 
-.login-button {
-    background-color: lightgrey;
-    color: black;
-    width: 5em;
-    height: 2em;
-    text-decoration-line: none;
-    text-align: center;
-    font-size: 1.3em;
-    border-radius: .5em;
-    margin-left: auto;
-    margin-right: 2em;
-    margin-top: 1em;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-button:hover {
-    background-color: grey;
-}

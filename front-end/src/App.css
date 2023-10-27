@@ -4,6 +4,9 @@
     padding: 1rem;
     background-color: lightgrey;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
+
+
+

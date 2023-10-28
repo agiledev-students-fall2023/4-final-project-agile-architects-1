@@ -1,9 +1,9 @@
 /* PlanMeal.css */
 .container {
-    padding: 20px;
+    padding: 0px 20px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 60px);
+    height: calc(70vh);
 }
 
 .meal-box {
@@ -55,4 +55,16 @@
     justify-content: space-between;
     background-color: white; /* To ensure a white background */
     padding: 10px 20px; /* Adjust padding to align with the meal-box padding */
+}
+
+.back-button {
+    text-decoration: none;
+    color: inherit;  /* To ensure the link has the same color as the surrounding text */
+    display: inline-block;  /* This ensures the entire area of the link is clickable */
+    
+    width: 40px;             /* Width of the circle */
+    height: 40px;            /* Height of the circle */
+    border-radius: 50%;      /* Makes it circular */
+    text-align: center;      /* To center the < symbol */
+    line-height: 40px;       /* Vertically align the < symbol */
 }

@@ -13,12 +13,10 @@ function PlanMeal() {
         "Dinner": ["Steak with Mashed Potatoes", "Vegetable Stir Fry"],
     });
 
-    // ... (other functions and handlers remain the same)
-
     return (
         <div className="container">
             <header className="header">
-                <Link to="/fridge" className="back-button">Back</Link>
+            <Link to="/fridge" className="back-button"><button className="back-button">&lt;</button></Link>
                 <h1 className="notebook-line">Plan Meals</h1>
                 <button onClick={() => { /* Implement pencil/edit button logic here */ }}>✎</button>
             </header>

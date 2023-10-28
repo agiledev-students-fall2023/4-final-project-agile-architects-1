@@ -35,17 +35,18 @@ function PlanMeal() {
                         </div>
                     ) : null
                 ))}
-            </div>
-
-            <div className="footer">
-                <button onClick={() => { /* Implement recommend recipe button logic here */ }}>
-                    Recommend Recipe
-                </button>
-                <div>
-                    <button /*onClick={handlePrevPage}*/>◀</button>
-                    <button /*onClick={handleNextPage}*/>▶</button>
+                
+                <div className="footer">
+                    <button onClick={() => { /* Implement recommend recipe button logic here */ }}>
+                        Recommend Recipe
+                    </button>
+                    <div>
+                        <button /*onClick={handlePrevPage}*/>◀</button>
+                        <button /*onClick={handleNextPage}*/>▶</button>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 }

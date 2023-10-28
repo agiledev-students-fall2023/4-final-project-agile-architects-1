@@ -1,0 +1,39 @@
+/* PlanMeal.css */
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meal-box {
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 20px;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.notebook-line {
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.notebook-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid black;
+}
+
+.footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,6 +1,9 @@
 /* PlanMeal.css */
 .container {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Assuming 60px is the height of your navigation bar */
 }
 
 .header {
@@ -36,4 +39,5 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    flex-shrink: 0; /* Prevents shrinking */
 }

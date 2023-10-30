@@ -11,7 +11,7 @@ import BrowseIngredients from './routes/Ingredients';
 import Login from './routes/Login';
 import LoginButton from './components/LoginButton';
 import Register from './routes/Register';
-
+import RecommendedRecipes from './routes/RecommendedRecipes';
 
 function MainContent() {
     const location = useLocation();
@@ -32,6 +32,7 @@ function MainContent() {
                 <Route path="/profile" element={<MyProfile />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/recommended-recipes" element={<RecommendedRecipes />} />
             </Routes>
 
             {

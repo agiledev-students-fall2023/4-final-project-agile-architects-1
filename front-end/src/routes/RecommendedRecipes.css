@@ -1,0 +1,29 @@
+/* RecommendedRecipes.css */
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ... other styles ... */
+}
+
+.recipes-list {
+    overflow-y: auto;
+    /* ... other styles ... */
+}
+
+.recipe-card {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* ... other styles ... */
+}
+
+.recipe-card select {
+    width: 100%;
+    margin-top: 10px;
+    /* ... other styles ... */
+}

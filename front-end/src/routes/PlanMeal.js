@@ -12,13 +12,29 @@ function PlanMeal() {
         "Lunch": ["Grilled Chicken Sandwich", "Caesar Salad"],
         "Dinner": ["Steak with Mashed Potatoes", "Vegetable Stir Fry"],
     });
+    const [isEditing, setIsEditing] = useState(false);
+
+
+    const toggleEditMode = () => {
+        setIsEditing(!isEditing);
+    };
+
+    // Function to add a new blank recipe for the given meal type
+    const addRecipe = (mealType) => {
+        setMeals(prevMeals => ({
+            ...prevMeals,
+            [mealType]: [...prevMeals[mealType], ""]
+        }));
+    };
 
     return (
         <div className="container">
             <header className="header">
             <Link to="/fridge" className="back-button"><button className="back-button">&lt;</button></Link>
                 <h1 className="notebook-line">Plan Meals</h1>
-                <button onClick={() => { /* Implement pencil/edit button logic here */ }}>✎</button>
+                <button onClick={toggleEditMode}>
+                    {isEditing ? '✔' : '✎'} {/* Toggle between save and edit icons */}
+                </button>
             </header>
 
             <div className="meal-box">
@@ -28,8 +44,17 @@ function PlanMeal() {
                         <div key={type}>
                             <strong className="notebook-line">{type}</strong>
                             {meals[type].map((recipe, index) => (
-                                <p key={index} className="notebook-line">{recipe}</p>
+                                <div key={index} className="recipe-line">
+                                    {isEditing ?
+                                        <input defaultValue={recipe} className="notebook-line edit-input" />  /*{ Render input if editing }*/
+                                        :
+                                        <p className="notebook-line">{recipe}</p>
+                                    }
+                                </div>
                             ))}
+                            {isEditing && (
+                                <button className="add-recipe-button" onClick={() => addRecipe(type)}>+</button>  // Add recipe button
+                            )}
                         </div>
                     ) : null
                 ))}

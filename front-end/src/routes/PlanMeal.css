@@ -1,0 +1,80 @@
+/* PlanMeal.css */
+.container {
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.meal-box {
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 20px;
+    overflow-y: scroll;
+    flex-grow: 1; /* Allows the box to grow and take up available space */
+    position: relative; /* To position the footer inside it */
+    padding-bottom: 0px; /*To leave space at the bottom for the footer*/
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notebook-line{
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-size: 16px;   /* Assuming a default size. Adjust as per your design */
+    line-height: 1.5; /* Assuming a default line height. Adjust as per your design */
+}
+
+.recipe-line:first-of-type .edit-input {
+    margin-top: 16px; /* Adjust the value as needed */
+}
+
+
+.edit-input {
+    margin-top: 7px;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    width: 100%;
+    font-size: inherit;   /* Inherits font size from parent */
+    font-family: inherit; /* Inherits font family from parent */
+    line-height: inherit; /* Inherits line height from parent */
+    
+}
+
+
+.notebook-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid black;
+}
+
+.footer {
+    position: sticky; /* Changing from sticky to absolute */
+    bottom: 0;
+    width: 100%; /* Ensure it spans the entire width of its parent container */
+    display: flex;
+    justify-content: space-between;
+    background-color: white; /* To ensure a white background */
+    padding: 10px 20px; /* Adjust padding to align with the meal-box padding */
+}
+
+.back-button {
+    text-decoration: none;
+    color: inherit;  /* To ensure the link has the same color as the surrounding text */
+    display: inline-block;  /* This ensures the entire area of the link is clickable */
+    
+    width: 40px;             /* Width of the circle */
+    height: 40px;            /* Height of the circle */
+    border-radius: 50%;      /* Makes it circular */
+    text-align: center;      /* To center the < symbol */
+    line-height: 40px;       /* Vertically align the < symbol */
+}

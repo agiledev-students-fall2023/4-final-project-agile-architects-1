@@ -1,0 +1,69 @@
+.my-fridge-page {
+  padding: 20px;
+}
+
+.centered-rectangle {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  background: gray;
+  opacity: 0.3;
+  z-index: -1;
+  /* background */
+}
+
+.fridge-grid {
+  position: relative;
+  z-index: 0;  /* stacking layer*/
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.fridge-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: calc(33.33% - 22px);
+  box-sizing: border-box;
+  background-color: white;
+
+}
+
+.add-item-form {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.add-item-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.add-button {
+  padding: 10px 20px;
+  position: fixed;
+  margin-left: 50%;
+  bottom: 13%;
+  text-align: center;
+  cursor: pointer;
+}

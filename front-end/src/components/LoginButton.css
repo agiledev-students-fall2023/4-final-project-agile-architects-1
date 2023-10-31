@@ -1,11 +1,10 @@
 .login-button {
     background-color: lightgrey;
     color: black;
-    width: 5em;
-    height: 2em;
+
     text-decoration-line: none;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1em;
     border-radius: .5em;
     margin-left: auto;
     margin-right: 2em;
@@ -14,6 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.2em 0.5em;
 }
 
 .login-button:hover {

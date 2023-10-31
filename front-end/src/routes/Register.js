@@ -6,7 +6,6 @@ import "./Register.css";
 export const Register = () => {
   const [username, setUser] = useState('');
   const [password, setPass] = useState('');
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username);
@@ -25,29 +24,29 @@ export const Register = () => {
 
 
           <div className="register-group" style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-            <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
+            <div className="line-wrapper-register" style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
             <div >
-              <p className="text-wrapper-register" style={{width: '3.5em', textAlign: 'center'}}>Register</p>
+              <p className="text-wrapper-register" style={{width: '4em', textAlign: 'center'}}>Register</p>
             </div>
-            <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
+            <div className="line-wrapper-register" style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
         </div>
 
           </div> 
           <form className="register-form" onSubmit={handleSubmit}>
-            <div className="input-wrapper">
+            <div className="input-wrapper-register">
 
-              <input className="input-field" value={username} onChange={(e)=>setUser(e.target.value)} type="username" placeholder="Username" id="username" name="username"/>
+              <input className="input-field-register" value={username} onChange={(e)=>setUser(e.target.value)} type="username" placeholder="Username" id="username" name="username"/>
             </div>
-            <div className="input-wrapper">
+            <div className="input-wrapper-register">
 
-              <input className="input-field" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
+              <input className="input-field-register" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
             </div>
 
-            <div className="input-wrapper">
+            <div className="input-wrapper-register">
 
-              <input className="input-field" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Confirm Password" id="password" name="password"/>
+              <input className="input-field-register" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
             </div>
-            <LoginButton className="register-button-register-page" as={Link} to="/">Log In</LoginButton>
+            <LoginButton className="register-button-register-page" as={Link} to="/">Register</LoginButton>
           </form>
           {/*
           <button>Don't have an account? Register</button>

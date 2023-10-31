@@ -6,7 +6,13 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+    box-sizing: border-box;
 }
 
-
+.login-button {
+    position: absolute;
+    margin: 10px;
+    top: 0;
+    right: 0;
+}
 

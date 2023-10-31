@@ -34,7 +34,7 @@
   text-align: center;
   margin-bottom: 1.5rem; /* Space below the title */
   margin-top: 23h;
-  width: 65vw;
+  width: 70vw;
 }
 
 .login-display .text-wrapper-wastewise {
@@ -94,9 +94,8 @@
   margin-top: 10vh;
 }
 
-
-button:hover {
-  background-color: grey; /* Slightly darker pink on hover */
+.login-button-login-page:hover {
+  background-color: grey;
 }
 
 .text-wrapper-continue-login {

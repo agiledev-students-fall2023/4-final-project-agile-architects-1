@@ -39,7 +39,7 @@ function MyFridge() {
 
     const handleSaveEdit = () => {
         if (!clickedItem) {
-            return; 
+            return;
         }
         // Find the index of the selected item in the array
         const itemIndex = fridgeItems.findIndex(item => item === clickedItem);
@@ -89,9 +89,6 @@ function MyFridge() {
                         onClick={() => handleItemClick(item)}
                     >
                         <p>Name: {item.name}</p>
-                        <p>Quantity: {item.quantity}</p>
-                        <p>Expiration Date: {item.expiration}</p>
-                        <button onClick={handleEditItem}>Edit</button>
                     </div>
                 ))}
             </div>
@@ -156,12 +153,9 @@ function MyFridge() {
     );
 }
 
-
-
 // return (
 // <h1>Welcome to the Fridge page!</h1>
 // );
 //   };
-
 
 export default MyFridge;

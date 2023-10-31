@@ -25,7 +25,7 @@ function BrowseIngredients() {
     }
 
     return (
-      <div>
+      <div className='ingredients-page-container'>
         <h1>This is the Ingredients page</h1>
         <div className="post-list">
             <PostBlock post={example_egg_post} />

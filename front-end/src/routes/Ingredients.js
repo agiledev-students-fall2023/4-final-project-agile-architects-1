@@ -18,7 +18,7 @@ function BrowseIngredients() {
         usrImg: "/grey.png"
     }
     const example_lettuce_post = {
-        image: '/example_lettuce.jpg',
+        image: '/example_lettuce.png',
         title: "Fresh Lettuce",
         author: "user3",
         usrImg: "/example_usrimg.png"

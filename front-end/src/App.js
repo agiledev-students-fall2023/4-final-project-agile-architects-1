@@ -23,7 +23,7 @@ function MainContent() {
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
             )
         }
-            <div className="App-Header">{location.pathname}</div>
+            {/* <div className="App-Header">{location.pathname}</div> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/browse" element={<BrowseIngredients />} />
@@ -38,7 +38,7 @@ function MainContent() {
                 ["/", "/browse", "/fridge", "/plan", "/profile"].indexOf(location.pathname) !== -1 && (
                     <nav className="Navigation-Bar">
                         <Link className="nav-item" to="/">Home</Link>
-                        <Link className="nav-item" to="/browse">Browse Ingredients</Link>
+                        <Link className="nav-item" to="/browse">Browse</Link>
                         <Link className="nav-item" to="/fridge">My Fridge</Link>
                         <Link className="nav-item" to="/plan">Plan Meal</Link>
                         <Link className="nav-item" to="/profile">My Profile</Link>

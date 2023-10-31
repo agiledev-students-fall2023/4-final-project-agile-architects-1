@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './RecommendedRecipes.css';
 
 function RecommendedRecipes() {
@@ -18,6 +19,12 @@ function RecommendedRecipes() {
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
                 //... other recipe details
             },
+            {
+                id: 2,
+                title: "Recipe Title",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                //... other recipe details
+            },
             //... other recipes
         ];
         setRecipes(fetchedRecipes);
@@ -26,7 +33,9 @@ function RecommendedRecipes() {
     return (
         <div className="container">
             <header className="header">
-                <button className="back-button">&lt;</button>
+                <Link to="/plan" className="back-button">
+                    <button className="back-button">&lt;</button>
+                </Link>
                 <h1 className="notebook-line">Recommended Recipes</h1>
                 <button className="log-button">Log IN</button>
             </header>

@@ -69,8 +69,6 @@ function MyFridge() {
         setNewItem({ name: '', quantity: '', expiration: '' });
     };
 
-
-
     return (
         <div>
             <h1>My Fridge</h1>
@@ -118,7 +116,7 @@ function MyFridge() {
                     <button onClick={handleDeleteItem}>Delete</button>
                 </div>
             ) : null}
-            <button className = "add-button" onClick={handleAddItem}>Add Item</button>
+            <button className="add-button" onClick={handleAddItem}>Add Item</button>
             {isAddingItem && (
                 <div className="add-item-modal">
                     <input

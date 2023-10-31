@@ -9,13 +9,17 @@
   width: 90%;
   height: 80%;
   background: gray;
-  opacity: 0.3; /* Adjust opacity to your preference */
-  z-index: -1; /* background */
+  opacity: 0.3;
+  /* Adjust opacity to your preference */
+  z-index: -1;
+  /* background */
 }
 
 .fridge-grid {
-  position: relative; /* Create a stacking context */
-  z-index: 0; /* Put it on top of the centered rectangle */
+  position: relative;
+  /* Create a stacking context */
+  z-index: 0;
+  /* Put it on top of the centered rectangle */
   top: 5%;
   left: 5%;
   width: 90%;
@@ -39,7 +43,8 @@
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Increased the gap for more space between form elements */
+  gap: 20px;
+  /* Increased the gap for more space between form elements */
   justify-content: space-between;
 }
 
@@ -49,9 +54,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 20px; /* Increased padding for more space inside the modal */
+  padding: 20px;
+  /* Increased padding for more space inside the modal */
   border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Increased box-shadow for a more pronounced effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* Increased box-shadow for a more pronounced effect */
   z-index: 1000;
   width: 90%;
   max-width: 300px;
@@ -60,7 +67,9 @@
 
 .add-button {
   padding: 10px 20px;
-  margin-left: 8%;
-  border: none;
+  position: fixed;
+  margin-left: 50%;
+  bottom: 13%;
+  text-align: center;
   cursor: pointer;
 }

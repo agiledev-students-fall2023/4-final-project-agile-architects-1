@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "./MyFridge.css";
 
 function MyFridge() {
     const [fridgeItems, setFridgeItems] = useState([]); // { name: 'Item 1', quantity: 8, expiration: '2023-12-10' }
-
-    const [clickedItem, setClickedItem] = useState();
-
     const [newItem, setNewItem] = useState({ name: '', quantity: '', expiration: '' });
-
     const [isAddingItem, setIsAddingItem] = useState(false);
+    const [clickedItem, setClickedItem] = useState()
 
     const [editedName, setEditedName] = useState('');
     const [editedQuantity, setEditedQuantity] = useState('');
     const [editedExpiration, setEditedExpiration] = useState('');
     const [isEditingItem, setIsEditingItem] = useState(false);
-
 
     const handleItemClick = (item) => {
         setClickedItem(item);
@@ -29,7 +25,6 @@ function MyFridge() {
     }
 
     const handleEditItem = () => {
-        // Display an edit form
         setIsEditingItem(true);
     };
 
@@ -41,21 +36,18 @@ function MyFridge() {
         if (!clickedItem) {
             return;
         }
-        // Find the index of the selected item in the array
+
         const itemIndex = fridgeItems.findIndex(item => item === clickedItem);
 
-        // Create a new item with the edited details
         const editedItem = {
             name: editedName,
             quantity: editedQuantity,
             expiration: editedExpiration
         };
 
-        // Update the fridge items array with the edited item
         const updatedFridgeItems = [...fridgeItems];
         updatedFridgeItems[itemIndex] = editedItem;
 
-        // Update the state
         setFridgeItems(updatedFridgeItems);
         setClickedItem(null);
         setIsEditingItem(false);
@@ -73,7 +65,6 @@ function MyFridge() {
         }
 
         setFridgeItems([...fridgeItems, newItem]);
-
         setIsAddingItem(false);
         setNewItem({ name: '', quantity: '', expiration: '' });
     };
@@ -81,6 +72,7 @@ function MyFridge() {
     return (
         <div>
             <h1>My Fridge</h1>
+            <div className="centered-rectangle"></div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div
@@ -124,7 +116,7 @@ function MyFridge() {
                     <button onClick={handleDeleteItem}>Delete</button>
                 </div>
             ) : null}
-            <button onClick={handleAddItem}>Add Item</button>
+            <button className="add-button" onClick={handleAddItem}>Add Item</button>
             {isAddingItem && (
                 <div className="add-item-modal">
                     <input
@@ -157,5 +149,6 @@ function MyFridge() {
 // <h1>Welcome to the Fridge page!</h1>
 // );
 //   };
+
 
 export default MyFridge;

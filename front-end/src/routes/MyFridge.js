@@ -145,10 +145,5 @@ function MyFridge() {
     );
 }
 
-// return (
-// <h1>Welcome to the Fridge page!</h1>
-// );
-//   };
-
 
 export default MyFridge;

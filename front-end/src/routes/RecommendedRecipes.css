@@ -1,0 +1,44 @@
+/* RecommendedRecipes.css */
+.container {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ... other styles ... */
+}
+
+.recipes-list {
+    overflow-y: auto;
+    /* ... other styles ... */
+}
+
+.recipe-card {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* ... other styles ... */
+}
+
+.recipe-card select {
+    width: 100%;
+    margin-top: 10px;
+    /* ... other styles ... */
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.half-dropdown {
+    width: calc(50% - 10px); /* Account for the margin */
+    padding: 5px 0;
+}
+
+.half-dropdown:first-child {
+    margin-right: 20px; /* Space between the two dropdowns */
+}

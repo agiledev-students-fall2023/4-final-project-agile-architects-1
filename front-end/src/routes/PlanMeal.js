@@ -60,9 +60,11 @@ function PlanMeal() {
                 ))}
                 
                 <div className="footer">
-                    <button onClick={() => { /* Implement recommend recipe button logic here */ }}>
-                        Recommend Recipe
-                    </button>
+                    <Link to="/recommended-recipes">
+                      <button>
+                          Recommend Recipe
+                      </button>
+                    </Link>
                     <div>
                         <button /*onClick={handlePrevPage}*/>◀</button>
                         <button /*onClick={handleNextPage}*/>▶</button>

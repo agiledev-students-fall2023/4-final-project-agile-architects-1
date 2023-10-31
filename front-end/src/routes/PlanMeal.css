@@ -14,6 +14,7 @@
     flex-grow: 1; /* Allows the box to grow and take up available space */
     position: relative; /* To position the footer inside it */
     padding-bottom: 0px; /*To leave space at the bottom for the footer*/
+    margin-bottom: 50px;
 }
 
 .header {

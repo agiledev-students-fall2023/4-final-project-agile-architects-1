@@ -45,6 +45,7 @@ function PlanMeal() {
                             <strong className="notebook-line">{type}</strong>
                             {meals[type].map((recipe, index) => (
                                 <div key={index} className="recipe-line">
+                                    
                                     {isEditing ?
                                         <input defaultValue={recipe} className="notebook-line edit-input" />  /*{ Render input if editing }*/
                                         :

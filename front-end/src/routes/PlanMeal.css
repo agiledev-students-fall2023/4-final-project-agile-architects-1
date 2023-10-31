@@ -32,11 +32,31 @@
     padding-bottom: 80px; /* Increased padding to make sure no text goes underneath the footer */
 }
 
-.notebook-line {
+.notebook-line{
     position: relative;
     margin-bottom: 10px;
     padding-bottom: 5px;
+    font-size: 16px;   /* Assuming a default size. Adjust as per your design */
+    line-height: 1.5; /* Assuming a default line height. Adjust as per your design */
 }
+
+.recipe-line:first-of-type .edit-input {
+    margin-top: 16px; /* Adjust the value as needed */
+}
+
+
+.edit-input {
+    margin-top: 7px;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    width: 100%;
+    font-size: inherit;   /* Inherits font size from parent */
+    font-family: inherit; /* Inherits font family from parent */
+    line-height: inherit; /* Inherits line height from parent */
+    
+}
+
 
 .notebook-line::after {
     content: "";

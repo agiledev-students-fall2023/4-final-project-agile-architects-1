@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './RecommendedRecipes.css';
 
 function RecommendedRecipes() {
-    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    const mealTypes = ["Breakfast", "Brunch", "Lunch", "Afternoon Tea", "Dinner", "Night Snack"];
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Any"];
+    const mealTypes = ["Breakfast", "Brunch", "Lunch", "Afternoon Tea", "Dinner", "Night Snack", "Any"];
 
     const [recipes, setRecipes] = useState([]);
     const [selectedDay, setSelectedDay] = useState({});
@@ -58,6 +58,8 @@ function RecommendedRecipes() {
                                     <option key={meal} value={meal}>{meal}</option>
                                 ))}
                             </select>
+
+                            <button className="save-button">Save</button>
                         </div>
                     </div>
                 ))}

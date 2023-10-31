@@ -3,7 +3,7 @@
     padding: 0px 20px;
     display: flex;
     flex-direction: column;
-    height: calc(70vh);
+    overflow-y: scroll;
 }
 
 .meal-box {
@@ -13,23 +13,13 @@
     overflow-y: scroll;
     flex-grow: 1; /* Allows the box to grow and take up available space */
     position: relative; /* To position the footer inside it */
-    padding-bottom: 50px; /* To leave space at the bottom for the footer */
+    padding-bottom: 0px; /*To leave space at the bottom for the footer*/
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.meal-box {
-    margin-top: 20px;
-    border: 1px solid black;
-    padding: 20px;
-    overflow-y: auto;
-    flex-grow: 1; /* Allows the box to grow and take up available space */
-    position: relative; /* To position the footer inside it */
-    padding-bottom: 80px; /* Increased padding to make sure no text goes underneath the footer */
 }
 
 .notebook-line{

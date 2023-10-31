@@ -17,7 +17,7 @@ function MainContent() {
     const location = useLocation();
 
     return (
-        <>
+        <div className='main-container'>
         {
             ["/", "/browse", "/fridge", "/plan", "/profile"].indexOf(location.pathname) !== -1 && (
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
@@ -45,7 +45,7 @@ function MainContent() {
                     </nav>
                 )
             }
-        </>
+        </div>
     );
 }
 

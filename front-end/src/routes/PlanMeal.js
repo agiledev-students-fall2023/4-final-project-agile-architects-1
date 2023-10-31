@@ -30,8 +30,8 @@ function PlanMeal() {
     return (
         <div className="container">
             <header className="header">
-            <Link to="/fridge" className="back-button"><button className="back-button">&lt;</button></Link>
-                <h1 className="notebook-line">Plan Meals</h1>
+            
+                <h1 className="notebook-line ">Plan Meals</h1>
                 <button onClick={toggleEditMode}>
                     {isEditing ? '✔' : '✎'} {/* Toggle between save and edit icons */}
                 </button>

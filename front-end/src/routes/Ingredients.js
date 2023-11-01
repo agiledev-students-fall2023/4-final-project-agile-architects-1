@@ -24,13 +24,15 @@ function BrowseIngredients() {
         usrImg: "/example_usrimg.png"
     }
 
+    const posts = [example_egg_post, example_milk_post, example_lettuce_post];
+        
     return (
       <div className='ingredients-page-container'>
         <h1>This is the Ingredients page</h1>
         <div className="post-list">
-            <PostBlock post={example_egg_post} />
-            <PostBlock post={example_milk_post} />
-            <PostBlock post={example_lettuce_post} />
+            {posts.map((post)=>
+                <PostBlock post={post} />
+            )}
         </div>
       </div>
     );

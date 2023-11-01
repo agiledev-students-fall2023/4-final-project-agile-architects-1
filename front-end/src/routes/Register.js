@@ -44,14 +44,14 @@ export const Register = () => {
 
             <div className="input-wrapper-register">
 
-              <input className="input-field-register" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
+              <input className="input-field-register" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Confirm Password" id="password" name="password"/>
             </div>
             <LoginButton className="register-button-register-page" as={Link} to="/">Register</LoginButton>
           </form>
           {/*
           <button>Don't have an account? Register</button>
     */}
-        <Link className="text-wrapper-continue" to="/">Continue without account</Link>
+        <Link className="text-wrapper-continue-register" to="/">Continue without account</Link>
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ export const Login = () => {
           {/*
           <button>Don't have an account? Register</button>
     */}
-        <Link className="text-wrapper-continue" to="/">Continue without account</Link>
+        <Link className="text-wrapper-continue-login" to="/">Continue without account</Link>
       </div>
     </div>
   );

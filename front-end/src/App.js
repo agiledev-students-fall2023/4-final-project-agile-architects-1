@@ -11,13 +11,13 @@ import BrowseIngredients from './routes/Ingredients';
 import Login from './routes/Login';
 import LoginButton from './components/LoginButton';
 import Register from './routes/Register';
-
+import RecommendedRecipes from './routes/RecommendedRecipes';
 
 function MainContent() {
     const location = useLocation();
 
     return (
-        <>
+        <div className='main-container'>
         {
             ["/", "/browse", "/fridge", "/plan", "/profile"].indexOf(location.pathname) !== -1 && (
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
@@ -32,6 +32,7 @@ function MainContent() {
                 <Route path="/profile" element={<MyProfile />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/recommended-recipes" element={<RecommendedRecipes />} />
             </Routes>
 
             {
@@ -45,7 +46,7 @@ function MainContent() {
                     </nav>
                 )
             }
-        </>
+        </div>
     );
 }
 

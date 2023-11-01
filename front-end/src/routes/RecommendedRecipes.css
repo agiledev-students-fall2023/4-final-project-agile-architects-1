@@ -1,0 +1,57 @@
+/* RecommendedRecipes.css */
+.container {
+    height: 100vh; 
+    padding: 20px;
+    box-sizing: border-box;  /* This ensures padding is included in the height calculation */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ... other styles ... */
+}
+
+.recipes-list {
+    overflow-y: auto;
+    /* ... other styles ... */
+}
+
+.recipe-card {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* ... other styles ... */
+}
+
+.recipe-card select {
+    width: 100%;
+    margin-top: 10px;
+    /* ... other styles ... */
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.half-dropdown {
+    width: calc(50% - 10px); /* Account for the margin */
+    padding: 5px 0;
+    margin-right: 20px;
+    height: 30px;
+}
+
+.save-button {
+    padding: 0px 20px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 30px;
+}
+
+.save-button:hover {
+    background-color: #0056b3;  /* Darker blue for hover effect */
+}

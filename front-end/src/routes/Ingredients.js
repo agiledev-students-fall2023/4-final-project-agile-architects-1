@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PostBlock from '../components/PostBlock';
+import TopSearchBar from '../components/TopSearchBar';
 
 import './Ingredients.css';
 
@@ -28,7 +29,7 @@ function BrowseIngredients() {
         
     return (
       <div className='ingredients-page-container'>
-        <h1>This is the Ingredients page</h1>
+        <TopSearchBar />
         <div className="post-list">
             {posts.map((post)=>
                 <PostBlock post={post} />

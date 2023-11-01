@@ -14,11 +14,11 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+    font-size: 14px;
 }
 
 .login-button {
     position: absolute;
-    margin: 10px 5px;
     top: 0;
     right: 0;
 }

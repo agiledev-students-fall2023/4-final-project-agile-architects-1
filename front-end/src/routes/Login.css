@@ -2,15 +2,15 @@
   display: flex;
   background-color: lightgrey;
   color: black;
-  width: 5em;
-  height: 2em;
+  width: 20vw;
+  height: 8vw;
   text-decoration-line: none;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 4vw;
   border-radius: .5em;
   margin-left: auto;
   margin-right: 2vw;
-  margin-top: 1rem;
+  margin-top: .5rem;
   border: none;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex;
-
+  margin-top: 15vh;
 }
 
 .login-display {
@@ -34,24 +34,27 @@
   text-align: center;
   margin-bottom: 1.5rem; /* Space below the title */
   margin-top: 23h;
-  width: 40vw
+  width: 70vw;
 }
 
 .login-display .text-wrapper-wastewise {
   white-space: nowrap;
-  font-size: 8vw;
+  font-size: 10vw;
   font-size: bold;
 }
 
 .login-display .text-wrapper-login {
   display: inline-block;
-  font-size: 2em;
+  font-size: 5vw;
 }
 
+.login-display .login-group {
+
+}
 .login-form {
   display: flex;
   flex-direction: column;
-  width: 30vw; /* Reduce width for better alignment */
+  width: 70vw; /* Reduce width for better alignment */
   margin: auto;
 
 }
@@ -69,7 +72,7 @@
   padding: 15px; /* Padding for better appearance */
   margin-bottom: 15px;
   font-size: 1em;
-  border: .1em solid black; /* Border for input */
+  border: .05em solid black; /* Border for input */
   border-radius: .7em; /* Rounded corners for input */
 }
 
@@ -80,9 +83,8 @@
   text-align: center;
   color: black;
   background-color: lightgray;
-  margin-top: 10rem;
   height: 2rem;
-  width: 25vw;
+  width: 70vw;
   border-radius: 2em;
   border: 1px solid black;
   margin-left: auto;
@@ -90,20 +92,19 @@
   font-size: 1em;
   text-decoration: none;
   margin-top: 10vh;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-
-button:hover {
-  background-color: grey; /* Slightly darker pink on hover */
+.login-button-login-page:hover {
+  background-color: grey;
 }
 
-.text-wrapper-continue {
+.text-wrapper-continue-login {
   display: block;
   color: grey;
   text-decoration: none;
   text-shadow: .1em .1em .4em grey;
   text-align: center;
-  margin-top: .3rem
+  margin-top: .7rem;
+  font-size: 3vw;
+  
 }

@@ -19,7 +19,7 @@ function MainContent() {
     return (
         <>
         {
-            ["/", "/browse", "/fridge", "/plan", "/profile"].indexOf(location.pathname) !== -1 && (
+            ["/", "/browse", "/fridge", "/plan"].indexOf(location.pathname) !== -1 && (
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
             )
         }

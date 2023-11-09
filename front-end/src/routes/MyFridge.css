@@ -4,7 +4,7 @@
 
 .centered-rectangle {
   position: absolute;
-  top: 5%;
+  top: 8%;
   left: 5%;
   width: 90%;
   height: 80%;
@@ -14,17 +14,32 @@
   /* background */
 }
 
+.header {
+  color: black !important;
+  margin-left: 8%;
+  margin-top: 12%; 
+  z-index: 0;
+}
+
 .fridge-grid {
   position: relative;
   z-index: 0;  /* stacking layer*/
   top: 5%;
   left: 5%;
   width: 90%;
-  height: 80%;
+  height: 30;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
+}
+
+.view-item-details {
+  margin-left: 8%;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  line-height: 0.5;
+  color: black; 
 }
 
 .fridge-item {
@@ -32,7 +47,9 @@
   padding: 10px;
   width: calc(33.33% - 22px);
   box-sizing: border-box;
+  font-size: 12px; 
   background-color: white;
+  color: #0a0909;
 
 }
 
@@ -62,8 +79,13 @@
 .add-button {
   padding: 10px 20px;
   position: fixed;
-  margin-left: 50%;
+  margin-left: 40%;
   bottom: 13%;
   text-align: center;
   cursor: pointer;
 }
+
+.edit-item-form {
+  margin-left: 8%; 
+}
+

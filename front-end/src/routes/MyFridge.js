@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import "./MyFridge.css";
 
 function MyFridge() {
-    const [fridgeItems, setFridgeItems] = useState([]); // { name: 'Item 1', quantity: 8, expiration: '2023-12-10' }
+    // const [fridgeItems, setFridgeItems] = useState([]); // { name: 'Item 1', quantity: 8, expiration: '2023-12-10' }
+    const [fridgeItems, setFridgeItems] = useState([{ name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 2', quantity: 12, expiration: '2023-11-1' }, { name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 3', quantity: 2, expiration: '2023-12-1' }, { name: 'Item 4', quantity: 1, expiration: '2023-12-10' }, { name: 'Item 5', quantity: 5, expiration: '2023-12-12' }]);
     const [newItem, setNewItem] = useState({ name: '', quantity: '', expiration: '' });
     const [isAddingItem, setIsAddingItem] = useState(false);
     const [clickedItem, setClickedItem] = useState()
@@ -71,8 +72,9 @@ function MyFridge() {
 
     return (
         <div>
-            <h1>My Fridge</h1>
-            <div className="centered-rectangle"></div>
+            <h1 className="header">My Fridge</h1>
+            <div className="centered-rectangle">
+            </div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div
@@ -80,7 +82,7 @@ function MyFridge() {
                         className="fridge-item"
                         onClick={() => handleItemClick(item)}
                     >
-                        <p>Name: {item.name}</p>
+                        <p>{item.name}</p>
                     </div>
                 ))}
             </div>

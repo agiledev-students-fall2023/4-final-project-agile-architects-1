@@ -19,7 +19,7 @@
 
     border-radius: 20px 20px 0 0;
 
-    object-fit: cover; /* 保持图片比例，将其放置在容器中，可能会裁剪部分内容 */
+    object-fit: cover; 
 
 }
 

@@ -29,7 +29,7 @@ function BrowseIngredients() {
         
     return (
       <div className='ingredients-page-container'>
-        <TopSearchBar />
+        <TopSearchBar location="10003"/>
         <div className="post-list">
             {posts.map((post)=>
                 <PostBlock post={post} />

@@ -17,8 +17,10 @@
 .header {
   color: black !important;
   margin-left: 8%;
-  margin-top: 12%; 
+  margin-top: 13%; 
   z-index: 0;
+  font-size: 20px;
+  line-height: 1.5; 
 }
 
 .fridge-grid {
@@ -27,7 +29,6 @@
   top: 5%;
   left: 5%;
   width: 90%;
-  height: 30;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -45,12 +46,15 @@
 .fridge-item {
   border: 1px solid #ccc;
   padding: 10px;
+  height: 40px;
   width: calc(33.33% - 22px);
   box-sizing: border-box;
   font-size: 12px; 
   background-color: white;
   color: #0a0909;
-
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
 }
 
 .add-item-form {

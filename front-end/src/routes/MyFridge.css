@@ -2,25 +2,82 @@
   padding: 20px;
 }
 
+.background {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgb(252, 242, 230);
+}
+
+.centered-rectangle {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  width: 85%;
+  height: 80%;
+  background-color: rgb(252, 252, 252);
+  opacity: 0.3;
+  z-index: 0;
+  /* background */
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px; 
+}
+
+.header {
+  color: black !important;
+  margin-left: 8%;
+  margin-top: 13%; 
+  z-index: 0;
+  font-size: 20px;
+  line-height: 1.5; 
+}
+
 .fridge-grid {
+  position: relative;
+  z-index: 0;  /* stacking layer*/
+  top: 5%;
+  left: 8%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.view-item-details {
+  margin-left: 8%;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  line-height: 0.5;
+  color: black; 
 }
 
 .fridge-item {
-  border: 1px solid #ccc;
+  border: 2px solid rgb(204, 86, 77);
   padding: 10px;
-  width: calc(33.33% - 10px);
+  height: 40px;
+  width: calc(33.33% - 22px);
   box-sizing: border-box;
+  font-size: 12px; 
+  background-color: rgb(245, 243, 238);
+  color: #0a0909;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 5px; 
 }
 
 .add-item-form {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  justify-content: space-between;
 }
+
 .add-item-modal {
   position: fixed;
   top: 50%;
@@ -31,6 +88,29 @@
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  width: 300px;
+  width: 90%;
+  max-width: 300px;
   text-align: center;
+}
+
+.add-button {
+  padding: 10px 20px;
+  position: fixed;
+  margin-left: 40%;
+  bottom: 13%;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(245, 243, 238);
+  border: 1px solid rgb(204, 86, 77);
+  border-radius: 5px; 
+}
+
+.edit-item-form {
+  margin-left: 8%; 
+}
+
+.button {
+  background-color: rgb(245, 243, 238);
+  border: 0.5px solid rgb(204, 86, 77);
+  border-radius: 5px; 
 }

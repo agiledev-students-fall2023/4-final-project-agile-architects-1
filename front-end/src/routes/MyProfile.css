@@ -61,3 +61,8 @@
     margin-bottom: 100px;
   }
 
+  button {
+    background-color: #f0e9d7;
+    border: none;
+    margin: 1px;
+  }

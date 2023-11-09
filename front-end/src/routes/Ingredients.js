@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PostBlock from '../components/PostBlock';
+import PostFLow from '../components/PostFlow';
 import TopSearchBar from '../components/TopSearchBar';
 
 import './Ingredients.css';
@@ -24,16 +24,20 @@ function BrowseIngredients() {
         author: "user3",
         usrImg: "/example_usrimg.png"
     }
+    const example_pork_belly_post = {
+        image: '/example_pork_belly.jpg',
+        title: "Pork Belly",
+        author: "user4",
+        usrImg: "/example_usrimg.png"
+    }
 
-    const posts = [example_egg_post, example_milk_post, example_lettuce_post];
+    const posts = [example_egg_post, example_milk_post, example_lettuce_post, example_pork_belly_post];
         
     return (
       <div className='ingredients-page-container'>
         <TopSearchBar location="10003"/>
-        <div className="post-list">
-            {posts.map((post)=>
-                <PostBlock post={post} />
-            )}
+        <div className='post-flow-container'>
+            <PostFLow posts={posts}/>
         </div>
       </div>
     );

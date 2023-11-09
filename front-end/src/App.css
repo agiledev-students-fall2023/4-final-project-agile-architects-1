@@ -24,6 +24,8 @@
     align-items: center;
     justify-content: center;
     color: #CC564D;
+    font-style: normal;
+    text-decoration:none;
 }
 
 .login-button {

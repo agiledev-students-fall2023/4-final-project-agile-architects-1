@@ -10,11 +10,20 @@
     justify-content: space-around;
     display: flex;
     padding: 1rem;
-    background-color: lightgrey;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 100%;
     position: fixed;
     bottom: 0;
     font-size: 14px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #CC564D;
 }
 
 .login-button {

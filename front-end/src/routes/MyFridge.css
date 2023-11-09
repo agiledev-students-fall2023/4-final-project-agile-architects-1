@@ -32,6 +32,7 @@
   padding: 10px;
   width: calc(33.33% - 22px);
   box-sizing: border-box;
+  font-size: 12px; 
   background-color: white;
 
 }
@@ -62,8 +63,15 @@
 .add-button {
   padding: 10px 20px;
   position: fixed;
-  margin-left: 50%;
+  margin-left: 40%;
   bottom: 13%;
   text-align: center;
   cursor: pointer;
+}
+
+.view-item-details {
+  margin-left: 8%;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  line-height: 0.5;
 }

@@ -1,6 +1,6 @@
 .register-button-in-login {
   display: flex;
-  background-color: lightgrey;
+  background-color: #f0e9d7;
   color: black;
   width: 20vw;
   height: 8vw;
@@ -81,12 +81,12 @@
   justify-content: center; 
   align-items: center;     
   text-align: center;
-  color: black;
-  background-color: lightgray;
+  color: #F5F3EE;
+  background-color: #CC564D;
   height: 2rem;
   width: 70vw;
   border-radius: 2em;
-  border: 1px solid black;
+  border: none;
   margin-left: auto;
   margin-right: auto;
   font-size: 1em;

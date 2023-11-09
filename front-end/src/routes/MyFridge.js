@@ -73,8 +73,9 @@ function MyFridge() {
     return (
         <div>
             <h1 className="header">My Fridge</h1>
+            <div className="background">
             <div className="centered-rectangle">
-            </div>
+            </div></div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div
@@ -114,8 +115,8 @@ function MyFridge() {
                     <p>Name: {clickedItem.name}</p>
                     <p>Quantity: {clickedItem.quantity}</p>
                     <p>Expiration Date: {clickedItem.expiration}</p>
-                    <button onClick={handleEditItem}>Edit</button>
-                    <button onClick={handleDeleteItem}>Delete</button>
+                    <button className="button" onClick={handleEditItem}>Edit</button>
+                    <button className="button" onClick={handleDeleteItem}>Delete</button>
                 </div>
             ) : null}
             <button className="add-button" onClick={handleAddItem}>Add Item</button>

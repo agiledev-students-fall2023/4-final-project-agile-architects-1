@@ -9,3 +9,13 @@
 .post-flow-container {
     padding: 0.5rem;
 }
+
+.scroll-to-top-button{
+    position: sticky;
+    bottom: 13vh;
+    left: 85vw;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1000px;
+    padding-top: 5px;
+}

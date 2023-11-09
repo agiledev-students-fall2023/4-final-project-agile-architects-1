@@ -1,0 +1,74 @@
+.profile-page {
+    margin-top: 2.5rem;
+}
+.profile-picture {
+    display: inline-block;
+    height: 4.5rem;
+    margin-left: 6vw;
+    align-items: center;
+    vertical-align: top;
+}
+
+.profile-container {
+    width: 80vw;
+    margin: auto;
+}
+.user-info {
+    display: inline-block;
+    margin-left: 6vw;
+    height: 4.5rem;
+    align-items: center;
+    vertical-align: top;
+}
+
+.user-info .username-wrapper {
+    font-size: 1.5rem;
+}
+
+.user-info .user-id-wrapper {
+    font-size: .5rem;
+}
+
+.user-info .user-location-wrapper {
+    font-size: .7rem;
+}
+
+.profile-page .user-discription {
+    margin-top: .7rem;
+    font-size: .6rem
+}
+
+.unknown-buttons {
+    display: flex;
+    margin-top: 2rem;
+    height: 2rem;
+}
+
+.unknown-buttons .edit-profile {
+    margin-left: auto;
+    margin-right: 0;
+
+}
+
+.post-container .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 90vw;
+    max-height: 20vh;
+    padding: 10px;
+    margin-bottom: 100px;
+  }
+
+.post-list .post-block {
+    height: 20vh
+}
+
+.post-list .post-image-container {
+    height: 20%;
+}
+
+.post-list .post-block {
+    width: 43vw;
+}

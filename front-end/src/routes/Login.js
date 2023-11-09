@@ -33,20 +33,20 @@ export const Login = () => {
 
           </div> 
           <form className="login-form" onSubmit={handleSubmit}>
-            <div className="input-wrapper">
+            <div className="input-wrapper-login">
 
-              <input className="input-field" value={username} onChange={(e)=>setUser(e.target.value)} type="username" placeholder="Username" id="username" name="username"/>
+              <input className="input-field-login" value={username} onChange={(e)=>setUser(e.target.value)} type="username" placeholder="Username" id="username" name="username"/>
             </div>
-            <div className="input-wrapper">
+            <div className="input-wrapper-login">
 
-              <input className="input-field" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
+              <input className="input-field-login" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
             </div>
             <LoginButton className="login-button-login-page" as={Link} to="/">Log In</LoginButton>
           </form>
           {/*
           <button>Don't have an account? Register</button>
     */}
-        <Link className="text-wrapper-continue" to="/">Continue without account</Link>
+        <Link className="text-wrapper-continue-login" to="/">Continue without account</Link>
       </div>
     </div>
   );

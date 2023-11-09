@@ -72,8 +72,9 @@ function MyFridge() {
 
     return (
         <div>
-            <h1>My Fridge</h1>
-            <div className="centered-rectangle"></div>
+            <h1 className="header">My Fridge</h1>
+            <div className="centered-rectangle">
+            </div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div

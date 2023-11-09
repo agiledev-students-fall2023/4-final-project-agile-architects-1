@@ -7,8 +7,12 @@
 }
 
 .meal-box {
+    color: #535353;
     margin-top: 20px;
-    border: 1px solid black;
+    border: 1px solid #e0e0e0;
+    
+    box-shadow: 0 0.5rem 0.5rem 0 #e0e0e0;
+    border-radius: 1rem;
     padding: 20px;
     overflow-y: scroll;
     flex-grow: 1; /* Allows the box to grow and take up available space */
@@ -55,7 +59,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #CC564D;
 }
 
 .footer {

@@ -54,7 +54,6 @@ function RecommendedRecipes() {
                     <button className="back-button">&lt;</button>
                 </Link>
                 <h1 className="notebook-line">Recommended Recipes</h1>
-                <button className="log-button">Log IN</button>
             </header>
 
             <div className="recipe-card">

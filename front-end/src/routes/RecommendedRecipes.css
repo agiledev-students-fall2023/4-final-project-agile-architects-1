@@ -1,5 +1,6 @@
 /* RecommendedRecipes.css */
 .container {
+    display: flex;
     height: 100vh; 
     padding: 20px;
     box-sizing: border-box;  /* This ensures padding is included in the height calculation */
@@ -12,16 +13,34 @@
     /* ... other styles ... */
 }
 
-.recipes-list {
-    overflow-y: auto;
-    /* ... other styles ... */
+.recipe-title{
+    color: #535353;
+    text-decoration: underline;
+    text-decoration-color: #CC564D; /* This will create the red underline */
+    text-decoration-thickness: 0.2rem;
+    /* ... offset the underline so it's not directly attatched to the title... */
+    text-underline-offset: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.recipe-text{
+    color: #535353;
 }
 
 .recipe-card {
     border: 1px solid #e0e0e0;
-    padding: 20px;
+    padding: 2rem;
     margin-bottom: 20px;
-    /* ... other styles ... */
+    flex-grow: 1;
+    max-height: 55%;
+    position: relative; /* To position the footer inside it */
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+    box-shadow: 0 0.5rem 0.5rem 0 #e0e0e0;
+    border-radius: 1rem;
+
+    text-align: left;
 }
 
 .recipe-card select {
@@ -32,26 +51,43 @@
 
 .dropdown-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Align children in the center */
     width: 100%;
+    margin-top: 1rem; /* Adjust as needed */
 }
 
-.half-dropdown {
-    width: calc(50% - 10px); /* Account for the margin */
-    padding: 5px 0;
-    margin-right: 20px;
+.dropdown {
+    border: none;
+    width: 100%; /* Account for the margin */
+    padding: 1px 0;
     height: 30px;
+    margin: 0.5rem 2rem;
 }
 
 .save-button {
-    padding: 0px 20px;
-    margin-top: 10px;
+    position: absolute;
     border: none;
     cursor: pointer;
     border-radius: 4px;
     height: 30px;
+    top: 3.5rem; /* Adjust as needed */
+    right: 2rem; /* Adjust as needed */
+    padding: 5px 15px;
 }
 
 .save-button:hover {
-    background-color: #0056b3;  /* Darker blue for hover effect */
+    background-color: #CC564D;  /* Darker blue for hover effect */
+}
+
+.flip-page{
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 30px;
+    bottom: 2rem; /* Adjust as needed */
+    padding: 5px 15px;
+    left: 50%; /* Set to half of the parent's width */
+    transform: translateX(-50%);
 }

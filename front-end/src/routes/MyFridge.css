@@ -4,7 +4,7 @@
 
 .centered-rectangle {
   position: absolute;
-  top: 5%;
+  top: 8%;
   left: 5%;
   width: 90%;
   height: 80%;
@@ -17,7 +17,7 @@
 .header {
   color: black !important;
   margin-left: 8%;
-  margin-top: 8%; 
+  margin-top: 12%; 
   z-index: 0;
 }
 

@@ -13,14 +13,14 @@ import Login from './routes/Login';
 import LoginButton from './components/LoginButton';
 import Register from './routes/Register';
 import RecommendedRecipes from './routes/RecommendedRecipes';
-
+import IngredientDetail from './routes/IngredientDetail';
 function MainContent() {
     const location = useLocation();
 
     return (
         <div className='main-container'>
         {
-            ["/", "/fridge", "/plan"].indexOf(location.pathname) !== -1 && (
+            ["/", "/fridge", "/plan" ].indexOf(location.pathname) !== -1 && (
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
             )
         }
@@ -34,6 +34,8 @@ function MainContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/recommended-recipes" element={<RecommendedRecipes />} />
+                <Route path="/ingredientDetail/:id" element={<IngredientDetail />} />
+
             </Routes>
 
             {

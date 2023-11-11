@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-.background {
+/* .background {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -10,7 +10,7 @@
   height: 100%;
   z-index: -1;
   background-color: rgb(252, 242, 230);
-}
+} */
 
 .centered-rectangle {
   position: absolute;
@@ -24,7 +24,7 @@
   /* background */
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   border-radius: 10px; 
-
+  background-color: rgb(252, 242, 230);
 }
 
 .header {

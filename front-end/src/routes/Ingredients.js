@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PostFLow from '../components/PostFlow';
 import TopSearchBar from '../components/TopSearchBar';
+import { FaArrowUp } from 'react-icons/fa';
 
 import './Ingredients.css';
 
@@ -32,15 +33,40 @@ function BrowseIngredients() {
     }
 
     const posts = [example_egg_post, example_milk_post, example_lettuce_post, example_pork_belly_post];
-        
+
+    const [showScrollButton, setShowScrollButton] = useState(true);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const handleScroll = () => {
+        if (window.pageYOffset > 300) {
+            setShowScrollButton(true);
+        } else {
+            setShowScrollButton(false);
+        }
+    }
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     return (
-      <div className='ingredients-page-container'>
-        <TopSearchBar location="10003"/>
-        <div className='post-flow-container'>
-            <PostFLow posts={posts}/>
+        <div>
+            <div className='ingredients-page-container'>
+                <TopSearchBar location="10003" />
+                <div className='post-flow-container'>
+                
+                <PostFLow posts={posts} />
+                </div>
+            </div>
+            <button className='scroll-to-top-button' onClick={scrollToTop}>
+                <FaArrowUp />
+            </button>
         </div>
-      </div>
     );
-  }
-  
+}
+
 export default BrowseIngredients;

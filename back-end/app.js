@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 
 import homeRoutes from './routes/homeRoutes.js';
+import BrowseRoutes from './routes/BrowseRoutes.js';
 
 const app = express();
 
@@ -11,5 +12,6 @@ app.use("/static", express.static("public"));
 
 // Routes
 app.use('/', homeRoutes);
+app.use('/browse', BrowseRoutes);
 
 export default app;

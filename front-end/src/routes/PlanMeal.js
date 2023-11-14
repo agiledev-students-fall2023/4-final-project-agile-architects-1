@@ -12,7 +12,7 @@ function PlanMeal() {
 
   const [currentPage, setCurrentPage] = useState(0); // Start from the first plan
   const [currentMeals, setCurrentMeals] = useState(mealPlans[currentPage].meals);
-  let mealTypes = Object.keys(currentMeals);
+  const [mealTypes, setMealTypes] = useState(Object.keys(currentMeals));
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -26,7 +26,7 @@ function PlanMeal() {
         const data = await response.json();
         setmealPlans(data);
         setCurrentMeals(mealPlans[currentPage].meals);
-        mealTypes = Object.keys(currentMeals);
+        setMealTypes(Object.keys(currentMeals));
       } catch (error) {
         console.error("Fetching recipes failed: ", error);
         // Handle errors here

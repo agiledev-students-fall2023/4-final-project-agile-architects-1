@@ -1,6 +1,6 @@
-.register-button-in-login {
+.login-button-in-register {
   display: flex;
-  background-color: lightgrey;
+  background-color: #f0e9d7;
   color: black;
   width: 20vw;
   height: 8vw;
@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.register-button-in-login:hover {
+.login-button-in-register:hover {
   background-color: grey;
 }
 
@@ -28,7 +28,7 @@
   margin-top: 15vh;
 }
 
-.login-display {
+.register-display {
   display: block;
   margin: auto;
   text-align: center;
@@ -37,21 +37,21 @@
   width: 70vw;
 }
 
-.login-display .text-wrapper-wastewise {
+.register-display .text-wrapper-wastewise {
   white-space: nowrap;
   font-size: 10vw;
   font-size: bold;
 }
 
-.login-display .text-wrapper-login {
+.register-display .text-wrapper-register {
   display: inline-block;
   font-size: 5vw;
 }
 
-.login-display .login-group {
+.register-display .register-group {
 
 }
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   width: 70vw; /* Reduce width for better alignment */
@@ -59,13 +59,13 @@
 
 }
 
-.input-wrapper-login {
+.input-wrapper-register {
   display: flex;
   align-items: center;
 
 }
 
-.input-field-login {
+.input-field-register {
   display: flex;
   align-items: center;
   width: 100%; /* Match width of label indentation */
@@ -76,13 +76,13 @@
   border-radius: .7em; /* Rounded corners for input */
 }
 
-.login-button-login-page {
+.register-button-register-page {
   display: flex;           
   justify-content: center; 
   align-items: center;     
   text-align: center;
-  color: black;
-  background-color: lightgray;
+  color: #F5F3EE;
+  background-color: #CC564D;
   height: 2rem;
   width: 70vw;
   border-radius: 2em;
@@ -94,11 +94,13 @@
   margin-top: 10vh;
 }
 
-.login-button-login-page:hover {
+.register-button-register-page:hover {
   background-color: grey;
 }
 
-.text-wrapper-continue-login {
+
+
+.text-wrapper-continue-register {
   display: block;
   color: grey;
   text-decoration: none;

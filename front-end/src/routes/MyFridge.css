@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-.background {
+/* .background {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -10,7 +10,7 @@
   height: 100%;
   z-index: -1;
   background-color: rgb(252, 242, 230);
-}
+} */
 
 .centered-rectangle {
   position: absolute;
@@ -24,6 +24,7 @@
   /* background */
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   border-radius: 10px; 
+  background-color: rgb(252, 242, 230);
 }
 
 .header {
@@ -33,12 +34,16 @@
   z-index: 0;
   font-size: 20px;
   line-height: 1.5; 
+  font-size: 20px;
+  line-height: 1.5; 
 }
 
 .fridge-grid {
   position: relative;
   z-index: 0;  /* stacking layer*/
   top: 5%;
+  left: 8%;
+  width: 80%;
   left: 8%;
   width: 80%;
   display: flex;
@@ -59,11 +64,17 @@
   border: 2px solid rgb(204, 86, 77);
   padding: 10px;
   height: 40px;
+  height: 40px;
   width: calc(33.33% - 22px);
   box-sizing: border-box;
   font-size: 12px; 
   background-color: rgb(245, 243, 238);
+  background-color: rgb(245, 243, 238);
   color: #0a0909;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border-radius: 5px; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
@@ -100,6 +111,9 @@
   bottom: 13%;
   text-align: center;
   cursor: pointer;
+  background-color: rgb(245, 243, 238);
+  border: 1px solid rgb(204, 86, 77);
+  border-radius: 5px; 
   background-color: rgb(245, 243, 238);
   border: 1px solid rgb(204, 86, 77);
   border-radius: 5px; 

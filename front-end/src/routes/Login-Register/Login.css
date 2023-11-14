@@ -1,6 +1,6 @@
-.login-button-in-register {
+.register-button-in-login {
   display: flex;
-  background-color: lightgrey;
+  background-color: #f0e9d7;
   color: black;
   width: 20vw;
   height: 8vw;
@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.login-button-in-register:hover {
+.register-button-in-login:hover {
   background-color: grey;
 }
 
@@ -28,7 +28,7 @@
   margin-top: 15vh;
 }
 
-.register-display {
+.login-display {
   display: block;
   margin: auto;
   text-align: center;
@@ -37,21 +37,21 @@
   width: 70vw;
 }
 
-.register-display .text-wrapper-wastewise {
+.login-display .text-wrapper-wastewise {
   white-space: nowrap;
   font-size: 10vw;
   font-size: bold;
 }
 
-.register-display .text-wrapper-register {
+.login-display .text-wrapper-login {
   display: inline-block;
   font-size: 5vw;
 }
 
-.register-display .register-group {
+.login-display .login-group {
 
 }
-.register-form {
+.login-form {
   display: flex;
   flex-direction: column;
   width: 70vw; /* Reduce width for better alignment */
@@ -59,13 +59,13 @@
 
 }
 
-.input-wrapper-register {
+.input-wrapper-login {
   display: flex;
   align-items: center;
 
 }
 
-.input-field-register {
+.input-field-login {
   display: flex;
   align-items: center;
   width: 100%; /* Match width of label indentation */
@@ -76,17 +76,17 @@
   border-radius: .7em; /* Rounded corners for input */
 }
 
-.register-button-register-page {
+.login-button-login-page {
   display: flex;           
   justify-content: center; 
   align-items: center;     
   text-align: center;
-  color: black;
-  background-color: lightgray;
+  color: #F5F3EE;
+  background-color: #CC564D;
   height: 2rem;
   width: 70vw;
   border-radius: 2em;
-  border: 1px solid black;
+  border: none;
   margin-left: auto;
   margin-right: auto;
   font-size: 1em;
@@ -94,13 +94,11 @@
   margin-top: 10vh;
 }
 
-.register-button-register-page:hover {
+.login-button-login-page:hover {
   background-color: grey;
 }
 
-
-
-.text-wrapper-continue-register {
+.text-wrapper-continue-login {
   display: block;
   color: grey;
   text-decoration: none;

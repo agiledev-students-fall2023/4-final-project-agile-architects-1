@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
+    "start": "node src/server.js",
     "test": "mocha src/tests/*.test.js"
   },
   "author": "",

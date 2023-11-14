@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PostFLow from '../components/PostFlow';
-import TopSearchBar from '../components/TopSearchBar';
+import PostFLow from '../../components/PostFlow';
+import TopSearchBar from '../../components/TopSearchBar';
 import { FaArrowUp } from 'react-icons/fa';
 
 import './Ingredients.css';

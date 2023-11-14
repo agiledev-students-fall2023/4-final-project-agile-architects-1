@@ -6,7 +6,7 @@ const PostBlock = ({ post }) => {
     const navigate = useNavigate();
 
     return (
-        <div onClick={() => navigate(`/ingredientDetail/${post.id}`, {state: { post }})} className='post-block'>
+        <div onClick={() => navigate(`/browse/${post.id}`, {state: { post }})} className='post-block'>
             <div className='post-image-container'>
                 <img src={post.image} alt={post.title} className="post-image" />
             </div>

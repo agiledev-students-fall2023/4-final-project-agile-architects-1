@@ -22,7 +22,7 @@
 
 }
 
-.top-bar .ingredient-name {
+.top-bar .ingredient-detail-name {
     margin-left: 2rem;
     align-self: flex-end;
     font-size: 1.5rem;
@@ -35,7 +35,7 @@
     flex-wrap: wrap;
 }
 
-.ingredient-detail .ingredient-img {
+.ingredient-detail .ingredient-detail-img {
     margin-top: 2rem;
     max-width: 80%;
     height: auto;
@@ -47,7 +47,7 @@
     max-width: 80%;
 }
 
-.ingredient-info {
+.ingredient-detail-info {
     display: inline-block;
     margin-left: 6vw;
     height: 4.5rem;
@@ -66,27 +66,16 @@
     border-radius: 1.5rem;
 }
 
-.ingredient-info .name-wrapper {
+.ingredient-detail-info .ingredient-detail-name-wrapper {
     font-size: 1.3rem;
 }
 
-.ingredient-info .number-wrapper {
+.ingredient-detail-info .ingredient-detail-number-wrapper {
     font-size: .5rem;
 }
 
-.location-info {
-    margin-top: 1rem;
-    display: flex;
-}
-
-.location-info .location-icon{
-    width: 1rem;
-    font-size: 1rem;
-}
-
-.location-info .location-wrapper {
-    margin-left: .2rem;
-    font-size: .7rem;
+.ingredient-detail-location {
+    margin-top: 0.9rem;
 }
 
 .expiration-info {
@@ -110,11 +99,11 @@
     width: 70vw;
 }
 
-.selling-info .description {
+.selling-info .ingredient-details-description {
     margin-top: 3rem;
 }
 
-.description .ingredient-discription {   
+.ingredient-details-description .ingredient-discription {   
     margin-top: .8rem;
     font-size: .6rem
 }
@@ -133,11 +122,11 @@
     white-space: nowrap;
   }
  
-  .comment-section {
+  .ingredient-detail-comment-container {
     margin-top: 3rem;
   }
 
-  .comment-section .sending-comment {
+  .ingredient-detail-comment-container .sending-comment {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -147,7 +136,7 @@
     margin-right: auto;
   }
 
-  .sending-comment .profile-picture {
+  .sending-comment .detail-comment-user-img {
     display: inline-block;
     height: auto;
     width: 8%;
@@ -177,7 +166,7 @@
     border: 1px solid black;
   }
 
-  .comment-section .user-comments {
+  .ingredient-detail-comment-container .user-comments {
     display: flex;
     margin-top: 2rem;
     width: 70vw;

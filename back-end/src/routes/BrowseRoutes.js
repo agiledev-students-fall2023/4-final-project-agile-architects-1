@@ -82,7 +82,7 @@ router.get('/details/:id', (req, res) => {
     const id = req.params.id;
     const post = getPostById(id);
     if (!post) {
-        res.status(404).send('Post not found.');
+        res.json({});
     } else {
         res.json(post);
     }

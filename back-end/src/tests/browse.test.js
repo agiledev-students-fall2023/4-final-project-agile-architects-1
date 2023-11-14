@@ -11,10 +11,10 @@ describe('Testing Browse Routes', () => {
     
     describe('getPostList() function', () => {
         it('should get a list of posts', () => {
-        const postList = getPostList(1);
-        expect(postList).to.be.an('array');
-        expect(postList).to.have.lengthOf.at.most(24); // Assuming each page can have at most 24 posts
-        expect(postList[0]).to.have.property('id');
+            const postList = getPostList(1);
+            expect(postList).to.be.an('array');
+            expect(postList).to.have.lengthOf.at.most(24); // Assuming each page can have at most 24 posts
+            expect(postList[0]).to.have.property('id');
         });
     });
 

@@ -8,18 +8,19 @@ import Home from './routes/Home';
 import MyFridge from './routes/MyFridge';
 import MyProfile from './routes/MyProfile';
 import PlanMeal from './routes/PlanMeal';
-import BrowseIngredients from './routes/Ingredients';
-import Login from './routes/Login';
+import BrowseIngredients from './routes/Ingredients-page/Ingredients';
+import Login from './routes/Login-Register/Login';
 import LoginButton from './components/LoginButton';
-import Register from './routes/Register';
+import Register from './routes/Login-Register/Register';
 import RecommendedRecipes from './routes/RecommendedRecipes';
-
+import IngredientDetail from './routes/Ingredients-page/IngredientDetail';
 function MainContent() {
     const location = useLocation();
 
     return (
         <div className='main-container'>
         {
+
             ["/", "/fridge", "/plan", "/recommended-recipes"].indexOf(location.pathname) !== -1 && (
             <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
             )
@@ -34,6 +35,8 @@ function MainContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/recommended-recipes" element={<RecommendedRecipes />} />
+                <Route path="/browse/:id" element={<IngredientDetail />} />
+
             </Routes>
 
             {

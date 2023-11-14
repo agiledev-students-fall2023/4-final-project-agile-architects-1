@@ -1,9 +1,12 @@
+
 .post-block{
     border: 1px solid;
     border-radius: 20px;
     margin: 0.2em;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
 }
 
 .post-image-container {

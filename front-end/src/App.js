@@ -14,6 +14,7 @@ import LoginButton from './components/LoginButton';
 import Register from './routes/Login-Register/Register';
 import RecommendedRecipes from './routes/RecommendedRecipes';
 import IngredientDetail from './routes/Ingredients-page/IngredientDetail';
+
 function MainContent() {
     const location = useLocation();
 

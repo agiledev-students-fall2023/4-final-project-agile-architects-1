@@ -49,6 +49,11 @@ For more details on contributing, see the [contributing](./CONTRIBUTING.md) page
    ```
 
    The backend server should now be running on `http://localhost:3001`.
+   Alternatively, you can use `nodemon` to run the server so that it'll automatically restart after you make any changes in the back end.
+
+   ```bash
+   nodemon start
+   ```
 3. **For Testing**:
    Run unit test for backend server using commant below:
 

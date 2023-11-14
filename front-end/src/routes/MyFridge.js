@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./MyFridge.css";
 
 function MyFridge() {
@@ -102,18 +102,34 @@ function MyFridge() {
         setIsEditingItem(false);
     };
 
-    const handleCancelAdd = () => {
-        setIsAddingItem(false);
-        setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
-    };
-
+    useEffect(() => {
+        const fetchItems = async () => {
+            try {
+              const response = await fetch('http://localhost:3001/fridge');
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              const data = await response.json();
+              setFridgeItems(data.items);  // Fix this line
+            } catch (error) {
+              console.error("Fetching recipes failed: ", error);
+            }
+          };
+        fetchItems();
+    }, [setFridgeItems]);
+    
     const handleSaveNewItem = () => {
         if (!newItem.name || !newItem.quantity || !newItem.purchasedDate || !newItem.expiration) {
-            alert('Please fill in all fields');
-            return;
+          alert('Please fill in all fields');
+          return;
         }
+      
+        setFridgeItems(prevItems => [...prevItems, newItem]);  // Update state directly
+        setIsAddingItem(false);
+        setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
+      };
 
-        setFridgeItems([...fridgeItems, newItem]);
+    const handleCancelAdd = () => {
         setIsAddingItem(false);
         setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
     };

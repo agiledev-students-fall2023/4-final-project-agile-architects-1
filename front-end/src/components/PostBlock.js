@@ -21,7 +21,7 @@ const PostBlock = ({ post }) => {
 
 
     return (
-        <div onClick={() => navigate(`/browse/${post.id}`, {state: { post }})} className='post-block'>
+        <div onClick={() => navigate(`/browse/details/${post.id}`, {state: { post }})} className='post-block'>
             <div className='post-image-container'>
                 <img src={postImg} alt={post.title} className="post-image" />
             </div>

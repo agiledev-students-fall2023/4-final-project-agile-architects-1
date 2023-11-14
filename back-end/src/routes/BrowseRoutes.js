@@ -8,6 +8,11 @@ const example_egg_post = {
     title: "Eggs - Expires 11/30",
     author: "user1",
     usrImg: "/static/images/example_usrimg.png",
+    ingredientAmount: "3",
+    location: "nyu bobst",
+    expiration: "12/20/2023",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    hashtags: ["#Hashtag", "#neque", "#quisquam"]
 }
 const example_milk_post = {
     id: 312,
@@ -15,6 +20,11 @@ const example_milk_post = {
     title: "Horizon 2% Milk",
     author: "user2",
     usrImg: "/static/images/grey.png",
+    ingredientAmount: "1",
+    location: "New Jersey",
+    expiration: "11/30/2023",
+    description: "This milk is very fresh and tasty. I bought it from the supermarket yesterday. I am selling it because I am going to travel to another country tomorrow.",
+    hashtags: ["#Fresh", "#Milk"],
 }
 const example_lettuce_post = {
     id: 1222,
@@ -22,6 +32,10 @@ const example_lettuce_post = {
     title: "Fresh Lettuce",
     author: "user3",
     usrImg: "/static/images/example_usrimg.png",
+    location: "Stuy Town",
+    expiration: "11/30/2023",
+    description: "I bought this lettuce from the farmer's market yesterday. It's very fresh and delicious, and you can use it to make salad or sandwich. It's also very healthy. It's a great choice for you!",
+    hashtags: ["#Hashtag", "#Fresh"],
 }
 const example_pork_belly_post = {
     id: 1023,
@@ -29,25 +43,42 @@ const example_pork_belly_post = {
     title: "Pork Belly",
     author: "user4",
     usrImg: "/static/images/example_usrimg.png",
+    location: "LIC",
+    expiration: "11/30/2023",
+    description: "This is a description.",
 }
 
-const datalist  =[
+const FakeDB  =[
     example_egg_post,
     example_milk_post,
     example_lettuce_post,
     example_pork_belly_post,
-  ];
+];
 
+export const getPostList = (pageNum) => {
+    let postlist = FakeDB.slice((pageNum-1)*24, pageNum*24);
+    postlist = postlist.map((post) => {
+        return {
+            id: post.id,
+            image: post.image,
+            title: post.title,
+            author: post.author,
+            usrImg: post.usrImg,
+        }
+    })
+    return postlist;
+}
 
-const getPostById = (id) => {
-    return datalist.find(post => post.id == id);
+export const getPostById = (id) => {
+    return FakeDB.find(post => post.id == id);
 }
 
 router.get('/', (req, res) => {
-  res.json(datalist);
+    const postlist = getPostList(1);
+    res.status(200).send(postlist);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/details/:id', (req, res) => {
     const id = req.params.id;
     const post = getPostById(id);
     if (!post) {
@@ -57,4 +88,9 @@ router.get('/:id', (req, res) => {
     }
 });
 
+router.get('/pages/:pageNum', (req, res) => {
+    const pageNum = req.params.pageNum;
+    const postlist = getPostList(pageNum);
+    res.status(200).send(postlist);
+});
 export default router;

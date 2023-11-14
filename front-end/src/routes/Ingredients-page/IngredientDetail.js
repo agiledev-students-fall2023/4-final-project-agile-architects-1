@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation, Link} from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -15,7 +15,34 @@ function IngredientDetail() {
     const navigate = useNavigate();
 
     let post = location.state ? location.state.post : null;
+
+    const myPost = {
+        image: post ? post.image : '/static/images/example_egg.jpg',
+        title: post ? post.title : "Plenty of Eggs",
+        author: post ? post.author : "Dalek",
+        usrImg : post ? post.usrImg : "/static/images/example_usrimg.png",
+        ingredientAmount: "3",
+        location: "nyu bobst",
+        expiration: "10 days",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        hashtags: ["#Hashtag", "#neque", "#quisquam"]
+    }
+
+
     const [comment, setComment] = useState('');
+
+    const [userImg, setUserImg] = useState('./profile_pic.png');
+    const [postImg, setPostImg] = useState('./grey.png');
+
+    useEffect(() => {
+        if (post.usrImg) {
+            setUserImg('http://localhost:3001'+myPost.usrImg);
+        }
+        if (post.image) {
+            setPostImg('http://localhost:3001'+myPost.image);
+        }
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(comment);
@@ -23,16 +50,7 @@ function IngredientDetail() {
 
     // use the id to fetch the details of the ingredient
 
-    const myPost = {
-        image: post ? post.image : '/example_egg.jpg',
-        title: post ? post.title : "Plenty of Eggs",
-        author: post ? post.author : "Dalek",
-        ingredientAmount: "3",
-        location: "nyu bobst",
-        expiration: "10 days",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        hashtags: ["#Hashtag", "#neque", "#quisquam"]
-    }
+    
 
     const comments = [
         {
@@ -63,10 +81,10 @@ function IngredientDetail() {
             </section>
 
             <section className='ingredient-detail'>
-                <img className='ingredient-detail-img' src={myPost.image} alt={myPost.title}/>
+                <img className='ingredient-detail-img' src={postImg} alt={myPost.title}/>
                 <section className='selling-info'>
                     <section className='info-without-description'>
-                        <img className="profile-picture" alt="User Profile" src="/profile_pic.png"/>
+                        <img className="profile-picture" alt="User Profile" src={userImg}/>
                         <div className="ingredient-detail-info">
                             <div className="ingredient-detail-name-wrapper">
                                 {myPost.title}

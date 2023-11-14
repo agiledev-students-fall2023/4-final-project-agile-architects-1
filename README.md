@@ -42,12 +42,19 @@ Backend (Express.js):
    npm install
    ```
 2. **Start the Backend Server:**
-   Once the dependencies are installed, start the backend server. 
+   Once the dependencies are installed, start the backend server.
 
    ```bash
    npm start
    ```
+
    The backend server should now be running on `http://localhost:3001`.
+3. **For Testing**:
+   Run unit test for backend server using commant below:
+
+   ```bash
+   npm test
+   ```
 
 ### Frontend (React):
 
@@ -72,7 +79,7 @@ Backend (Express.js):
 
    This will start the React app, and the front end website will be available at `http://localhost:3000` (or another port if 3000 is in use).
 
-Now, both the backend and frontend servers are running concurrently. You can access the React app in the browser, and it will interact with the backend API. 
+Now, both the backend and frontend servers are running concurrently. You can access the React app in the browser, and it will interact with the backend API.
 
 ## App design
 

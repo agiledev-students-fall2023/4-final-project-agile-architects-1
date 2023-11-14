@@ -27,7 +27,7 @@ For more details on contributing, see the [contributing](./CONTRIBUTING.md) page
 
 ## Instructions for building and testing
 
-Backend (Express.js):
+### Backend (Express.js):
 
 1. **Install Dependencies:**
    Open a terminal and navigate to backend.

@@ -49,7 +49,7 @@ const itemlist  = [example_apple_item, example_beef_item, example_cheese_item, e
 const router = express.Router(itemlist);
 
 router.get('/', (req, res) => {
-  res.json({ message: 'fridge' });
+  res.json(itemlist);
 });
 
 export default router;

@@ -6,6 +6,15 @@
     width: 100%;
 }
 
+.ingredients-top-bar-container {
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky; 
+    overflow-y: overlay;
+
+    top: 0;
+}
+
 .post-flow-container {
     padding: 0.5rem;
 }
@@ -13,9 +22,11 @@
 .scroll-to-top-button{
     position: sticky;
     bottom: 13vh;
-    left: 85vw;
+    right: 1rem;
     height: 3rem;
     width: 3rem;
     border-radius: 1000px;
     padding-top: 5px;
+    float: right;
 }
+

@@ -7,7 +7,7 @@
     padding: 1rem;
     align-items: center;
     justify-content: space-between;
-    margin-top: 0;
+    background-color: white;
 }
 .top-bar-location {
     display: flex;

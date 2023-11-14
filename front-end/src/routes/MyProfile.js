@@ -1,32 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import "./MyProfile.css";
-import PostBlock from '../components/PostBlock';
 import PostFLow from '../components/PostFlow';
 
 function MyProfile() {
   const example_egg_post = {
-    image: '/example_egg.jpg',
+    image: '/static/images/example_egg.jpg',
     title: "Dozen of Eggs",
     author: "user1",
-    usrImg: "/example_usrimg.png",
+    usrImg: "/static/images/example_usrimg.png",
     id: "10086"
   }
   const example_milk_post = {
-    image: '/example_milk.png',
+    image: '/static/images/example_milk.png',
     title: "Horizon 2% Milk",
     author: "user2",
-    usrImg: "/grey.png"
+    usrImg: "/static/images/grey.png"
   }
   
   const example_lettuce_post = {
-    image: '/example_lettuce.png',
+    image: '/static/images/example_lettuce.png',
     title: "Fresh Lettuce",
     author: "user3",
-    usrImg: "/example_usrimg.png"
+    usrImg: "/static/images/example_usrimg.png"
   }
 
-  const posts = [example_egg_post, example_milk_post, example_lettuce_post];
+    const [posts, setPosts] = useState([example_egg_post, example_milk_post]);
 
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/profile');
+            const result = await response.json();
+            setPosts(result);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
   return (
     <div className="profile-page">

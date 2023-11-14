@@ -17,21 +17,20 @@ function RecommendedRecipes() {
 
     // Mock fetching recipes from a database
     useEffect(() => {
-        const fetchedRecipes = [
-            {
-                id: 1,
-                title: "Coffee",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-                //... other recipe details
-            },
-            {
-                id: 2,
-                title: "Milk",
-                description: "Just drink",
-                //... other recipe details
-            },
-        ];
-        setRecipes(fetchedRecipes);
+        const fetchRecommends = async () => {
+          try {
+            const response = await fetch('http://localhost:3001/recommend'); // Adjust the URL/port if needed
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            setRecipes(data);
+          } catch (error) {
+            console.error("Fetching recipes failed: ", error);
+            // Handle errors here
+          }
+        };
+        fetchRecommends();
     }, []);
 
     const [currentPage, setCurrentPage] = useState(0);

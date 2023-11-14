@@ -57,7 +57,8 @@ function IngredientDetail() {
             user: "nyuStudent1",
             profilePic: "/example_usrimg.png",
             comment: "This looks awesome!", 
-            time: "1 min ago"},
+            time: "1 min ago"
+        },
     ]
 
     if (!post) {

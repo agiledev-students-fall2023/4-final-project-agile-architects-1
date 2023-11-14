@@ -3,20 +3,67 @@ import "./MyFridge.css";
 
 function MyFridge() {
     // const [fridgeItems, setFridgeItems] = useState([]); // { name: 'Item 1', quantity: 8, expiration: '2023-12-10' }
-    const [fridgeItems, setFridgeItems] = useState([{ name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 2', quantity: 12, expiration: '2023-11-1' }, { name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 3', quantity: 2, expiration: '2023-12-1' }, { name: 'Item 4', quantity: 1, expiration: '2023-12-10' }, { name: 'Item 5', quantity: 5, expiration: '2023-12-12' }]);
-    const [newItem, setNewItem] = useState({ name: '', quantity: '', expiration: '' });
+    // const [fridgeItems, setFridgeItems] = useState([{ name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 2', quantity: 12, expiration: '2023-11-1' }, { name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 3', quantity: 2, expiration: '2023-12-1' }, { name: 'Item 4', quantity: 1, expiration: '2023-12-10' }, { name: 'Item 5', quantity: 5, expiration: '2023-12-12' }]);
+    const example_apple_item = {
+        name: 'Apples',
+        quantity: 3,
+        purchasedDate: '2023-11-05',
+        expiration: '2023-11-21'
+    };
+    const example_egg_item = {
+        name: 'Eggs',
+        quantity: 14,
+        purchasedDate: '2023-11-01',
+        expiration: '2023-11-30'
+    };
+    const example_milk_item = {
+        name: 'Horizon 2% Milk',
+        quantity: 1,
+        purchasedDate: '2023-11-09',
+        expiration: '2023-11-19'
+    };
+    const example_port_belly_item = {
+        name: 'Pork Belly',
+        quantity: 1,
+        purchasedDate: '2023-11-09',
+        expiration: '2023-11-16'
+    }
+    const example_beef_item = {
+        name: 'Beef',
+        quantity: 2,
+        purchasedDate: '2023-11-09',
+        expiration: '2023-11-16'
+    };
+    const example_cheese_item = {
+        name: 'Cheese',
+        quantity: 2,
+        purchasedDate: '2023-11-13',
+        expiration: '2023-12-28'
+    };
+    const example_lettuce_item = {
+        name: 'Fresh Lettuce',
+        quantity: 1,
+        purchasedDate: '2023-11-01',
+        expiration: '2023-11-11'
+    };
+
+    const [fridgeItems, setFridgeItems] = useState([example_apple_item, example_beef_item, example_cheese_item, example_egg_item, example_lettuce_item, example_milk_item, example_port_belly_item]);
+
+    const [newItem, setNewItem] = useState({ name: '', quantity: '', purchasedDate: '', expiration: '' });
     const [isAddingItem, setIsAddingItem] = useState(false);
     const [clickedItem, setClickedItem] = useState()
 
     const [editedName, setEditedName] = useState('');
     const [editedQuantity, setEditedQuantity] = useState('');
     const [editedExpiration, setEditedExpiration] = useState('');
+    const [editedPurchasedDate, setEditedPurchasedDate] = useState('');
     const [isEditingItem, setIsEditingItem] = useState(false);
 
     const handleItemClick = (item) => {
         setClickedItem(item);
         setEditedName(item.name);
         setEditedQuantity(item.quantity);
+        setEditedPurchasedDate(item.purchasedDate);
         setEditedExpiration(item.expiration);
     }
 
@@ -43,6 +90,7 @@ function MyFridge() {
         const editedItem = {
             name: editedName,
             quantity: editedQuantity,
+            purchasedDate: editedPurchasedDate,
             expiration: editedExpiration
         };
 
@@ -56,27 +104,26 @@ function MyFridge() {
 
     const handleCancelAdd = () => {
         setIsAddingItem(false);
-        setNewItem({ name: '', quantity: '', expiration: '' });
+        setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
     };
 
     const handleSaveNewItem = () => {
-        if (!newItem.name || !newItem.quantity || !newItem.expiration) {
+        if (!newItem.name || !newItem.quantity || !newItem.purchasedDate || !newItem.expiration) {
             alert('Please fill in all fields');
             return;
         }
 
         setFridgeItems([...fridgeItems, newItem]);
         setIsAddingItem(false);
-        setNewItem({ name: '', quantity: '', expiration: '' });
+        setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
     };
 
     return (
         <div>
             <h1 className="header">My Fridge</h1>
             <div className="background">
-            
-            <div className="centered-rectangle">
-            </div></div>
+                <div className="centered-rectangle">
+                </div></div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div
@@ -104,6 +151,12 @@ function MyFridge() {
                     />
                     <input
                         type="text"
+                        placeholder="Purchased Date"
+                        value={editedPurchasedDate}
+                        onChange={(e) => setEditedPurchasedDate(e.target.value)}
+                    />
+                    <input
+                        type="text"
                         placeholder="Expiration Date"
                         value={editedExpiration}
                         onChange={(e) => setEditedExpiration(e.target.value)}
@@ -115,6 +168,7 @@ function MyFridge() {
                 <div className="view-item-details">
                     <p>Name: {clickedItem.name}</p>
                     <p>Quantity: {clickedItem.quantity}</p>
+                    <p>Purchased Date: {clickedItem.purchasedDate}</p>
                     <p>Expiration Date: {clickedItem.expiration}</p>
                     <button className="button" onClick={handleEditItem}>Edit</button>
                     <button className="button" onClick={handleDeleteItem}>Delete</button>
@@ -134,6 +188,12 @@ function MyFridge() {
                         placeholder="Quantity"
                         value={newItem.quantity}
                         onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Purchased Date"
+                        value={newItem.purchasedDate}
+                        onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
                     />
                     <input
                         type="text"

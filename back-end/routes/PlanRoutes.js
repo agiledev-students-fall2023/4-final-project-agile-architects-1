@@ -47,7 +47,6 @@ const recipeList = [
     ]
 
 router.get('/', (req, res) => {
-    console.log("GET /plan");
     res.json(recipeList);
     });
 

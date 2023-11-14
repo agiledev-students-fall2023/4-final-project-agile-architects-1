@@ -36,7 +36,7 @@ function MainContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/recommended-recipes" element={<RecommendedRecipes />} />
-                <Route path="/browse/:id" element={<IngredientDetail />} />
+                <Route path="/browse/details/:id" element={<IngredientDetail />} />
 
             </Routes>
 

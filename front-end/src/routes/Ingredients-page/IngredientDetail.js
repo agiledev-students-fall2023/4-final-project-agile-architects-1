@@ -10,67 +10,79 @@ import LocationBar from '../../components/LocationBar';
 import './IngredientDetail.css';
 
 function IngredientDetail() {
-    let { id } = useParams();
+    const { id } = useParams();
+
     const location = useLocation();
     const navigate = useNavigate();
 
     let post = location.state ? location.state.post : null;
 
-    const myPost = {
-        image: post ? post.image : '/static/images/example_egg.jpg',
+    const defaultPost = {
+        id: id ? id: post.id,
+        image: post ? post.image : '/static/images/grey.jpg',
         title: post ? post.title : "Plenty of Eggs",
         author: post ? post.author : "Dalek",
-        usrImg : post ? post.usrImg : "/static/images/example_usrimg.png",
-        ingredientAmount: "3",
-        location: "nyu bobst",
-        expiration: "10 days",
+        usrImg : post ? post.usrImg : "/static/images/grey.png",
+        ingredientAmount: "0",
+        location: "default location",
+        expiration: "default time",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        hashtags: ["#Hashtag", "#neque", "#quisquam"]
+        hashtags: ["#Hashtag"]
     }
 
-
+    const [myPost, setMyPost] = useState(defaultPost);
     const [comment, setComment] = useState('');
 
     const [userImg, setUserImg] = useState('./profile_pic.png');
     const [postImg, setPostImg] = useState('./grey.png');
 
-    useEffect(() => {
-        if (post.usrImg) {
-            setUserImg('http://localhost:3001'+myPost.usrImg);
+    const fetchPostDetails = async () => {
+        try {
+            const response = await fetch(`http://localhost:3001/browse/details/${myPost.id}`);
+            const data = await response.json();
+            setMyPost(data);
+        } catch (error) {
+            console.error(error);
         }
-        if (post.image) {
-            setPostImg('http://localhost:3001'+myPost.image);
+    };
+
+    useEffect(() => {
+        fetchPostDetails();
+        if (myPost.id === undefined) {
+            const message = 'Post Not found.';
+            navigate('/browse');
+            return (
+                <div>
+                    <h1>{message}</h1>
+                    <p>The post you are looking for does not exist.</p>
+                    <Link to="/browse">Go back to browse page</Link>
+                </div>
+            );
         }
     }, []);
+
+
+    useEffect(() => {
+        setUserImg('http://localhost:3001'+myPost.usrImg);
+        setPostImg('http://localhost:3001'+myPost.image);
+    }, [myPost]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(comment);
     }
 
-    // use the id to fetch the details of the ingredient
-
-    
 
     const comments = [
         {
             user: "nyuStudent1",
             profilePic: "/example_usrimg.png",
             comment: "This looks awesome!", 
-            time: "1 min ago"},
+            time: "1 min ago"
+        },
     ]
 
-    if (!post) {
-        const message = 'Post Not found.';
-        navigate('/browse');
-        return (
-            <div>
-                <h1>{message}</h1>
-                <p>The post you are looking for does not exist.</p>
-                <Link to="/browse">Go back to browse page</Link>
-            </div>
-        );
-    }
+
 
     return (
         <section className='ingredient-detail-page'>
@@ -111,7 +123,7 @@ function IngredientDetail() {
                             {myPost.description}
                         </div>
                         <div className='ingredient-hashtags'>
-                            {myPost.hashtags.map((hashtag, index) => (
+                            {myPost.hashtags && myPost.hashtags.map((hashtag, index) => (
                                 <div key={index} className='hashtag'>{hashtag}</div>
                             ))}
                         </div>

@@ -3,6 +3,7 @@ import path from 'path';
 
 import homeRoutes from './routes/homeRoutes.js';
 import BrowseRoutes from './routes/BrowseRoutes.js';
+import fridgeRoutes from './routes/fridgeRoutes.js';
 
 const app = express();
 

@@ -4,6 +4,14 @@ const router = express.Router();
 
 const recipeList = [
     {
+        "date": "Saved Recipes",
+        "meals": {
+            "Breakfast": ["French Toast", "Mixed Berry Smoothie"],
+            "Lunch": ["Chicken Caesar Salad", "Sweet Potato Fries"],
+            "Dinner": ["Spaghetti Bolognese", "Garlic Bread"]
+        }
+    },
+    {
         "date": "11/08/2023",
         "meals": {
             "Breakfast": ["French Toast", "Mixed Berry Smoothie"],

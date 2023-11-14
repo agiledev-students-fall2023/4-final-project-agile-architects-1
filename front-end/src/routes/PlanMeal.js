@@ -1,58 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './PlanMeal.css';
 
-const mealPlans = [
-    {
-        "date": "11/08/2023",
-        "meals": {
-            "Breakfast": ["French Toast", "Mixed Berry Smoothie"],
-            "Lunch": ["Chicken Caesar Salad", "Sweet Potato Fries"],
-            "Dinner": ["Spaghetti Bolognese", "Garlic Bread"]
-        }
-    },
-    {
-      "date": "11/09/2023",
-      "meals": {
-        "Breakfast": ["Bagel with Cream Cheese", "Fresh Orange Juice"],
-        "Lunch": ["Sushi Platter", "Miso Soup"],
-        "Dinner": ["Beef Tacos", "Mexican Rice"]
-      }
-    },
-    {
-      "date": "11/10/2023",
-      "meals": {
-        "Breakfast": ["Banana Pancakes", "Honey"],
-        "Lunch": ["Veggie Burger", "Kale Chips"],
-        "Dinner": ["Chicken Curry", "Basmati Rice"]
-      }
-    },
-    {
-      "date": "11/11/2023",
-      "meals": {
-        "Breakfast": ["Scrambled Eggs", "Sourdough Toast"],
-        "Lunch": ["Quiche Lorraine", "Green Salad"],
-        "Dinner": ["Lamb Chops", "Roasted Vegetables"]
-      }
-    },
-    
-    {
-        "date": "11/12/2023",
-        "meals": {
-          "Breakfast": ["Oatmeal with Berries", "Greek Yogurt"],
-          "Lunch": ["Turkey Avocado Wrap", "Tomato Soup"],
-          "Dinner": ["Grilled Salmon", "Quinoa Salad"]
-        }
-      },
-  ];  
-
 function PlanMeal() {
+  const [mealPlans, setmealPlans] = useState([{
+    "date": "fetching...",
+    "meals": {
+        "fetching...": ["fetching..."]
+    }
+  },]);
 
-    const [currentPage, setCurrentPage] = useState(0); // Start from the first plan
-    const [currentMeals, setCurrentMeals] = useState(mealPlans[currentPage].meals);
-    const mealTypes = Object.keys(currentMeals);
+  const [currentPage, setCurrentPage] = useState(0); // Start from the first plan
+  const [currentMeals, setCurrentMeals] = useState(mealPlans[currentPage].meals);
+  let mealTypes = Object.keys(currentMeals);
 
-    const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/plan'); // Adjust the URL/port if needed
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setmealPlans(data);
+        setCurrentMeals(mealPlans[currentPage].meals);
+        mealTypes = Object.keys(currentMeals);
+      } catch (error) {
+        console.error("Fetching recipes failed: ", error);
+        // Handle errors here
+      }
+    };
+    fetchPlans();
+}, []);
 
     const toggleEditMode = () => {
         if (isEditing) {

@@ -1,10 +1,11 @@
 .post-flow {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   margin-bottom: 100px;
 }
+
 @media (max-width: 300px) {
     .post-block {
         width: 100%;
@@ -18,16 +19,27 @@
         margin-bottom: 10px;
     }
 }
-@media (min-width: 992px){
+@media (min-width: 750px){
     .post-block {
         width: calc(33% - 10px);
         margin-bottom: 10px;
+        max-height: 40vw;
     }
 }
-@media (min-width: 1200){
-    
+@media (min-width: 1200px){
+    .post-block {
+        width: calc(25% - 10px);
+        margin-bottom: 10px;
+        max-height: 30vw;
+    }
 }
-
+@media (min-width: 1500px){
+    .post-block {
+        width: calc(20% - 10px);
+        margin-bottom: 10px;
+        max-height: 30vw;
+    }
+}
 
 
 

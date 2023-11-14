@@ -55,11 +55,12 @@ function BrowseIngredients() {
 
     return (
         <div>
-            <div className='ingredients-page-container'>
-                <TopSearchBar location="10003" />
+            <div className='ingredients-page-container'>  
+                <div className='ingredients-top-bar-container'>
+                    <TopSearchBar location="10003" />
+                </div>
                 <div className='post-flow-container'>
-                
-                <PostFLow posts={posts} />
+                    <PostFLow posts={posts} />
                 </div>
             </div>
             <button className='scroll-to-top-button' onClick={scrollToTop}>

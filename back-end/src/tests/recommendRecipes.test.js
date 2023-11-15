@@ -17,7 +17,7 @@ describe('GET /recommend', () => {
         const response = await chai.request(server).get('/recommend');
         const firstRecipe = response.body[0];
         expect(firstRecipe).to.have.all.keys('id', 'title', 'description');
-        expect(firstRecipe.id).to.be.a('number');
+        expect(firstRecipe.id).to.be.a('string');
         expect(firstRecipe.title).to.be.a('string');
         expect(firstRecipe.description).to.be.a('string');
       });

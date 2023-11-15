@@ -73,6 +73,10 @@ function RecommendedRecipes() {
           console.error("Error saving recipe", error);
           // Handle errors here (e.g., show error message)
         }
+
+        //change the color of save-button
+        const saveButton = document.querySelector('.save-button');
+        saveButton.style.color = '#ffe11c';
       };
       
 
@@ -86,7 +90,7 @@ function RecommendedRecipes() {
             </header>
 
             <div className="recipe-card">
-                <button className="save-button" onClick={handleSave}>Save</button>
+                <button className="save-button" onClick={handleSave}>★</button>
                 <h2 className="recipe-title">{recipes[currentPage].title}</h2>
                 <p className="recipe-text">{recipes[currentPage].description}</p>
                 

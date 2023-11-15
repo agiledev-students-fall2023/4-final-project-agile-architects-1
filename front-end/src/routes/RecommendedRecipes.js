@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 import './RecommendedRecipes.css';
 
 function RecommendedRecipes() {
@@ -79,6 +80,12 @@ function RecommendedRecipes() {
         saveButton.style.color = '#ffe11c';
       };
       
+      const handlers = useSwipeable({
+        onSwipedLeft: () => handleNextPage(),
+        onSwipedRight: () => handlePrevPage(),
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+      });
 
     return (
         <div className="container">
@@ -89,7 +96,7 @@ function RecommendedRecipes() {
                 <h1 className="notebook-line">Recommended Recipes</h1>
             </header>
 
-            <div className="recipe-card">
+            <div className="recipe-card" {...handlers}>
                 <button className="save-button" onClick={handleSave}>★</button>
                 <h2 className="recipe-title">{recipes[currentPage].title}</h2>
                 <p className="recipe-text">{recipes[currentPage].description}</p>

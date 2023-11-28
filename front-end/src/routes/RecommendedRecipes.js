@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 import './RecommendedRecipes.css';
 
 function RecommendedRecipes() {
@@ -73,8 +74,18 @@ function RecommendedRecipes() {
           console.error("Error saving recipe", error);
           // Handle errors here (e.g., show error message)
         }
+
+        //change the color of save-button
+        const saveButton = document.querySelector('.save-button');
+        saveButton.style.color = '#ffe11c';
       };
       
+      const handlers = useSwipeable({
+        onSwipedLeft: () => handleNextPage(),
+        onSwipedRight: () => handlePrevPage(),
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+      });
 
     return (
         <div className="container">
@@ -85,15 +96,15 @@ function RecommendedRecipes() {
                 <h1 className="notebook-line">Recommended Recipes</h1>
             </header>
 
-            <div className="recipe-card">
-                <button className="save-button" onClick={handleSave}>Save</button>
+            <div className="recipe-card" {...handlers}>
+                <button className="save-button" onClick={handleSave}>★</button>
                 <h2 className="recipe-title">{recipes[currentPage].title}</h2>
                 <p className="recipe-text">{recipes[currentPage].description}</p>
                 
-                <div className="flip-page">
+                {/* <div className="flip-page">
                     <button onClick={handlePrevPage}>◀</button>
                     <button onClick={handleNextPage}>▶</button>
-                </div>
+                </div> */}
                 
             </div>
             <div className="dropdown-container">

@@ -69,15 +69,15 @@
     position: absolute;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    height: 30px;
-    top: 3.5rem; /* Adjust as needed */
+    /* border-radius: 4px; */
+    height: 3rem;
+    font-size: 2rem;
+    top: 2.7rem; /* Adjust as needed */
     right: 2rem; /* Adjust as needed */
-    padding: 5px 15px;
-}
+    /* padding: 5px 15px; */
+    color: #808080;
+    background-color: rgba(0, 0, 0, 0);
 
-.save-button:hover {
-    background-color: #CC564D;  /* Darker blue for hover effect */
 }
 
 .flip-page{

@@ -10,6 +10,9 @@ import RecommendRoutes from './routes/RecommendRoutes.js';
 import fridgeRoutes from './routes/fridgeRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 
+import connectDB from './database.js'
+connectDB();
+
 const app = express();
 
 // Logging middleware

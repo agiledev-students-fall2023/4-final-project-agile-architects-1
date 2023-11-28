@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./MyFridge.css";
 
 function MyFridge() {
-    // const [fridgeItems, setFridgeItems] = useState([]); // { name: 'Item 1', quantity: 8, expiration: '2023-12-10' }
-    // const [fridgeItems, setFridgeItems] = useState([{ name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 2', quantity: 12, expiration: '2023-11-1' }, { name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 3', quantity: 2, expiration: '2023-12-1' }, { name: 'Item 4', quantity: 1, expiration: '2023-12-10' }, { name: 'Item 5', quantity: 5, expiration: '2023-12-12' }]);
     const example_apple_item = {
         name: 'Apples',
         quantity: 3,
@@ -65,14 +63,18 @@ function MyFridge() {
         setEditedQuantity(item.quantity);
         setEditedPurchasedDate(item.purchasedDate);
         setEditedExpiration(item.expiration);
+        setIsEditingItem(false);
     }
 
     const handleDeleteItem = () => {
+        console.log('Delete clicked');
         setFridgeItems(fridgeItems.filter(item => item !== clickedItem));
         setClickedItem(null);
+        setIsEditingItem(false);
     }
 
     const handleEditItem = () => {
+        console.log('Edit clicked');
         setIsEditingItem(true);
     };
 
@@ -110,7 +112,7 @@ function MyFridge() {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }
               const data = await response.json();
-              setFridgeItems(data);  // Fix this line
+              setFridgeItems(data);  
             } catch (error) {
               console.error("Fetching recipes failed: ", error);
             }
@@ -186,6 +188,10 @@ function MyFridge() {
                     <p>Quantity: {clickedItem.quantity}</p>
                     <p>Purchased Date: {clickedItem.purchasedDate}</p>
                     <p>Expiration Date: {clickedItem.expiration}</p>
+                </div>
+            ) : null}
+            {clickedItem ? (
+                <div> 
                     <button className="button" onClick={handleEditItem}>Edit</button>
                     <button className="button" onClick={handleDeleteItem}>Delete</button>
                 </div>

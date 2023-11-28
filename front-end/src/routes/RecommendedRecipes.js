@@ -101,10 +101,14 @@ function RecommendedRecipes() {
                 <h2 className="recipe-title">{recipes[currentPage].title}</h2>
                 <p className="recipe-text">{recipes[currentPage].description}</p>
                 
-                {/* <div className="flip-page">
-                    <button onClick={handlePrevPage}>◀</button>
-                    <button onClick={handleNextPage}>▶</button>
-                </div> */}
+                <div className="page-indicators">
+                  {recipes.map((_, index) => (
+                    <span 
+                      key={index} 
+                      className={`page-dot ${index === currentPage ? 'active' : ''}`} 
+                    />
+                  ))}
+                </div>
                 
             </div>
             <div className="dropdown-container">

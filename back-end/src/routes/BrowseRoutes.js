@@ -1,5 +1,5 @@
 import express from 'express';
-
+import Post from '../schemas/PostSchema.js';
 const router = express.Router();
 
 const example_egg_post = {
@@ -73,9 +73,17 @@ export const getPostById = (id) => {
     return FakeDB.find(post => post.id == id);
 }
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     const postlist = getPostList(1);
-    res.status(200).send(postlist);
+    try {
+        const posts = await Post.find();
+        console.log(posts);
+        res.json(posts);
+      } catch (error) {
+        console.error('Error finding data:', error);
+        res.json(recipeList);
+      }
+    // res.status(200).send(postlist);
 });
 
 router.get('/details/:id', (req, res) => {

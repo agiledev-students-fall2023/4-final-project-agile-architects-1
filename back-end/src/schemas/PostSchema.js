@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const postSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const postSchema = new Schema({
     _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
   id: {
     type: Number,
@@ -38,8 +40,8 @@ const postSchema = new mongoose.Schema({
   hashtags: [{
     type: String
   }]
-});
+}, { collection: 'Post' });
 
-const LettucePost = mongoose.model('LettucePost', lettucePostSchema);
+const Post = mongoose.model('Post', postSchema);
 
-module.exports = LettucePost;
+export default Post;

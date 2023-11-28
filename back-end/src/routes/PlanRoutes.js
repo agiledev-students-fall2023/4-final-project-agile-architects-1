@@ -1,5 +1,5 @@
 import express from 'express';
-
+import PlanMeal from '../schemas/PlanMealSchema.js';
 const router = express.Router();
 
 const recipeList = [
@@ -46,8 +46,15 @@ const recipeList = [
       },
     ]
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  try {
+    const plans = await PlanMeal.find();
+    // console.log(plans);
+    res.json(plans);
+  } catch (error) {
+    console.error('Error finding data:', error);
     res.json(recipeList);
+  }
     });
 
     

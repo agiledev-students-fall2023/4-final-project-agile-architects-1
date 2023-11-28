@@ -7,11 +7,32 @@ export const Login = () => {
   const [username, setUser] = useState('');
   const [password, setPass] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username);
+    try {
+      const response = await fetch('http://localhost:3001/login', { // Replace with your backend URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        // Store the token - can use session storage, local storage, or cookies
+        sessionStorage.setItem('token', data.token);
+        console.log('Login successful');
+        // Redirect or perform other actions on successful login
+      } else {
+        console.log('Login failed');
+        // Handle login failure
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  };
 
-  }
+  
   return (
     <div className="login-page">
       <LoginButton className="register-button-in-login" as={Link} to="/register">Register</LoginButton>

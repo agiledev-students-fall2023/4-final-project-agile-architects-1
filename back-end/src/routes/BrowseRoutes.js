@@ -75,6 +75,7 @@ export const getPostById = (id) => {
 
 router.get('/', async (req, res) => {
     const postlist = getPostList(1);
+
     try {
         const posts = await Post.find();
         console.log(posts);
@@ -100,5 +101,15 @@ router.get('/pages/:pageNum', (req, res) => {
     const pageNum = req.params.pageNum;
     const postlist = getPostList(pageNum);
     res.status(200).send(postlist);
+});
+
+router.get('/save-post', (req, res) => {
+    // Create a new post instance
+    const newPost = new Post(example_lettuce_post);
+
+    // Save the post to the database
+    newPost.save()
+    .then(doc => console.log('Document saved', doc))
+    .catch(err => console.error('Error saving document', err));
 });
 export default router;

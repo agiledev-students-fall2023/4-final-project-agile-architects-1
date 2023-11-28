@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const PostSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
     _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
   id: {
     type: Number,

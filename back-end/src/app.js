@@ -9,8 +9,9 @@ import PlanRoutes from './routes/PlanRoutes.js';
 import RecommendRoutes from './routes/RecommendRoutes.js';
 import fridgeRoutes from './routes/fridgeRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
-
+import userRoutes from './routes/userRoutes.js';
 import connectDB from './database.js'
+
 connectDB();
 
 const app = express();
@@ -31,5 +32,6 @@ app.use('/plan', PlanRoutes);
 app.use('/recommend', RecommendRoutes);
 app.use('/profile', profileRoutes);
 app.use('/fridge', fridgeRoutes);
+app.use('/api/user', userRoutes)
 
 export default app;

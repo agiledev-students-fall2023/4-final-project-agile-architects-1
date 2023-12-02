@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate} from 'react-router-dom';
 import { FaHome, FaUtensils, FaShoppingBasket, FaUser } from 'react-icons/fa';
-import { GoHome } from "react-icons/go";
 import './App.css';
 
 import Home from './routes/Home';
@@ -10,22 +9,48 @@ import MyProfile from './routes/MyProfile';
 import PlanMeal from './routes/PlanMeal';
 import BrowseIngredients from './routes/Ingredients-page/Ingredients';
 import Login from './routes/Login-Register/Login';
-import LoginButton from './components/LoginButton';
 import Register from './routes/Login-Register/Register';
 import RecommendedRecipes from './routes/RecommendedRecipes';
 import IngredientDetail from './routes/Ingredients-page/IngredientDetail';
+import { AuthContextProvider } from './context/AuthContext';
+import { useLogout } from './routes/hooks/useLogout';
+import { useAuthContext } from './routes/hooks/useAuthContext';
 
 function MainContent() {
     const location = useLocation();
+    const navigate = useNavigate();
+    const { logout } = useLogout();
+    const { user } = useAuthContext;
+
+    const handleLogoutClick = () => {
+      logout()
+    }
+
+    const handleLoginClick = () => {
+        navigate('/login')
+    }
 
     return (
         <div className='main-container'>
-        {
+            <div className='login-logout-container'>
+            {user && (
+                <div>
+                {["/", "/fridge", "/plan", "/recommended-recipes", "/profile"].indexOf(location.pathname) !== -1 && (
+                    <button onClick = {handleLogoutClick} className="logout-button">Log Out</button>
+                )}
+                </div>
+            )}
 
-            ["/", "/fridge", "/plan", "/recommended-recipes"].indexOf(location.pathname) !== -1 && (
-            <LoginButton className="login-button" as={Link} to="/login">Log In</LoginButton>
-            )
-        }
+            {!user && (
+                <div>
+         
+                {["/", "/fridge", "/plan", "/recommended-recipes", "/profile"].indexOf(location.pathname) !== -1 && (
+                        <button onClick = {handleLoginClick} className="login-button" >Log In</button>
+                    )}
+                </div>
+            )}
+                
+            </div>
             {/* <div className="App-Header">{location.pathname}</div> */}
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -72,9 +97,11 @@ function MainContent() {
 
 function App() {
     return (
+        <AuthContextProvider>
         <Router>
-            <MainContent />
+            <MainContent/>
         </Router>
+        </AuthContextProvider>
     );
 }
 

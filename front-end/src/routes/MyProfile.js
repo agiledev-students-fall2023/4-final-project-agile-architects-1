@@ -40,6 +40,8 @@ function MyProfile() {
         }
     };
 
+
+
   return (
     <div className="profile-page">
       <section className="profile-container">

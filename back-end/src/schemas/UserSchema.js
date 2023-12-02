@@ -6,7 +6,7 @@ import validator from 'validator';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    //id: Number,
+    _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
     username: {
         type: String,
         default: "User",
@@ -28,7 +28,7 @@ const userSchema = new Schema({
         type: String,
     },
 
-}, {timestamps: true}, {collection: 'WasteWise.Test'});
+}, {timestamps: true, collection: 'User'});
 
 // static register method
 userSchema.statics.register = async function(email, password) {
@@ -41,7 +41,7 @@ userSchema.statics.register = async function(email, password) {
         throw Error('Email is not valid')
     }
     if (!validator.isStrongPassword(password)) {
-        throw Error('Password not strong enough')
+        throw Error('Password not strong enough. { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1}')
     }
 
     const exists = await this.findOne({ email })
@@ -78,6 +78,7 @@ userSchema.statics.login = async function(email, password) {
     return user;
 }
 
-export default mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
+export default User;
 
 

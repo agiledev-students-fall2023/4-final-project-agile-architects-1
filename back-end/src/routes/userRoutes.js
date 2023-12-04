@@ -17,6 +17,19 @@ router.post('/login', loginUser)
 // Signup route
 router.post('/register', registerUser)
 
+router.get("/profile/:userId", async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const user = await User.findById(userId).select('email username zipcode')
+        if (!user){
+            return res.status(404).send('User not found')
+        }
+        res.json(user);
+    } catch (error){
+        res.status(500).send('Server error');
+    }
+});
+
 export default router
 
 

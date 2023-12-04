@@ -10,7 +10,6 @@ const userSchema = new Schema({
     username: {
         type: String,
         default: "User",
-        required: true,
     },
     email: {
         type: String,
@@ -24,8 +23,9 @@ const userSchema = new Schema({
     usrImg: { 
         type: String,
       },
-    location: {
+    zipcode: {
         type: String,
+        default: "NA"
     },
 
 }, {timestamps: true, collection: 'User'});
@@ -77,7 +77,20 @@ userSchema.statics.login = async function(email, password) {
 
     return user;
 }
+/*
 
+// static update method
+userSchema.statics.update = async function(_id) {
+    // validation
+    
+    const exists = await this.findOne({_id})
+    if (exists) {
+        const user = await this.findById(req.user._id)
+    }
+    console.log(user.email)
+    console.log(user.password)
+}
+*/
 const User = mongoose.model('User', userSchema)
 export default User;
 

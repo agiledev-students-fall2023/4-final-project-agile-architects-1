@@ -22,7 +22,7 @@ export const Login = () => {
       <div className="auth-form-container">
         <div className="login-display">
           <div className="text-wrapper-wastewise">Waste Wise</div>
-          <div className="login-group" style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+          <div className="login-group">
             <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
             <div>
               <p className="text-wrapper-login" style={{width: '3.5em', textAlign: 'center'}}>Log In</p>
@@ -56,11 +56,11 @@ export const Login = () => {
                 name="password"/>
             </div>
 
-            <button disabled={isLoading} type="submit" className="login-button-login-page">Log In</button>
+            <button disabled={isLoading} type="submit" className="login-button-login-page" onClick={()=> navigate(-1)}>Log In</button>
             {error && <div className="error">{error}</div>}
           </form>
 
-        <Link className="text-wrapper-continue-login" to="/">Continue without account</Link>
+        <Link className="text-wrapper-continue-login" onClick={()=> navigate(-1)}>Continue without account</Link>
       </div>
     </div>
   );

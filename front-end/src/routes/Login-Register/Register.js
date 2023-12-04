@@ -55,19 +55,7 @@ export const Register = () => {
                 id="password" 
                 name="password"/>
             </div>
-            {/*}
-            <div className="input-wrapper-register">
-              <input 
-                className="input-field-register" 
-                value={password}
-                onChange={(e)=>setPass(e.target.value)}
-                type="password"
-                placeholder="Confirm Password"
-                id="password"
-                name="password"
-              />
-            </div>
-            {*/}
+            
             <button disabled={isLoading} type="submit" className="register-button-register-page">Register</button>
             {error && <div className="error">{error}</div>}
           </form>

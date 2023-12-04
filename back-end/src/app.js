@@ -30,7 +30,7 @@ app.use('/', homeRoutes);
 app.use('/browse', BrowseRoutes);
 app.use('/plan', PlanRoutes);
 app.use('/recommend', RecommendRoutes);
-app.use('/profile', profileRoutes);
+app.use('/api/profile', profileRoutes);
 app.use('/fridge', fridgeRoutes);
 app.use('/api/user', userRoutes)
 

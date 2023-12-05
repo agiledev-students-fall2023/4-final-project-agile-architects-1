@@ -52,14 +52,14 @@ function MyProfile() {
           setPosts(result)
       } catch (error) {
         console.error('Error fetching data: ', error);
+      }
+    };
+
+
+    if (user){
+      fetchUser(user.userId);
     }
-  };
-
-
-  if (user){
-    fetchUser(user.userId);
-  }
-  fetchPost();
+    fetchPost();
   }, [user]);
 
     

@@ -31,18 +31,23 @@ export const registerUser = async (req ,res) => {
         // create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email, token ,userId: user._id})
+        res.status(200).json({email, token, userId: user._id})
     } catch (error){
         res.status(400).json({error: error.message})
     }
 }
 
-// Update user
-export const updateUser = async (req, res) => {
-    const {_id} = req.body
-
+// Edit user
+export const editUser = async (req, res) => {
+    const { _id } = req.params
+    const {email, username, zipcode } = req.body
+    
     try {
-        const user = await userSchema.update(_id)
+        const editedUser = await userSchema.editUser(_id, email, username, zipcode)
+        res.status(200).json({email: editedUser.email,
+                              username: editedUser.username,
+                              zipcode: editedUser.zipcode
+        })
     } catch (error) {
         res.status(400).json({error: error.message})
     }

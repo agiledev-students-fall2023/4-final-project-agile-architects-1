@@ -77,20 +77,31 @@ userSchema.statics.login = async function(email, password) {
 
     return user;
 }
-/*
 
-// static update method
-userSchema.statics.update = async function(_id) {
+
+//static edit profile method
+userSchema.statics.editUser = async function(_id, email, username, zipcode) {
     // validation
-    
-    const exists = await this.findOne({_id})
-    if (exists) {
-        const user = await this.findById(req.user._id)
+
+    if (email && (!validator.isEmail(email))){
+        throw Error('Email is not valid')
     }
-    console.log(user.email)
-    console.log(user.password)
+    const user = await this.findById(_id)
+    if (!user) {
+        throw Error(`User not found, id: ${_id}`)
+    }
+    const exists = await this.findOne({ email })
+    if (exists) {
+        throw Error('Email already in use');
+    }
+    if (email) user.email = email
+    if (username) user.username = username;
+    if (zipcode) user.zipcode = zipcode;
+    await user.save()
+
+    return user
 }
-*/
+
 const User = mongoose.model('User', userSchema)
 export default User;
 

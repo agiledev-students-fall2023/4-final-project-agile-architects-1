@@ -1,4 +1,5 @@
 import express from 'express';
+import { getUser } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -68,10 +69,27 @@ export const getPostListbyUser = (userId) => {
     postlist = postlist.filter((post) => post.author === userId);
     return postlist;
 }
-
-router.get('/', (req, res) => {
+// GET all posts
+router.get('/post', (req, res) => {
     const datalist = getPostListbyUser("user1");
     res.json(datalist);
 });
 
+// Get user profile
+router.get('/:id', getUser)
+
+// Post a post
+router.post('/', (req, res) => {
+    res.json({mssg: 'POST a new post'})
+})
+
+// DELETE a post
+router.delete('/:id', (req, res) => {
+    res.json({mssg: 'Delete a post'})
+})
+
+// UPDATE a post
+router.patch('/:id', (req, res) => {
+    res.json({mssg: 'Update a post'})
+})
 export default router;

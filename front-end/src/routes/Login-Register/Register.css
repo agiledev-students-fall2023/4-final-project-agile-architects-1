@@ -49,14 +49,24 @@
 }
 
 .register-display .register-group {
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
 .register-form {
   display: flex;
   flex-direction: column;
   width: 70vw; /* Reduce width for better alignment */
   margin: auto;
+}
 
+.register-form .error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#CC564D;
+  font-size: .8em;
 }
 
 .input-wrapper-register {

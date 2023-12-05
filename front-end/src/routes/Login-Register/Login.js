@@ -1,35 +1,18 @@
 import React, {useState} from "react";
 import LoginButton from '../../components/LoginButton';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLogin } from '../hooks/useLogin'
 import "./Login.css";
 
 export const Login = () => {
-  const [username, setUser] = useState('');
-  const [password, setPass] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPass] = useState('')
+  const {login, error, isLoading} = useLogin()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:3001/login', { // Replace with your backend URL
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        // Store the token - can use session storage, local storage, or cookies
-        sessionStorage.setItem('token', data.token);
-        console.log('Login successful');
-        // Redirect or perform other actions on successful login
-      } else {
-        console.log('Login failed');
-        // Handle login failure
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
+    e.preventDefault()
+    await login(email, password)
   };
 
   
@@ -37,37 +20,47 @@ export const Login = () => {
     <div className="login-page">
       <LoginButton className="register-button-in-login" as={Link} to="/register">Register</LoginButton>
       <div className="auth-form-container">
-
-        
-
         <div className="login-display">
           <div className="text-wrapper-wastewise">Waste Wise</div>
-
-
-          <div className="login-group" style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+          <div className="login-group">
             <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
-            <div >
+            <div>
               <p className="text-wrapper-login" style={{width: '3.5em', textAlign: 'center'}}>Log In</p>
             </div>
-            <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
+          <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
         </div>
+      </div> 
 
-          </div> 
           <form className="login-form" onSubmit={handleSubmit}>
-            <div className="input-wrapper-login">
 
-              <input className="input-field-login" value={username} onChange={(e)=>setUser(e.target.value)} type="username" placeholder="Username" id="username" name="username"/>
-            </div>
             <div className="input-wrapper-login">
-
-              <input className="input-field-login" value={password} onChange={(e)=>setPass(e.target.value)} type="password" placeholder="Password" id="password" name="password"/>
+              <input 
+                className="input-field-login" 
+                value={email} 
+                onChange={(e)=>setEmail(e.target.value)} 
+                type="email" 
+                placeholder="Email" 
+                id="email" 
+                name="email"
+              />
             </div>
-            <LoginButton className="login-button-login-page" as={Link} to="/">Log In</LoginButton>
+
+            <div className="input-wrapper-login">
+              <input 
+                className="input-field-login" 
+                value={password} 
+                onChange={(e)=>setPass(e.target.value)} 
+                type="password" 
+                placeholder="Password" 
+                id="password" 
+                name="password"/>
+            </div>
+
+            <button disabled={isLoading} type="submit" className="login-button-login-page" onClick={()=> navigate(-1)}>Log In</button>
+            {error && <div className="error">{error}</div>}
           </form>
-          {/*
-          <button>Don't have an account? Register</button>
-    */}
-        <Link className="text-wrapper-continue-login" to="/">Continue without account</Link>
+
+        <Link className="text-wrapper-continue-login" onClick={()=> navigate(-1)}>Continue without account</Link>
       </div>
     </div>
   );

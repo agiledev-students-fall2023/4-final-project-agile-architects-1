@@ -49,14 +49,25 @@
 }
 
 .login-display .login-group {
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
 .login-form {
   display: flex;
   flex-direction: column;
   width: 70vw; /* Reduce width for better alignment */
   margin: auto;
 
+}
+
+.login-form .error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#CC564D;
+  font-size: .8em;
 }
 
 .input-wrapper-login {

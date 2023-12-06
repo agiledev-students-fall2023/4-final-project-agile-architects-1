@@ -25,6 +25,10 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
+  amount: {
+    type: Number,
+    required: true,
+  },
   location: {
     type: String,
     required: true

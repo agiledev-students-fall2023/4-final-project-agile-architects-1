@@ -5,18 +5,18 @@ import './PostBlock.css';
 const PostBlock = ({ post }) => {
     const navigate = useNavigate();
 
-    const [userImg, setUserImg] = useState('./../../public/grey.png');
-    const [postImg, setPostImg] = useState('./../../public/grey.png');
+    // const [userImg, setUserImg] = useState('./../../public/grey.png');
+    // const [postImg, setPostImg] = useState('./../../public/grey.png');
 
-    useEffect(() => {
-        console.log("Rendering postblock: ",post);
-        // if (post.usrImg) {
-        //     setUserImg('http://localhost:3001'+post.usrImg);
-        // }
-        // if (post.image) {
-        //     setPostImg('http://localhost:3001'+post.image);
-        // }
-    }, []);
+    // useEffect(() => {
+    //     console.log("Rendering postblock: ",post);
+    //     // if (post.usrImg) {
+    //     //     setUserImg('http://localhost:3001'+post.usrImg);
+    //     // }
+    //     // if (post.image) {
+    //     //     setPostImg('http://localhost:3001'+post.image);
+    //     // }
+    // }, []);
 
     return (
         <div onClick={() => navigate(`/browse/details/${post.id}`, {state: { post }})} className='post-block'>

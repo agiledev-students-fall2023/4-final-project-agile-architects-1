@@ -109,13 +109,13 @@
   text-align: center;
   color: #F5F3EE;
   background-color: #CC564D;
-  height: 2rem;
+  height: clamp(2rem, 5vw, 3rem);
   width: clamp(10rem, 50vw, 50vh);
   border-radius: 2em;
   border: none;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1em;
+  font-size: clamp(1rem, 3vw, 1.3rem);
   text-decoration: none;
   margin-top: 10vh;
 }
@@ -131,6 +131,6 @@
   text-shadow: .1em .1em .4em grey;
   text-align: center;
   margin-top: .7rem;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  padding-bottom: clamp(0.5rem, 2%, 1.5rem);
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  padding-bottom: clamp(10rem, 10vh, 20rem);
 }

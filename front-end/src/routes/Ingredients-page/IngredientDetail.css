@@ -1,14 +1,15 @@
 .ingredient-detail{
-
+    display: flex;
+    flex-direction: column;
 }
 
-.ingredient-detail-page .top-bar{
+.ingredient-detail-top-bar{
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.top-bar .back-button {
+.ingredient-detail-top-bar .back-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +23,7 @@
 
 }
 
-.top-bar .ingredient-detail-name {
+.ingredient-detail-top-bar .ingredient-detail-name {
     margin-left: 2rem;
     align-self: flex-end;
     font-size: 1.5rem;
@@ -176,3 +177,12 @@
     font-size: .7rem;
     font-weight: bold;
   }
+
+.back-to-browse-button {
+    /* margin-top: 10vh; */
+    padding: 4rem;
+    background-color: transparent;
+    color: #CC564D;
+    text-decoration: underline;
+    font-size: 1.1rem;
+}

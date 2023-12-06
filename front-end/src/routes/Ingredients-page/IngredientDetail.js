@@ -8,6 +8,7 @@ import LocationBar from '../../components/LocationBar';
 
 
 import './IngredientDetail.css';
+import isEmpty from './../../../../back-end/node_modules/validator/es/lib/isEmpty';
 
 function IngredientDetail() {
     const { id } = useParams();
@@ -15,57 +16,54 @@ function IngredientDetail() {
     const location = useLocation();
     const navigate = useNavigate();
 
-    let post = location.state ? location.state.post : null;
-
     const defaultPost = {
-        id: id ? id: post.id,
-        image: post ? post.image : '/static/images/grey.jpg',
-        title: post ? post.title : "Plenty of Eggs",
-        author: post ? post.author : "Dalek",
-        usrImg : post ? post.usrImg : "/static/images/grey.png",
-        ingredientAmount: "0",
+        id: id,
+        image: 'http://localhost:3001/static/images/grey.png',
+        title: "Lorem ipsum",
+        author: "Dalek",
+        usrImg : "http://localhost:3001/static/images/grey.png",
+        ingredientAmount: 42,
         location: "default location",
         expiration: "default time",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         hashtags: ["#Hashtag"]
     }
 
-    const [myPost, setMyPost] = useState(defaultPost);
-    const [comment, setComment] = useState('');
+    let post = location.state ? location.state.post : defaultPost;
+    console.log("Got from state:",post);
 
-    const [userImg, setUserImg] = useState('./profile_pic.png');
-    const [postImg, setPostImg] = useState('./grey.png');
+    const [myPost, setMyPost] = useState(post);
+    const [comment, setComment] = useState('');
+    const [postNotFound, setPostNotFound] = useState(false); // New state for post not found
 
     const fetchPostDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/browse/details/${myPost.id}`);
+            const response = await fetch(`/browse/details/${myPost.id}`);
             const data = await response.json();
-            setMyPost(data);
+            console.log("GOt from fetch:",data);
+            if (data.hasOwnProperty('id')) {
+                setMyPost(data);
+                return true;
+            } else {
+                console.log("data is empty")
+                return false;
+            }
         } catch (error) {
             console.error(error);
+            return false;
         }
     };
 
     useEffect(() => {
-        fetchPostDetails();
-        if (myPost.id === undefined) {
-            const message = 'Post Not found.';
-            navigate('/browse');
-            return (
-                <div>
-                    <h1>{message}</h1>
-                    <p>The post you are looking for does not exist.</p>
-                    <Link to="/browse">Go back to browse page</Link>
-                </div>
-            );
-        }
+        fetchPostDetails()
+        .then((emp)=>{
+            console.log("Has Content:",emp);
+            if (!emp) {
+                // navigate('/browse');
+                setPostNotFound(true);
+            }
+        });
     }, []);
-
-
-    useEffect(() => {
-        setUserImg('http://localhost:3001'+myPost.usrImg);
-        setPostImg('http://localhost:3001'+myPost.image);
-    }, [myPost]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -76,13 +74,32 @@ function IngredientDetail() {
     const comments = [
         {
             user: "nyuStudent1",
-            profilePic: "/example_usrimg.png",
+            profilePic: "/static/images/example_usrimg.png",
             comment: "This looks awesome!", 
             time: "1 min ago"
         },
     ]
 
-
+    if (postNotFound) {
+        return (
+            <section className='ingredient-detail-page'>
+                <section className='ingredient-detail-top-bar'>
+                    <button className="back-button" onClick={()=> navigate(-1)}>
+                        <IoIosArrowBack/>
+                    </button>
+                </section>
+                
+                <section className='ingredient-detail'>
+                    <h1>Post Not Found</h1>
+                    <p>The post you are looking for does not exist.</p>
+                    <button onClick={() => navigate('/browse')} className="back-to-browse-button">
+                        Browse all the posts
+                    </button>
+                </section>
+                
+            </section>
+        );
+    }
 
     return (
         <section className='ingredient-detail-page'>
@@ -93,16 +110,16 @@ function IngredientDetail() {
             </section>
 
             <section className='ingredient-detail'>
-                <img className='ingredient-detail-img' src={postImg} alt={myPost.title}/>
+                <img className='ingredient-detail-img' src={myPost.image} alt={myPost.title}/>
                 <section className='selling-info'>
                     <section className='info-without-description'>
-                        <img className="profile-picture" alt="User Profile" src={userImg}/>
+                        <img className="profile-picture" alt="User Profile" src={myPost.usrImg}/>
                         <div className="ingredient-detail-info">
                             <div className="ingredient-detail-name-wrapper">
                                 {myPost.title}
                             </div>
                             <div className="ingredient-detail-number-wrapper">
-                                amount: {myPost.ingredientAmount}
+                                amount: {myPost.amount}
                             </div>
                             <div className='ingredient-detail-location'>
                                 <LocationBar location={myPost.location} />

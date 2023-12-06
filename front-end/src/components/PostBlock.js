@@ -18,8 +18,6 @@ const PostBlock = ({ post }) => {
     }, []);
 
 
-
-
     return (
         <div onClick={() => navigate(`/browse/details/${post.id}`, {state: { post }})} className='post-block'>
             <div className='post-image-container'>

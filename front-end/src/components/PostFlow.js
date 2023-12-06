@@ -8,7 +8,7 @@ const PostFlow = ({ posts }) => {
         <div className="post-flow-container">
             <div className="post-flow">
                 {posts.map((post)=>
-                    <PostBlock post={post} />
+                    <PostBlock post={post} key={post.id}/>
                 )}
             </div>
         </div>

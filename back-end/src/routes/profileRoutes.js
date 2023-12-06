@@ -70,7 +70,7 @@ export const getPostListbyUser = (userId) => {
     return postlist;
 }
 // GET all posts
-router.get('/post', (req, res) => {
+router.get('/', (req, res) => {
     const datalist = getPostListbyUser("user1");
     res.json(datalist);
 });

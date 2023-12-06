@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate 
 import { useLogin } from '../hooks/useLogin'
 import "./Login.css";
 
-export const Login = () => {
+const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPass] = useState('')
   const {login, error, isLoading} = useLogin()
@@ -56,7 +56,7 @@ export const Login = () => {
                 name="password"/>
             </div>
 
-            <button disabled={isLoading} type="submit" className="login-button-login-page" onClick={()=> navigate(-1)}>Log In</button>
+            <button disabled={isLoading} type="submit" className="login-button-login-page" >Log In</button>
             {error && <div className="error">{error}</div>}
           </form>
 

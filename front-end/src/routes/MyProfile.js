@@ -35,7 +35,7 @@ function MyProfile() {
   useEffect(() => {
     const fetchUser = async (userId) => {
       try {
-        const response = await fetch(`http://localhost:3001/api/profile/${userId}`)
+        const response = await fetch(`http://localhost:3001/profile/${userId}`)
         const json = await response.json()
         if (response.ok){
           setProfile(json)
@@ -52,14 +52,14 @@ function MyProfile() {
           setPosts(result)
       } catch (error) {
         console.error('Error fetching data: ', error);
+      }
+    };
+
+
+    if (user){
+      fetchUser(user.userId);
     }
-  };
-
-
-  if (user){
-    fetchUser(user.userId);
-  }
-  fetchPost();
+    fetchPost();
   }, [user]);
 
     

@@ -2,6 +2,7 @@
     display: flex;
     max-width: 900px;
     margin: auto;
+    height: 100vh;
   }
   
   .sidebar {
@@ -40,6 +41,20 @@
   
   .settings-form h1 {
     margin-bottom: 20px;
+  }
+
+  .settings-form .error {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color:#CC564D;
+    font-size: .8em;
+  }
+
+  .settings-form .finish-edit {
+    margin-top: 1em;
+    padding: 10px;
+    border-radius: 4em;
   }
   
   .form-group {

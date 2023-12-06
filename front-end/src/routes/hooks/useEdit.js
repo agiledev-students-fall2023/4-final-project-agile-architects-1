@@ -13,7 +13,7 @@ export const useEdit = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`/api/user/editUser/${userId}`, {
+        const response = await fetch(`/user/editUser/${userId}`, {
             method: "PUT",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, username, zipcode})

@@ -7,32 +7,7 @@ import './Ingredients.css';
 
 function BrowseIngredients() {
 
-    const example_egg_post = {
-        image: '/static/images/example_egg.jpg',
-        title: "Eggs - Expires 11/30",
-        author: "user1",
-        usrImg: "/static/images/example_usrimg.png",
-    }
-    const example_milk_post = {
-        image: '/static/images/example_milk.png',
-        title: "Horizon 2% Milk",
-        author: "user2",
-        usrImg: "/static/images/grey.png",
-    }
-    const example_lettuce_post = {
-        image: '/static/images/example_lettuce.png',
-        title: "Fresh Lettuce",
-        author: "user3",
-        usrImg: "/static/images/example_usrimg.png",
-    }
-    const example_pork_belly_post = {
-        image: '/static/images/example_pork_belly.jpg',
-        title: "Pork Belly",
-        author: "user4",
-        usrImg: "/static/images/example_usrimg.png",
-    }
-
-    const [posts, setPosts] = useState([example_egg_post, example_milk_post, example_lettuce_post]);
+    const [posts, setPosts] = useState([]);
 
     const [showScrollButton, setShowScrollButton] = useState(true);
 
@@ -47,9 +22,10 @@ function BrowseIngredients() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:3001/browse');
+            const response = await fetch('/browse');
             const result = await response.json();
             setPosts(result);
+            console.log(result);
         } catch (error) {
             console.error('Error fetching data:', error);
         }

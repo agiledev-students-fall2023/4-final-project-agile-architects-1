@@ -21,15 +21,25 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
+  authorID: {
+    type: Schema.Types.ObjectId, 
+    required: true, 
+    ref: 'User',
+  },
   usrImg: {
     type: String,
-    required: true
+    required: true,
+    default: "/static/images/grey.png",
   },
   amount: {
     type: Number,
     required: true,
   },
   location: {
+    type: String,
+    required: true
+  },
+  pickUpTime: {
     type: String,
     required: true
   },

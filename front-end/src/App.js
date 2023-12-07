@@ -12,6 +12,7 @@ import Login from './routes/Login-Register/Login';
 import Register from './routes/Login-Register/Register';
 import RecommendedRecipes from './routes/RecommendedRecipes';
 import IngredientDetail from './routes/Ingredients-page/IngredientDetail';
+import NewIngredientPost from './routes/Ingredients-page/NewIngredientPost';
 import { useLogout } from './routes/hooks/useLogout';
 import { AuthContextProvider } from './context/AuthContext';
 import { useAuthContext } from './routes/hooks/useAuthContext';
@@ -63,6 +64,7 @@ function MainContent() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/recommended-recipes" element={<RecommendedRecipes />} />
                 <Route path="/browse/details/:id" element={<IngredientDetail />} />
+                <Route path="/browse/newpost" element={<NewIngredientPost />} />
                 <Route path="/profile/edit-profile" element={<EditProfile />} />
             </Routes>
 

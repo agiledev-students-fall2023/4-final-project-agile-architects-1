@@ -22,6 +22,7 @@ const userSchema = new Schema({
     },
     usrImg: { 
         type: String,
+        default: "/static/images/grey.png"
       },
     zipcode: {
         type: String,

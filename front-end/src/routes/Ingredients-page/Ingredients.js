@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import PostFLow from '../../components/PostFlow';
 import TopSearchBar from '../../components/TopSearchBar';
 import { FaArrowUp } from 'react-icons/fa';
+import { IoMdAdd } from "react-icons/io";
 
 import './Ingredients.css';
+import { useNavigate } from 'react-router-dom';
 
 function BrowseIngredients() {
+    const navigate = useNavigate();
 
     const [posts, setPosts] = useState([]);
 
@@ -43,6 +46,10 @@ function BrowseIngredients() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    const navigateToNewPost = () => {
+        navigate('/browse/newpost');
+    }
+
     return (
         <div>
             <div className='ingredients-page-container'>  
@@ -53,9 +60,14 @@ function BrowseIngredients() {
                     <PostFLow posts={posts} />
                 </div>
             </div>
-            <button className='scroll-to-top-button' onClick={scrollToTop}>
-                <FaArrowUp />
-            </button>
+            <div className='button-container'>
+                <button className='scroll-to-top-button' onClick={scrollToTop}>
+                    <FaArrowUp />
+                </button>
+                <button className='new-post-button' onClick={navigateToNewPost}>
+                    <IoMdAdd size={20} color='white'/>
+                </button>
+            </div>
         </div>
     );
 }

@@ -44,7 +44,7 @@
   margin: auto;
   text-align: center;
   margin-bottom: 1.5rem; /* Space below the title */
-  margin-top: 23h;
+  /* margin-top: 23vh; */
   width: 70%;
 }
 
@@ -62,11 +62,13 @@
 }
 
 .login-display .login-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: clamp(10rem, 50vw, 50vh);
-  margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: clamp(3rem, 10vh, 4rem);
+    width: clamp(10rem, 50vw, 50vh);
+    margin: auto;
+    margin-bottom: 8vh;
 }
 
 .login-form {

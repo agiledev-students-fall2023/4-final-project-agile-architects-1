@@ -110,7 +110,15 @@ function MyFridge() {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }
               const data = await response.json();
-              setFridgeItems(data);  
+              setFridgeItems(data); 
+              
+              let user = {}
+              if (localStorage.getItem('user')) {
+                user = JSON.parse(localStorage.getItem('user'));
+              }
+              user.ingredients = data;
+              localStorage.setItem('user', JSON.stringify(user));
+
             } catch (error) {
               console.error("Fetching recipes failed: ", error);
             }

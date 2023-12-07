@@ -12,12 +12,12 @@
   display: flex;
   background-color: #f0e9d7;
   color: black;
-  width:  clamp(5rem, 20vw, 13rem);
-  height:  clamp(1.1rem, 8vw, 4.5rem);
+  width:  clamp(5rem, 20vw, 10rem);
+  height:  clamp(1.1rem, 8vw, 4rem);
   text-decoration-line: none;
   text-align: center;
   /* font-size: 4vw; */
-  font-size: clamp(0.5rem, 4vw, 2rem);
+  font-size: clamp(0.5rem, 4vw, 1.5rem);
   border-radius: 15px;
   margin-left: auto;
   margin-right: 2%;

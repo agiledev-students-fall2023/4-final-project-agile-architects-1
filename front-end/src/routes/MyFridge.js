@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./MyFridge.css";
 
 function MyFridge() {
-    // const [fridgeItems, setFridgeItems] = useState([]); // { name: 'Item 1', quantity: 8, expiration: '2023-12-10' }
-    // const [fridgeItems, setFridgeItems] = useState([{ name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 2', quantity: 12, expiration: '2023-11-1' }, { name: 'Item 1', quantity: 8, expiration: '2023-11-10' }, { name: 'Item 3', quantity: 2, expiration: '2023-12-1' }, { name: 'Item 4', quantity: 1, expiration: '2023-12-10' }, { name: 'Item 5', quantity: 5, expiration: '2023-12-12' }]);
     const example_apple_item = {
         name: 'Apples',
         quantity: 3,
@@ -65,11 +63,13 @@ function MyFridge() {
         setEditedQuantity(item.quantity);
         setEditedPurchasedDate(item.purchasedDate);
         setEditedExpiration(item.expiration);
+        // setIsEditingItem(false);
     }
 
     const handleDeleteItem = () => {
         setFridgeItems(fridgeItems.filter(item => item !== clickedItem));
         setClickedItem(null);
+        // setIsEditingItem(false);
     }
 
     const handleEditItem = () => {
@@ -110,23 +110,46 @@ function MyFridge() {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }
               const data = await response.json();
-              setFridgeItems(data.items);  // Fix this line
+              setFridgeItems(data);  
+              console.log('Fetched fridge items: ', data);
             } catch (error) {
-              console.error("Fetching recipes failed: ", error);
+              console.error("Fetching fridge items failed: ", error);
             }
           };
         fetchItems();
     }, [setFridgeItems]);
     
-    const handleSaveNewItem = () => {
-        if (!newItem.name || !newItem.quantity || !newItem.purchasedDate || !newItem.expiration) {
-          alert('Please fill in all fields');
-          return;
-        }
+    const handleSaveNewItem = async () => {
+        try {
+          // Ensure that new item's fields are filled
+          if (!newItem.name || !newItem.quantity || !newItem.purchasedDate || !newItem.expiration) {
+            alert('Please fill in all fields');
+            return;
+          }
       
-        setFridgeItems(prevItems => [...prevItems, newItem]);  // Update state directly
-        setIsAddingItem(false);
-        setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
+          // Send a POST request to the backend API to add the new item
+          const response = await fetch('http://localhost:3001/fridge', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newItem),
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          alert('Item added successfully');
+
+          const updatedItems = await fetchItems(); 
+          setFridgeItems(updatedItems);
+          setIsAddingItem(false);
+          setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
+        } catch (error) {
+          console.error('Error saving item:', error);
+          alert('Failed to add item. Please try again.');
+        }
       };
 
     const handleCancelAdd = () => {
@@ -138,8 +161,7 @@ function MyFridge() {
         <div>
             <h1 className="header">My Fridge</h1>
             <div className="background">
-                <div className="centered-rectangle">
-                </div></div>
+            </div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div

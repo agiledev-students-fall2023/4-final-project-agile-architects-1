@@ -10,7 +10,7 @@ function RecommendedRecipes() {
     const [recipes, setRecipes] = useState([{
         id: 1,
         title: "Recipe Title",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+        description: "Fetching...",
         //... other recipe details
     },]);
     const [selectedDay, setSelectedDay] = useState('Any');
@@ -20,7 +20,19 @@ function RecommendedRecipes() {
     useEffect(() => {
         const fetchRecommends = async () => {
           try {
-            const response = await fetch('http://localhost:3001/recommend'); // Adjust the URL/port if needed
+            let requestBody = {};
+            if (localStorage.getItem('user.ingredients')) {
+              requestBody = {
+                ingredients: user.ingredients
+              };
+            }
+            const response = await fetch('http://localhost:3001/recommend/recommendations',{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(requestBody),
+            }); // Adjust the URL/port if needed
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }

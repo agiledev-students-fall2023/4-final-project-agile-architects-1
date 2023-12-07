@@ -21,10 +21,17 @@ function RecommendedRecipes() {
         const fetchRecommends = async () => {
           try {
             let requestBody = {};
-            if (localStorage.getItem('user.ingredients')) {
-              requestBody = {
-                ingredients: user.ingredients
-              };
+            if (localStorage.getItem('user')) {
+              const user = JSON.parse(localStorage.getItem('user'));
+              if (user.ingredients){
+                const userIngredients = [];
+                for (let i = 0; i < user.ingredients.length; i++) {
+                  userIngredients.push(user.ingredients[i].name);
+                }
+                requestBody = {
+                  ingredients: userIngredients
+                };
+              }
             }
             const response = await fetch('http://localhost:3001/recommend/recommendations',{
               method: 'POST',

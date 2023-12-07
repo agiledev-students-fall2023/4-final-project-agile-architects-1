@@ -35,7 +35,6 @@ const example_beef_item = {
 
 const itemlist  = [example_apple_item, example_beef_item, example_egg_item, example_milk_item, example_pork_belly_item];
 
-<<<<<<< HEAD:back-end/routes/fridgeRoutes.js
 const router = express.Router();
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -56,10 +55,6 @@ const fridgeItemSchema = new mongoose.Schema({
   quantity: Number,
   purchasedDate: String,
   expiration: String,
-=======
-router.get('/', (req, res) => {
-  res.json(itemlist);
->>>>>>> master:back-end/src/routes/fridgeRoutes.js
 });
 
 const FridgeItem = mongoose.model('FridgeItem', fridgeItemSchema);

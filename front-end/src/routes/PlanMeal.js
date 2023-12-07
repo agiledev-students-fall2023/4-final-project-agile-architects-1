@@ -13,21 +13,69 @@ function PlanMeal() {
   const [currentPage, setCurrentPage] = useState(0); // Start from the first plan
   const [currentMeals, setCurrentMeals] = useState(mealPlans[currentPage].meals);
   const [mealTypes, setMealTypes] = useState(Object.keys(currentMeals));
-
+  const [user, setUser] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await fetch('http://localhost:3001/plan'); // Adjust the URL/port if needed
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        if (localStorage.getItem('user')) {
+          // console.log(JSON.parse(localStorage.getItem('user')))
+          const currentUser = await JSON.parse(localStorage.getItem('user'));
+          setUser(currentUser);
+          if (currentUser.mealPlans) {
+            const savedMeals = currentUser.mealPlans;
+            // console.log(savedMeals);
+            setmealPlans(savedMeals);
+            setCurrentMeals(savedMeals[currentPage].meals);
+            setMealTypes(Object.keys(savedMeals[currentPage].meals));
+          }
+          else{
+            const today = new Date();
+            currentUser.mealPlans = [{
+              "date": "Any",
+              "meals": {
+                "Any": ["Tap edit button to enter a recipe"],
+              }
+            },{
+              "date": `${dayNames[today.getDay()]}`,
+              "meals": {
+                "Breakfast": ["Tap edit button to enter a recipe"],
+                "Lunch": ["Tap edit button to enter a recipe"],
+                "Dinner": ["Tap edit button to enter a recipe"]
+              }
+            },];
+            setUser(currentUser);
+            setmealPlans(currentUser.mealPlans);
+            setCurrentMeals(currentUser.mealPlans[currentPage].meals);
+            setMealTypes(Object.keys(currentUser.mealPlans[currentPage].meals));
+          }
+          
+          localStorage.setItem('user', JSON.stringify(currentUser));
         }
-        const data = await response.json();
-        // console.log(data);
-        setmealPlans(data);
-        setCurrentMeals(data[currentPage].meals);
-        setMealTypes(Object.keys(data[currentPage].meals));
+        else{
+          let user = {}
+          const today = new Date();
+          user.mealPlans = [{
+            "date": "Any",
+            "meals": {
+              "Any": ["Tap edit button to enter a recipe"],
+            }
+          },{
+            "date": `${dayNames[today.getDay()]}`,
+            "meals": {
+              "Breakfast": ["Tap edit button to enter a recipe"],
+              "Lunch": ["Tap edit button to enter a recipe"],
+              "Dinner": ["Tap edit button to enter a recipe"]
+            }
+          },];
+          setUser(user);
+          setmealPlans(user.mealPlans);
+          setCurrentMeals(user.mealPlans[currentPage].meals);
+          setMealTypes(Object.keys(user.mealPlans[currentPage].meals));
+          localStorage.setItem('user', JSON.stringify(user));
+        }
       } catch (error) {
         console.error("Fetching recipes failed: ", error);
         // Handle errors here
@@ -50,6 +98,15 @@ function PlanMeal() {
         ...prevMeals,
         [mealType]: [...prevMeals[mealType], ""]
         }));
+        user.mealPlans = mealPlans;
+        localStorage.setItem('user', JSON.stringify(user));
+        if (localStorage.getItem('user').id) {
+          const response = fetch(`/user/editMealPlans/${localStorage.getItem('user').id}`, {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({mealPlans})
+          })
+        }
     };
 
     const handlePrevPage = () => {
@@ -63,6 +120,28 @@ function PlanMeal() {
         setCurrentPage(newPage);
         setCurrentMeals(mealPlans[newPage].meals);
       };
+
+      const handleAddPage = async () => {
+        let user = {}
+        if (localStorage.getItem('user')) {
+          // console.log(JSON.parse(localStorage.getItem('user')))
+          user = await JSON.parse(localStorage.getItem('user'));
+          if (user.mealPlans) {
+            let prevDay = dayNames.indexOf(mealPlans[mealPlans.length - 1]["date"]);
+            user.mealPlans.push({
+              "date": `${dayNames[(prevDay+1)%7]}`,
+              "meals": {
+                "Breakfast": ["Tap edit button to enter a recipe"],
+                "Lunch": ["Tap edit button to enter a recipe"],
+                "Dinner": ["Tap edit button to enter a recipe"]
+              }
+            })
+          }
+          setCurrentPage(mealPlans.length - 1);
+          setmealPlans(user.mealPlans);
+          localStorage.setItem('user', JSON.stringify(user));
+        }
+      }
 
       const handleMealChange = (mealType, index, newValue) => {
         setCurrentMeals(prevMeals => ({
@@ -117,6 +196,7 @@ function PlanMeal() {
                     <div>
                         <button onClick={handlePrevPage}>◀</button>
                         <button onClick={handleNextPage}>▶</button>
+                        <button onClick={handleAddPage}>+</button>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import express from 'express';
 import {MongoClient} from 'mongodb';
 
 
-const uri = "mongodb+srv://sb7325:OJizQxY4hFUI9Dou@cluster0.yfhgld9.mongodb.net/WasteWise?retryWrites=true&w=majority"; 
+const uri = "Connection String Here"; // replace this with connection string
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const router = express.Router();

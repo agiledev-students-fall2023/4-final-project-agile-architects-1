@@ -80,7 +80,7 @@ function MyFridge() {
         setIsAddingItem(true);
     };
 
-    const handleSaveEdit = () => {
+    const handleSaveEdit = async () => {
         if (!clickedItem) {
             return;
         }
@@ -100,6 +100,13 @@ function MyFridge() {
         setFridgeItems(updatedFridgeItems);
         setClickedItem(null);
         setIsEditingItem(false);
+        
+        let user = {}
+        if (localStorage.getItem('user')) {
+        user = JSON.parse(localStorage.getItem('user'));
+        }
+        user.ingredients = updatedFridgeItems;
+        localStorage.setItem('user', JSON.stringify(user));
     };
 
     useEffect(() => {

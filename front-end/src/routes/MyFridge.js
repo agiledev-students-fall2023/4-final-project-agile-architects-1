@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import "./MyFridge.css";
 
+const fetchItems = async (setFridgeItems) => {
+    try {
+        const response = await fetch('http://localhost:3001/fridge');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setFridgeItems(data);
+        console.log('Fetched fridge items: ', data);
+    } catch (error) {
+        console.error("Fetching fridge items failed: ", error);
+    }
+};
+
 function MyFridge() {
     const example_apple_item = {
         name: 'Apples',
@@ -121,36 +135,38 @@ function MyFridge() {
     
     const handleSaveNewItem = async () => {
         try {
-          // Ensure that new item's fields are filled
-          if (!newItem.name || !newItem.quantity || !newItem.purchasedDate || !newItem.expiration) {
-            alert('Please fill in all fields');
-            return;
-          }
-      
-          // Send a POST request to the backend API to add the new item
-          const response = await fetch('http://localhost:3001/fridge', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newItem),
-          });
-      
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-      
-          alert('Item added successfully');
+            // Ensure that new item's fields are filled
+            if (!newItem.name || !newItem.quantity || !newItem.purchasedDate || !newItem.expiration) {
+                alert('Please fill in all fields');
+                return;
+            }
 
-          const updatedItems = await fetchItems(); 
-          setFridgeItems(updatedItems);
-          setIsAddingItem(false);
-          setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
+            // Send a POST request to the backend API to add the new item
+            const response = await fetch('http://localhost:3001/fridge', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newItem),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            alert('Item added successfully');
+
+            // Fetch items after successfully adding a new item
+            await fetchItems(setFridgeItems);
+
+            setIsAddingItem(false);
+            setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
         } catch (error) {
-          console.error('Error saving item:', error);
-          alert('Failed to add item. Please try again.');
+            console.error('Error saving item:', error);
+            alert('Failed to add item. Please try again.');
         }
-      };
+    };
+
 
     const handleCancelAdd = () => {
         setIsAddingItem(false);

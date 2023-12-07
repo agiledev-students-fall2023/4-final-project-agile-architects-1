@@ -2,7 +2,7 @@ import express from 'express';
 import {MongoClient} from 'mongodb';
 
 
-const uri = 'your_mongodb_connection_string'; // Replace with your actual MongoDB connection string
+const uri = "mongodb+srv://sb7325:OJizQxY4hFUI9Dou@cluster0.yfhgld9.mongodb.net/WasteWise?retryWrites=true&w=majority"; 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const router = express.Router();
@@ -22,8 +22,8 @@ connectToDatabase();
 // Define routes
 router.get('/', async (req, res) => {
   try {
-    const database = client.db('WasteWise'); // Replace with your actual database name
-    const collection = database.collection('Fridge'); // Replace with your actual collection name
+    const database = client.db('WasteWise'); 
+    const collection = database.collection('Fridge'); 
 
     const items = await collection.find({}).toArray();
     res.json(items);
@@ -35,8 +35,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const database = client.db('WasteWise'); // Replace with your actual database name
-    const collection = database.collection('Fridge'); // Replace with your actual collection name
+    const database = client.db('WasteWise'); 
+    const collection = database.collection('Fridge'); 
 
     const newItem = req.body; 
     await collection.insertOne(newItem);

@@ -13,7 +13,6 @@ function PlanMeal() {
   const [currentPage, setCurrentPage] = useState(0); // Start from the first plan
   const [currentMeals, setCurrentMeals] = useState(mealPlans[currentPage].meals);
   const [mealTypes, setMealTypes] = useState(Object.keys(currentMeals));
-
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -24,6 +23,15 @@ function PlanMeal() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        if (localStorage.getItem('user')) {
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (user.mealPlans){
+            setmealPlans(user.mealPlans);
+          }
+          else{
+            setmealPlans({data});
+          }
+        }
         // console.log(data);
         setmealPlans(data);
         setCurrentMeals(data[currentPage].meals);

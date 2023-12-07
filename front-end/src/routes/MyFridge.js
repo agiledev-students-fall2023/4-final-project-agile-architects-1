@@ -142,6 +142,14 @@ function MyFridge() {
         setFridgeItems(prevItems => [...prevItems, newItem]);  // Update state directly
         setIsAddingItem(false);
         setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
+
+        
+        let user = {}
+        if (localStorage.getItem('user')) {
+        user = JSON.parse(localStorage.getItem('user'));
+        }
+        user.ingredients = fridgeItems;
+        localStorage.setItem('user', JSON.stringify(user));
       };
 
     const handleCancelAdd = () => {

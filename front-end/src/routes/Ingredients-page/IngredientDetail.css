@@ -28,7 +28,7 @@
     align-self: flex-end;
     font-size: 1.5rem;
 }
-.ingredient-detail {
+.ingredient-detail { 
     display: flex;
     width: 100%;
     justify-content: center;

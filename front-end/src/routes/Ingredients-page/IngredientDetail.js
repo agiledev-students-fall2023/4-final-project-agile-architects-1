@@ -54,6 +54,16 @@ function IngredientDetail() {
         }
     };
 
+    const getFormattedDate = (d) => {
+        let date = new Date(d);
+
+        let year = date.getFullYear();
+        let month = (1 + date.getMonth()).toString().padStart(2, '0');
+        let day = date.getDate().toString().padStart(2, '0');
+      
+        return month + '/' + day + '/' + year;
+    }
+
     useEffect(() => {
         fetchPostDetails()
         .then((emp)=>{
@@ -129,7 +139,7 @@ function IngredientDetail() {
                                     <BsClockHistory/>
                                 </div>
                                 <div className="expiration-wrapper">
-                                    {myPost.expiration}
+                                    {getFormattedDate(myPost.expiration)}
                                 </div>
                             </div>
                         </div>

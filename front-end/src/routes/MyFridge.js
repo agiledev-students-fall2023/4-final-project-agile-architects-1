@@ -94,7 +94,7 @@ function MyFridge() {
         setIsAddingItem(true);
     };
 
-    const handleSaveEdit = () => {
+    const handleSaveEdit = async () => {
         if (!clickedItem) {
             return;
         }
@@ -114,6 +114,13 @@ function MyFridge() {
         setFridgeItems(updatedFridgeItems);
         setClickedItem(null);
         setIsEditingItem(false);
+        
+        let user = {}
+        if (localStorage.getItem('user')) {
+        user = JSON.parse(localStorage.getItem('user'));
+        }
+        user.ingredients = updatedFridgeItems;
+        localStorage.setItem('user', JSON.stringify(user));
     };
 
     useEffect(() => {
@@ -165,8 +172,18 @@ function MyFridge() {
             console.error('Error saving item:', error);
             alert('Failed to add item. Please try again.');
         }
-    };
+        setFridgeItems(prevItems => [...prevItems, newItem]);  // Update state directly
+        setIsAddingItem(false);
+        setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
 
+        
+        let user = {}
+        if (localStorage.getItem('user')) {
+        user = JSON.parse(localStorage.getItem('user'));
+        }
+        user.ingredients = fridgeItems;
+        localStorage.setItem('user', JSON.stringify(user));
+      };
 
     const handleCancelAdd = () => {
         setIsAddingItem(false);

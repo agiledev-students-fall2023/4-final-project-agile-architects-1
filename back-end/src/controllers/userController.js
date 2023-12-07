@@ -53,6 +53,20 @@ export const editUser = async (req, res) => {
     }
 }
 
+// edit recipes
+export const editMealPlans = async (req, res) => {
+    const { _id } = req.params
+    const {mealPlans } = req.body
+    
+    try {
+        const editedUser = await userSchema.editMealPlans(_id, mealPlans)
+        res.status(200).json({mealPlans: editedUser.mealPlans,
+        })
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 // Get a single user
 export const getUser = async (req, res) => {
     const { id } = req.params

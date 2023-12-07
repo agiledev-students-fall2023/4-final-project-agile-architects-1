@@ -5,6 +5,15 @@ import validator from 'validator';
 
 const Schema = mongoose.Schema;
 
+const planMealSchema = new Schema({
+    date: { type: String, required: true },
+    meals: {
+      Breakfast: [String],
+      Lunch: [String],
+      Dinner: [String],
+    }
+  });
+
 const userSchema = new Schema({
     _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
     username: {
@@ -27,7 +36,7 @@ const userSchema = new Schema({
         type: String,
         default: "NA"
     },
-
+    mealPlans: [planMealSchema],
 }, {timestamps: true, collection: 'User'});
 
 // static register method
@@ -97,6 +106,20 @@ userSchema.statics.editUser = async function(_id, email, username, zipcode) {
     if (email) user.email = email
     if (username) user.username = username;
     if (zipcode) user.zipcode = zipcode;
+    await user.save()
+
+    return user
+}
+
+userSchema.statics.editMealPlans = async function(_id, mealPlans) {
+    const user = await this.findById(_id)
+    if (!user) {
+        throw Error(`User not found, id: ${_id}`)
+    }
+    if (!mealPlans) {
+        throw Error('No recipes found');
+    }
+    if (mealPlans) user.mealPlans = mealPlans
     await user.save()
 
     return user

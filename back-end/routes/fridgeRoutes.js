@@ -1,98 +1,88 @@
 import express from 'express';
-import {MongoClient} from 'mongodb';
+import mongoose from 'mongoose';
+
+const example_apple_item = {
+  name: 'apples',
+  quantity: 3,
+  purchasedDate: '2023-11-15',
+  expiration: '2023-11-30'
+};
+const example_egg_item = {
+  name: 'Eggs',
+  quantity: 14,
+  purchasedDate: '2023-11-01',
+  expiration: '2023-11-28'
+};
+const example_milk_item = {
+  name: 'Horizon 2% Milk',
+  quantity: 1,
+  purchasedDate: '2023-12-05',
+  expiration: '2023-12-12'
+};
+const example_pork_belly_item = {
+  name: 'Pork Belly',
+  quantity: 1,
+  purchasedDate: '2023-12-07',
+  expiration: '2023-12-13'
+}
+const example_beef_item = {
+  name: 'Beef',
+  quantity: 2,
+  purchasedDate: '2023-12-07',
+  expiration: '2023-12-10'
+};
 
 
-const uri = "Connection String Here"; // replace this with connection string
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const itemlist  = [example_apple_item, example_beef_item, example_egg_item, example_milk_item, example_pork_belly_item];
 
 const router = express.Router();
 
-// Connect to the MongoDB database
-async function connectToDatabase() {
-  try {
-    await client.connect();
-    console.log('Connected to the database');
-  } catch (err) {
-    console.error('Error connecting to the database', err);
-  }
-}
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
-connectToDatabase();
+const fridgeItemSchema = new mongoose.Schema({
+  name: String,
+  quantity: Number,
+  purchasedDate: String,
+  expiration: String,
+});
 
-// Define routes
+const FridgeItem = mongoose.model('FridgeItem', fridgeItemSchema);
+
 router.get('/', async (req, res) => {
   try {
-    const database = client.db('WasteWise'); 
-    const collection = database.collection('Fridge'); 
-
-    const items = await collection.find({}).toArray();
-    res.json(items);
+    const itemsFromDB = await FridgeItem.find();
+    res.json(itemsFromDB);
   } catch (error) {
-    console.error('Error fetching items from the database', error);
+    console.error('Error fetching items from MongoDB:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 router.post('/', async (req, res) => {
+  const newItemData = req.body;
+
   try {
-    const database = client.db('WasteWise'); 
-    const collection = database.collection('Fridge'); 
+    const newItem = new FridgeItem(newItemData);
+    await newItem.save();
 
-    const newItem = req.body; 
-    await collection.insertOne(newItem);
-
-    res.status(201).json({ message: 'Item added successfully' });
+    res.status(201).json(newItem);
   } catch (error) {
-    console.error('Error adding item to the database', error);
+    console.error('Error adding item to database:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-
-// const example_apple_item = {
-//   name: 'Apples',
-//   quantity: 3,
-//   purchasedDate: '2023-11-05',
-//   expiration: '2023-11-21'
-// };
-// const example_egg_item = {
-//   name: 'Eggs',
-//   quantity: 14,
-//   purchasedDate: '2023-11-01',
-//   expiration: '2023-11-30'
-// };
-// const example_milk_item = {
-//   name: 'Horizon 2% Milk',
-//   quantity: 1,
-//   purchasedDate: '2023-11-09',
-//   expiration: '2023-11-19'
-// };
-// const example_port_belly_item = {
-//   name: 'Pork Belly',
-//   quantity: 1,
-//   purchasedDate: '2023-11-09',
-//   expiration: '2023-11-16'
-// }
-// const example_beef_item = {
-//   name: 'Beef',
-//   quantity: 2,
-//   purchasedDate: '2023-11-09',
-//   expiration: '2023-11-16'
-// };
-// const example_cheese_item = {
-//   name: 'Cheese',
-//   quantity: 2,
-//   purchasedDate: '2023-11-13',
-//   expiration: '2023-12-28'
-// };
-// const example_lettuce_item = {
-//   name: 'Fresh Lettuce',
-//   quantity: 1,
-//   purchasedDate: '2023-11-01',
-//   expiration: '2023-11-11'
-// };
-
-// const itemlist  = [example_apple_item, example_beef_item, example_cheese_item, example_egg_item, example_lettuce_item, example_milk_item, example_port_belly_item];
 
 // const router = express.Router(itemlist);
 

@@ -59,9 +59,9 @@ function EditProfile() {
     <aside className="sidebar">
       <ul>
         <li>Account Settings</li>
-        <li><Link className="change-password" to='/change-password'>Change Password</Link></li>
-        <li onClick={() => navigate(-1)}>Go Back</li>
-      </ul>
+        {/*<li><Link className="change-password" to='/change-password'>Change Password</Link></li>*/}
+        <li><Link className="change-password" to='/profile'>Go back</Link></li>
+        </ul>
     </aside>
     <form className="settings-form" onSubmit={handleSubmit}>
       <h1>Account Settings</h1>

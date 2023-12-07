@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import LoginButton from '../../components/LoginButton';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useRegister } from "../hooks/useRegister";
 import "./Register.css";
 

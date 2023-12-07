@@ -5,30 +5,30 @@ import './PostBlock.css';
 const PostBlock = ({ post }) => {
     const navigate = useNavigate();
 
-    const [userImg, setUserImg] = useState('./grey.png');
-    const [postImg, setPostImg] = useState('./grey.png');
+    // const [userImg, setUserImg] = useState('./../../public/grey.png');
+    // const [postImg, setPostImg] = useState('./../../public/grey.png');
 
-    useEffect(() => {
-        if (post.usrImg) {
-            setUserImg('http://localhost:3001'+post.usrImg);
-        }
-        if (post.image) {
-            setPostImg('http://localhost:3001'+post.image);
-        }
-    }, []);
-
+    // useEffect(() => {
+    //     console.log("Rendering postblock: ",post);
+    //     // if (post.usrImg) {
+    //     //     setUserImg('http://localhost:3001'+post.usrImg);
+    //     // }
+    //     // if (post.image) {
+    //     //     setPostImg('http://localhost:3001'+post.image);
+    //     // }
+    // }, []);
 
     return (
         <div onClick={() => navigate(`/browse/details/${post.id}`, {state: { post }})} className='post-block'>
             <div className='post-image-container'>
-                <img src={postImg} alt={post.title} className="post-image" />
+                <img src={'http://localhost:3001'+post.image} alt={post.title} className="post-image" />
             </div>
             <div className="post-info">
                 <div className='post-title-box'>
                     {post.title}
                 </div>
                 <div className='post-author'>
-                    <img src={userImg} alt="Post" className="post-author-img" />
+                    <img src={'http://localhost:3001'+post.usrImg} alt="Post" className="post-author-img" />
 
                     <div className='post-author-name'>
                         {post.author}

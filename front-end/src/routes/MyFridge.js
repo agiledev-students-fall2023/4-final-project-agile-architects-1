@@ -63,18 +63,16 @@ function MyFridge() {
         setEditedQuantity(item.quantity);
         setEditedPurchasedDate(item.purchasedDate);
         setEditedExpiration(item.expiration);
-        setIsEditingItem(false);
+        // setIsEditingItem(false);
     }
 
     const handleDeleteItem = () => {
-        console.log('Delete clicked');
         setFridgeItems(fridgeItems.filter(item => item !== clickedItem));
         setClickedItem(null);
-        setIsEditingItem(false);
+        // setIsEditingItem(false);
     }
 
     const handleEditItem = () => {
-        console.log('Edit clicked');
         setIsEditingItem(true);
     };
 
@@ -140,8 +138,7 @@ function MyFridge() {
         <div>
             <h1 className="header">My Fridge</h1>
             <div className="background">
-                <div className="centered-rectangle">
-                </div></div>
+            </div>
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => (
                     <div
@@ -188,10 +185,6 @@ function MyFridge() {
                     <p>Quantity: {clickedItem.quantity}</p>
                     <p>Purchased Date: {clickedItem.purchasedDate}</p>
                     <p>Expiration Date: {clickedItem.expiration}</p>
-                </div>
-            ) : null}
-            {clickedItem ? (
-                <div> 
                     <button className="button" onClick={handleEditItem}>Edit</button>
                     <button className="button" onClick={handleDeleteItem}>Delete</button>
                 </div>

@@ -28,10 +28,51 @@
     text-decoration:none;
 }
 
-.login-button {
-    position: absolute;
-    top: 0;
-    right: 0;
+.login-logout-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-logout-container .login-button {
+  display: flex;
+  background-color: #f0e9d7;
+  color: black;
+  width:  clamp(5rem, 20vw, 10rem);
+  height:  clamp(1.1rem, 8vw, 2.6rem);
+  text-decoration-line: none;
+  text-align: center;
+  font-size: clamp(0.5rem, 4vw, 1.3rem);;
+  border-radius: 15px;
+  margin-right: 2vw;
+  margin-top: .5rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logout-container .login-button:hover {
+  background-color: grey;
+}
+
+.login-logout-container .logout-button {
+  display: flex;
+  background-color: #f0e9d7;
+  color: black;
+  width:  clamp(5rem, 20vw, 10rem);
+  height:  clamp(1.1rem, 8vw, 2.6rem);
+  text-decoration-line: none;
+  text-align: center;
+  font-size: clamp(0.5rem, 4vw, 1.3rem);;
+  border-radius: 15px;
+  margin-right: 2vw;
+  margin-top: .5rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logout-container .logout-button:hover {
+  background-color: grey;
 }
 
 @media screen and (max-width: 300px) {

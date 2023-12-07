@@ -24,9 +24,10 @@ function PlanMeal() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        // console.log(data);
         setmealPlans(data);
-        setCurrentMeals(mealPlans[currentPage].meals);
-        setMealTypes(Object.keys(currentMeals));
+        setCurrentMeals(data[currentPage].meals);
+        setMealTypes(Object.keys(data[currentPage].meals));
       } catch (error) {
         console.error("Fetching recipes failed: ", error);
         // Handle errors here

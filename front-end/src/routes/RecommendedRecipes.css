@@ -21,6 +21,7 @@
     /* ... offset the underline so it's not directly attatched to the title... */
     text-underline-offset: 0.5rem;
     margin-bottom: 2rem;
+    margin-right: 3rem;
 }
 
 .recipe-text{
@@ -41,6 +42,7 @@
     border-radius: 1rem;
 
     text-align: left;
+    overflow: scroll;
 }
 
 .recipe-card select {
@@ -59,7 +61,7 @@
 
 .dropdown {
     border: none;
-    width: 100%; /* Account for the margin */
+    width: 90%; /* Account for the margin */
     padding: 1px 0;
     height: 30px;
     margin: 0.5rem 2rem;
@@ -69,15 +71,15 @@
     position: absolute;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    height: 30px;
-    top: 3.5rem; /* Adjust as needed */
+    /* border-radius: 4px; */
+    height: 3rem;
+    font-size: 2rem;
+    top: 2.7rem; /* Adjust as needed */
     right: 2rem; /* Adjust as needed */
-    padding: 5px 15px;
-}
+    /* padding: 5px 15px; */
+    color: #808080;
+    background-color: rgba(0, 0, 0, 0);
 
-.save-button:hover {
-    background-color: #CC564D;  /* Darker blue for hover effect */
 }
 
 .flip-page{
@@ -91,3 +93,25 @@
     left: 50%; /* Set to half of the parent's width */
     transform: translateX(-50%);
 }
+
+.page-indicators {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1rem;
+    bottom: 2rem;
+  }
+  
+  .page-dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin: 0 0.2rem;
+    background-color: #808080; /* Non-active dot color */
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .page-dot.active {
+    background-color: #CC564D; /* Active dot color */
+  }
+  

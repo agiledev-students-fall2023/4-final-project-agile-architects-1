@@ -1,0 +1,75 @@
+.account-settings {
+    display: flex;
+    max-width: 900px;
+    margin: auto;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+    background-color: #e0e0e0;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  .sidebar ul li a.change-password {
+    text-decoration: none; /* This removes the underline from the link */
+    color: inherit; /* This makes the link color the same as the li */
+    display: block; /* This makes the link fill the li for better clickability */
+  }
+  
+  .sidebar ul li.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .settings-form {
+    flex: 3;
+    padding: 20px;
+  }
+  
+  .settings-form h1 {
+    margin-bottom: 20px;
+  }
+
+  .settings-form .error {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color:#CC564D;
+    font-size: .8em;
+  }
+
+  .settings-form .finish-edit {
+    margin-top: 1em;
+    padding: 10px;
+    border-radius: 4em;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

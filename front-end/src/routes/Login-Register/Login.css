@@ -66,7 +66,7 @@
     flex-direction: row;
     align-items: center;
     height: clamp(3rem, 10vh, 4rem);
-    width: clamp(10rem, 50vw, 50vh);
+    width: clamp(15rem, 50vw, 50vh);
     margin: auto;
     margin-bottom: 8vh;
 }
@@ -74,7 +74,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  width: clamp(10rem, 50vw, 50vh); /* Reduce width for better alignment */
+  width: clamp(15rem, 50vw, 50vh); /* Reduce width for better alignment */
   margin: auto;
 
 }
@@ -112,7 +112,7 @@
   color: #F5F3EE;
   background-color: #CC564D;
   height: clamp(2rem, 5vw, 3rem);
-  width: clamp(10rem, 50vw, 50vh);
+  width: clamp(15rem, 50vw, 50vh);
   border-radius: 2em;
   border: none;
   margin-left: auto;
@@ -134,5 +134,5 @@
   text-align: center;
   margin-top: .7rem;
   font-size: clamp(1rem, 3vw, 1.3rem);
-  padding-bottom: clamp(10rem, 10vh, 20rem);
+  padding-bottom: clamp(15rem, 10vh, 20rem);
 }

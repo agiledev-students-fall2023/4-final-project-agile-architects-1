@@ -79,11 +79,14 @@ function RecommendedRecipes() {
             user.mealPlans = [];
           }
           for (let i = 0; i < user.mealPlans.length; i++) {
-            if (user.mealPlans[i].day == selectedDay){
-              if (user.mealPlans[i][selectedMeal] == undefined){
-                user.mealPlans[i][selectedMeal] = [];
+            if (user.mealPlans[i].date == selectedDay){
+              console.log("adding to existing day")
+              if (user.mealPlans[i]["meals"][selectedMeal] == undefined){
+                user.mealPlans[i]["meals"][selectedMeal] = [];
               }
-              user.mealPlans[i][selectedMeal].push(recipes[currentPage].title);
+              user.mealPlans[i]["meals"][selectedMeal].push(recipes[currentPage].title);
+              // console.log("user.mealPlans[i][selectedMeal]");
+              // console.log(user.mealPlans[i][selectedMeal]);
               localStorage.setItem('user', JSON.stringify(user));
               const saveButton = document.querySelector('.save-button');
               saveButton.style.color = '#ffe11c';

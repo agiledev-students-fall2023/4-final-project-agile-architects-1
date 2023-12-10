@@ -19,7 +19,7 @@ function PlanMeal() {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await fetch('http://localhost:3001/plan'); // Adjust the URL/port if needed
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/plan`); // Adjust the URL/port if needed
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

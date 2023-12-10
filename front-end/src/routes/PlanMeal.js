@@ -101,6 +101,7 @@ function PlanMeal() {
           setmealPlans(newUser.mealPlans);
           setCurrentMeals(newUser.mealPlans[currentPage].meals);
           setMealTypes(Object.keys(newUser.mealPlans[currentPage].meals));
+
         }
       } catch (error) {
         console.error("Fetching recipes failed: ", error);

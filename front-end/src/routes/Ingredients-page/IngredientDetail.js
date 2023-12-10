@@ -38,7 +38,7 @@ function IngredientDetail() {
 
     const fetchPostDetails = async () => {
         try {
-            const response = await fetch(`/browse/details/${myPost.id}`);
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/browse/details/${myPost.id}`);
             const data = await response.json();
             console.log("GOt from fetch:",data);
             if (data.hasOwnProperty('id')) {
@@ -120,10 +120,10 @@ function IngredientDetail() {
             </section>
 
             <section className='ingredient-detail'>
-                <img className='ingredient-detail-img' src={myPost.image} alt={myPost.title}/>
+                <img className='ingredient-detail-img' src={`${process.env.REACT_APP_BACKEND_HOST}${myPost.image}`} alt={myPost.title}/>
                 <section className='selling-info'>
                     <section className='info-without-description'>
-                        <img className="profile-picture" alt="User Profile" src={myPost.usrImg}/>
+                        <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}${myPost.usrImg}`}/>
                         <div className="ingredient-detail-info">
                             <div className="ingredient-detail-name-wrapper">
                                 {myPost.title}

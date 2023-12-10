@@ -7,29 +7,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 function MyProfile() {
   const { user } = useAuthContext()
 
-  const example_egg_post = {
-    image: '/static/images/example_egg.jpg',
-    title: "Dozen of Eggs",
-    author: "user1",
-    usrImg: "/static/images/example_usrimg.png",
-    id: "10086"
-  }
-
-  const example_milk_post = {
-    image: '/static/images/example_milk.png',
-    title: "Horizon 2% Milk",
-    author: "user2",
-    usrImg: "/static/images/grey.png"
-  }
-  
-  const example_lettuce_post = {
-    image: '/static/images/example_lettuce.png',
-    title: "Fresh Lettuce",
-    author: "user3",
-    usrImg: "/static/images/example_usrimg.png"
-  }
-
-  const [posts, setPosts] = useState([example_egg_post, example_milk_post]);
+  const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState(null)
 
   useEffect(() => {
@@ -45,24 +23,27 @@ function MyProfile() {
       }
     };
 
-    const fetchPost = async () => {
-      try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/profile`);
-          const result = await response.json()
-          setPosts(result)
-      } catch (error) {
-        console.error('Error fetching data: ', error);
-      }
-    };
-
-
     if (user){
       fetchUser(user.userId);
     }
-    fetchPost();
+    
   }, [user]);
 
-    
+  useEffect(() => {
+    const fetchPost = async (username) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/profile/posts?username=${username}`);
+            const result = await response.json()
+            setPosts(result)
+        } catch (error) {
+          console.error('Error fetching data: ', error);
+        }
+      };
+  
+    if (profile){
+        fetchPost(profile.username);
+    }
+    }, [profile]);  
 
   const navigate = useNavigate()
   

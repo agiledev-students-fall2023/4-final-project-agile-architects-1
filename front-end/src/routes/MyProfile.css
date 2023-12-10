@@ -1,7 +1,16 @@
 .profile-page {
     margin-top: 2.5rem;
+    /* background-color: rgba(188, 188, 237, 0.307); */
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: auto;
 }
-
+@media (max-width: 350px) {
+    .profile-page {
+        width: 90%;
+    }
+}
 .profile-page .logout-button {
     display: flex;
     background-color: #f0e9d7;
@@ -31,6 +40,7 @@
 .profile-container {
     width: 80vw;
     margin: auto;
+    /* background-color: rgba(127, 255, 212, 0.811); */
 }
 .user-info {
     display: inline-block;
@@ -72,14 +82,31 @@
     background-color: #f0e9d7;
 }
 
-.post-container .post-list {
+.post-container {
+    margin-left: 6vw;
+    max-width: 100%;
+    min-width: 100%;
+    /* position: absolute; */
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+    /* background-color: rgba(0, 255, 255, 0.511); */
+}
+
+.post-container .post-list {
+    /* position: absolute; */
+    left: 0;
+    align-self: flex-start;
+    width: 100%;
+    /* display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 auto;
     max-width: 90vw;
     max-height: 20vh;
-    padding: 10px;
+    padding: 10px; */
     margin-bottom: 100px;
   }
 

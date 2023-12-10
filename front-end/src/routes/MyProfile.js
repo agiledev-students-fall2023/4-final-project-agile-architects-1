@@ -59,7 +59,7 @@ function MyProfile() {
         <div className="user-info">
           <div className="username-wrapper">
             {user && profile && (
-            <span>{profile.email}</span>
+            <span>{profile.username}</span>
             )}
             {!user && (
             <span>Not Logged In</span>
@@ -67,7 +67,7 @@ function MyProfile() {
           </div>
           <div className="user-id-wrapper">
             {user && profile && (
-              <span>User ID: {profile.username}</span>
+              <span>User id: {profile._id}</span>
             )}
             {!user && (
               <span>User ID: User not logged in</span>

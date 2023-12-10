@@ -20,7 +20,7 @@ function EditProfile() {
     const fetchUser = async (userId) => {
       try {
         setProfileLoading(true)
-        const response = await fetch(`http://localhost:3001/profile/${userId}`)
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/profile/${userId}`)
         const json = await response.json()
         if (response.ok){
           setProfile(json)

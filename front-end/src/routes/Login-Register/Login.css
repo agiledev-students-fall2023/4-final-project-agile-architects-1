@@ -57,7 +57,7 @@
 
 .login-display .text-wrapper-login {
   display: inline-block;
-  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-size: clamp(1.5rem, 6vw, 2rem);
   /* width: clamp(1.5rem, 50vw, 10rem); */
 }
 
@@ -66,7 +66,7 @@
     flex-direction: row;
     align-items: center;
     height: clamp(3rem, 10vh, 4rem);
-    width: clamp(15rem, 50vw, 50vh);
+    width: clamp(10rem, 60vw, 50vh);
     margin: auto;
     margin-bottom: 8vh;
 }

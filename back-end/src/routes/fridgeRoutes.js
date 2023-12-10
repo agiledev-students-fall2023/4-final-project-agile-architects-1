@@ -37,19 +37,6 @@ const itemlist  = [example_apple_item, example_beef_item, example_egg_item, exam
 
 const router = express.Router();
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
-})
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-  });
-
 const fridgeItemSchema = new mongoose.Schema({
   name: String,
   quantity: Number,

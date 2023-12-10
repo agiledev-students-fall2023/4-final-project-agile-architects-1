@@ -59,7 +59,7 @@ function EditProfile() {
     <aside className="sidebar">
       <ul>
         <li>Account Settings</li>
-        <li><Link className="change-password" to='/change-password'>Change Password</Link></li>
+        {/*<li><Link className="change-password" to='/change-password'>Change Password</Link></li>{*/}
         <li onClick={() => navigate(-1)}>Go Back</li>
       </ul>
     </aside>

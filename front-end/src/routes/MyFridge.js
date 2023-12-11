@@ -3,7 +3,7 @@ import "./MyFridge.css";
 
 const fetchItems = async (setFridgeItems) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/fridge`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/fridge`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -126,7 +126,7 @@ function MyFridge() {
     useEffect(() => {
         const fetchItems = async () => {
             try {
-              const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/fridge`);
+              const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/fridge`);
               if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }
@@ -149,7 +149,7 @@ function MyFridge() {
             }
 
             // Send a POST request to the backend API to add the new item
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/fridge`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/fridge`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

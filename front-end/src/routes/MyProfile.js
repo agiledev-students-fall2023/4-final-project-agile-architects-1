@@ -13,7 +13,7 @@ function MyProfile() {
   useEffect(() => {
     const fetchUser = async (userId) => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/profile/${userId}`)
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/${userId}`)
         const json = await response.json()
         if (response.ok){
           setProfile(json)
@@ -32,7 +32,7 @@ function MyProfile() {
   useEffect(() => {
     const fetchPost = async (username) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/profile/posts?username=${username}`);
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/posts?username=${username}`);
             const result = await response.json()
             setPosts(result)
         } catch (error) {
@@ -55,7 +55,12 @@ function MyProfile() {
   return (
     <div className="profile-page">
       <section className="profile-container">
+        {user && profile && (
+          <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}${profile.usrImg}`}/>
+        )}
+        {!user && (
         <img className="profile-picture" alt="User Profile" src="/profile_pic.png"/>
+        )}
         <div className="user-info">
           <div className="username-wrapper">
             {user && profile && (

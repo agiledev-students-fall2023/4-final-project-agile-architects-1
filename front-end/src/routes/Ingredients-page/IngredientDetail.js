@@ -38,7 +38,7 @@ function IngredientDetail() {
 
     const fetchPostDetails = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/browse/details/${myPost.id}`);
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse/details/${myPost.id}`);
             const data = await response.json();
             console.log("GOt from fetch:",data);
             if (data.hasOwnProperty('id')) {

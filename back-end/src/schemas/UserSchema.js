@@ -1,7 +1,14 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
+import path from 'path' 
+import fs from 'fs'
+import { fileURLToPath } from 'url';
+import { randomBytes } from 'crypto';
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const Schema = mongoose.Schema;
 
@@ -22,7 +29,9 @@ const userSchema = new Schema({
     },
     usrImg: { 
         type: String,
-        default: "/static/images/grey.png"
+        default: "/profile_pic.png"
+
+        
       },
     zipcode: {
         type: String,
@@ -81,9 +90,8 @@ userSchema.statics.login = async function(email, password) {
 
 
 //static edit profile method
-userSchema.statics.editUser = async function(_id, email, username, zipcode) {
+userSchema.statics.editUser = async function(_id, email, username, zipcode, usrImg) {
     // validation
-
     if (email && (!validator.isEmail(email))){
         throw Error('Email is not valid')
     }
@@ -95,9 +103,37 @@ userSchema.statics.editUser = async function(_id, email, username, zipcode) {
     if (exists) {
         throw Error('Email already in use');
     }
+
+    let usrImgPath;
+    // Process the image if it's provided
+    if (usrImg) {
+        const base64Data = usrImg.replace(/^data:image\/\w+;base64,/, '');
+        const buffer = Buffer.from(base64Data, 'base64');
+
+        // Define file path and name for the user image
+        const randomString = randomBytes(4).toString('hex'); // Generate a random string
+        const sanitizedName = username.replace(/[^a-zA-Z0-9]/g, '_'); // Sanitize the name
+        const fileName = `usrImg-${sanitizedName}-${_id}-${randomString}.png`;
+        const imagePath = path.join(__dirname, `./../../public/images/userImages/user${_id}`, fileName);
+
+        // Check if the directory exists, and create it if it doesn't
+        const dirPath = path.join(__dirname, `./../../public/images/userImages/user${_id}`);
+        if (!fs.existsSync(dirPath)){
+            fs.mkdirSync(dirPath, { recursive: true });
+        }
+
+        // Write file to the file system
+        await fs.writeFile(imagePath, buffer, (err) => err && console.error(err));
+        usrImgPath = `/static/images/userImages/user${_id}/${fileName}`;
+        console.log(`User image Stored in: ${usrImgPath}`)
+    }
+
+    if (!usrImg) console.log(`User image not uploaded`)
     if (email) user.email = email
     if (username) user.username = username;
     if (zipcode) user.zipcode = zipcode;
+    if (usrImg) console.log(`User image uploaded ${usrImg}`)
+    if (usrImg) user.usrImg = usrImgPath;
     await user.save()
 
     return user

@@ -149,7 +149,7 @@ function NewIngredientPost() {
 
           console.log("Submitting formData:", formData);
 
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/browse/newpost`, { // Replace with your backend endpoint
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse/newpost`, { // Replace with your backend endpoint
             method: 'POST',
             body: formData,
           });

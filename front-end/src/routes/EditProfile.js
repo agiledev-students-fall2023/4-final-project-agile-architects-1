@@ -10,8 +10,10 @@ function EditProfile() {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [zipcode, setZipcode] = useState('')
+  const [usrImg, setUsrImg] = useState('')
   const [profile, setProfile] = useState(null)
   const [profileLoading, setProfileLoading] = useState(true);
+
   const {edit, error, isLoading} = useEdit()
   const navigate = useNavigate()
   
@@ -20,7 +22,7 @@ function EditProfile() {
     const fetchUser = async (userId) => {
       try {
         setProfileLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/profile/${userId}`)
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/${userId}`)
         const json = await response.json()
         if (response.ok){
           setProfile(json)
@@ -43,7 +45,8 @@ function EditProfile() {
       userId: user.userId,
       email,
       username,
-      zipcode
+      zipcode,
+      usrImg,
     }
     console.log(`accessing user id: ${user.userId}`)
     await edit(userData)
@@ -52,6 +55,18 @@ function EditProfile() {
   if(profileLoading){
     return <div>Loading...</div>
   }
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const newImage = e.target.result;
+        setUsrImg(newImage);
+    };
+    reader.readAsDataURL(file);
+    }
+};
 
   return(
       
@@ -104,6 +119,22 @@ function EditProfile() {
           name="text"
         />
       </div>
+      <div className="form-group">
+      <label>Update profile</label>
+      <label className="post-image-upload-label">
+        {usrImg ? (
+          <div className="post-image-container" style={{ backgroundImage: `url(${usrImg})` }}></div>
+            ) : (
+              <div className="post-image-upload-placeholder">+</div>
+            )}
+            <input
+              type="file"
+              className="post-image-upload-input"
+              onChange={(e) => handleImageChange(e)}
+              accept="image/*"
+            />
+          </label>
+        </div>
       {error && <div className="error">{error}</div>}
       <button className="finish-edit" type="submit" >Finish Editing</button>
     </form>

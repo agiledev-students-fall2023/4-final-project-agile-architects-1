@@ -44,7 +44,7 @@ function NewIngredientPost() {
         return (
           <label key={index} className="post-image-upload-label">
             {image ? (
-              <div className="post-image-container" style={{ backgroundImage: `url(${image})` }}></div>
+              <div className="post-image-upload-container" style={{ backgroundImage: `url(${image})` }}></div>
             ) : (
               <div className="post-image-upload-placeholder">+</div>
             )}

@@ -16,6 +16,7 @@ function MyProfile() {
         const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/${userId}`)
         const json = await response.json()
         if (response.ok){
+            // console.log(json)
           setProfile(json)
         }
       } catch(error){
@@ -55,37 +56,41 @@ function MyProfile() {
   return (
     <div className="profile-page">
       <section className="profile-container">
-        {user && profile && (
-          <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}${profile.usrImg}`}/>
-        )}
-        {!user && (
-        <img className="profile-picture" alt="User Profile" src="/profile_pic.png"/>
-        )}
-        <div className="user-info">
-          <div className="username-wrapper">
-            {user && profile && (
-            <span>{profile.username}</span>
-            )}
-            {!user && (
-            <span>Not Logged In</span>
-            )}
-          </div>
-          <div className="user-id-wrapper">
-            {user && profile && (
-              <span>User id: {profile._id}</span>
-            )}
-            {!user && (
-              <span>User ID: User not logged in</span>
-            )}
-          </div>
-          <div className="user-location-wrapper">
-          {user && profile && (
-              <span>Zipcode: {profile.zipcode}</span>
-            )}
-            {!user && (
-              <span>Zipcode: user not logged in</span>
-            )}
-          </div>
+        <div className="profile-basic-info">
+            <div className="profile-image-container">
+                {user && profile && (
+                <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}${profile.usrImg}`}/>
+                )}
+                {!user && (
+                <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}/static/images/grey.png`}/>
+                )}
+            </div>
+            <div className="user-info">
+                <div className="username-wrapper">
+                    {user && profile && (
+                        <span>{profile.username}</span>
+                    )}
+                    {!user && (
+                        <span>Not Logged In</span>
+                    )}
+                </div>
+                <div className="user-id-wrapper">
+                    {user && profile && (
+                        <span>User id: {profile._id}</span>
+                    )}
+                    {!user && (
+                        <span>User ID: User not logged in</span>
+                    )}
+                </div>
+                <div className="user-location-wrapper">
+                    {user && profile && (
+                        <span>Zipcode: {profile.zipcode}</span>
+                    )}
+                    {!user && (
+                        <span>Zipcode: user not logged in</span>
+                    )}
+                </div>
+            </div>
         </div>
         <div className="user-discription">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

@@ -29,9 +29,7 @@ const userSchema = new Schema({
     },
     usrImg: { 
         type: String,
-        default: "/profile_pic.png"
-
-        
+        default: "/static/images/profile_pic.png"
       },
     zipcode: {
         type: String,

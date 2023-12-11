@@ -25,7 +25,7 @@ function BrowseIngredients() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/browse`);
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse`);
             const result = await response.json();
             setPosts(result);
             console.log(result);

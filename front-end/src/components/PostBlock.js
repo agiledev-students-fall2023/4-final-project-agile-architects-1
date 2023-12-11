@@ -20,12 +20,12 @@ const PostBlock = ({ post }) => {
 
     return (
         <div onClick={() => navigate(`/browse/details/${post.id}`, {state: { post }})} className='post-block'>
-            <div className='post-image-container'>
-                <img src={`${process.env.REACT_APP_BACKEND_HOST}${post.image}`} alt={post.title} className="post-image" />
+            <div className='post-block-image-container'>
+                <img src={`${process.env.REACT_APP_BACKEND_HOST}${post.image}`} alt={post.title} className="post-block-image" />
             </div>
             <div className="post-info">
                 <div className='post-title-box'>
-                    {post.title}
+                    <span>{post.title}</span>
                 </div>
                 <div className='post-author'>
                     <img src={`${process.env.REACT_APP_BACKEND_HOST}${post.usrImg}`} alt="Post" className="post-author-img" />

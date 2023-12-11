@@ -33,7 +33,7 @@ function RecommendedRecipes() {
                 };
               }
             }
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/recommend/recommendations`,{
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/recommend/recommendations`,{
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

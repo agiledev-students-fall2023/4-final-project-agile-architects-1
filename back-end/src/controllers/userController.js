@@ -40,13 +40,14 @@ export const registerUser = async (req ,res) => {
 // Edit user
 export const editUser = async (req, res) => {
     const { _id } = req.params
-    const {email, username, zipcode } = req.body
+    const {email, username, zipcode, usrImg } = req.body
     
     try {
-        const editedUser = await userSchema.editUser(_id, email, username, zipcode)
+        const editedUser = await userSchema.editUser(_id, email, username, zipcode, usrImg)
         res.status(200).json({email: editedUser.email,
                               username: editedUser.username,
-                              zipcode: editedUser.zipcode
+                              zipcode: editedUser.zipcode,
+                              usrImg: editedUser.usrImg,
         })
     } catch (error) {
         res.status(400).json({error: error.message})

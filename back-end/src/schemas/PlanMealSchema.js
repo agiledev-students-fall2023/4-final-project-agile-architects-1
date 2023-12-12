@@ -11,6 +11,7 @@ mealId: { type: Schema.Types.ObjectId, required: true, default: () => new mongoo
 
 // Define the main MealPlan schema
 const planMealSchema = new Schema({
+  user_id: { type: Schema.Types.ObjectId, required: true },
   _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
   date: { type: String, required: true },
   meals: {

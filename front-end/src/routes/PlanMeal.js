@@ -73,6 +73,12 @@ function PlanMeal() {
   },
   ];
 
+  const updateLocalStorage = (updatedMealPlans) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    user.mealPlans = updatedMealPlans;
+    localStorage.setItem('user', JSON.stringify(user));
+  };
+
   useEffect(() => {
     const fetchPlans = async () => {
       try {
@@ -125,6 +131,22 @@ function PlanMeal() {
         ...prevMeals,
         [mealType]: [...prevMeals[mealType], ""]
         }));
+        updateLocalStorage(currentMeals);
+    };
+
+    const handleDeleteRecipe = (mealType, index) => {
+      setCurrentMeals(prevMeals => {
+        // Check if this is the last item in the meal type
+        if (prevMeals[mealType].length === 1) {
+          // Replace the last item with an empty string
+          return { ...prevMeals, [mealType]: [""] };
+        } else {
+          // If not the last item, filter it out
+          const updatedMeals = prevMeals[mealType].filter((_, i) => i !== index);
+          return { ...prevMeals, [mealType]: updatedMeals };
+        }
+      });
+      updateLocalStorage(currentMeals);
     };
 
     const handlePrevPage = () => {
@@ -148,6 +170,7 @@ function PlanMeal() {
           ...prevMeals,
           [mealType]: prevMeals[mealType].map((item, i) => i === index ? newValue : item)
         }));
+        updateLocalStorage(currentMeals);
       };
 
     return (
@@ -171,13 +194,21 @@ function PlanMeal() {
                                     
                                     {isEditing ?
                                     <input
-                                        defaultValue={recipe}
+                                        value={recipe}
                                         className="notebook-line edit-input"
                                         onChange={(e) => handleMealChange(type, index, e.target.value)}
                                     />
                                     :
                                     <p className="notebook-line">{recipe}</p>
                                     }
+                                    {isEditing && (
+                                      <button 
+                                        className="delete-recipe-button"
+                                        onClick={() => handleDeleteRecipe(type, index)}
+                                      >
+                                        -
+                                      </button>
+                                    )}
                                 </div>
                             ))}
                             {isEditing && (

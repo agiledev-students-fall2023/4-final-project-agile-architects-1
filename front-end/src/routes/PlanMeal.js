@@ -84,14 +84,8 @@ function PlanMeal() {
       try {
         if (localStorage.getItem('user')) {
           const user = JSON.parse(localStorage.getItem('user'));
-          if (user.mealPlans){
-            // console.log("we do have meal plans")
-            setmealPlans(user.mealPlans);
-          }
-          else{
-            // console.log("we don't have meal plans")
+          if (!user.mealPlans){
             user.mealPlans = defaultMealPlans;
-            setmealPlans(user.mealPlans);
           }
           localStorage.setItem('user', JSON.stringify(user));
           setmealPlans(user.mealPlans);
@@ -107,11 +101,9 @@ function PlanMeal() {
           setmealPlans(newUser.mealPlans);
           setCurrentMeals(newUser.mealPlans[currentPage].meals);
           setMealTypes(Object.keys(newUser.mealPlans[currentPage].meals));
-
         }
       } catch (error) {
         console.error("Fetching recipes failed: ", error);
-        // Handle errors here
       }
     };
     fetchPlans();
@@ -131,7 +123,8 @@ function PlanMeal() {
         ...prevMeals,
         [mealType]: [...prevMeals[mealType], ""]
         }));
-        updateLocalStorage(currentMeals);
+        mealPlans[currentPage].meals = currentMeals;
+        updateLocalStorage(mealPlans);
     };
 
     const handleDeleteRecipe = (mealType, index) => {
@@ -146,7 +139,8 @@ function PlanMeal() {
           return { ...prevMeals, [mealType]: updatedMeals };
         }
       });
-      updateLocalStorage(currentMeals);
+      mealPlans[currentPage].meals = currentMeals;
+      updateLocalStorage(mealPlans);
     };
 
     const handlePrevPage = () => {
@@ -170,7 +164,8 @@ function PlanMeal() {
           ...prevMeals,
           [mealType]: prevMeals[mealType].map((item, i) => i === index ? newValue : item)
         }));
-        updateLocalStorage(currentMeals);
+        mealPlans[currentPage].meals = currentMeals;
+        updateLocalStorage(mealPlans);
       };
 
     return (

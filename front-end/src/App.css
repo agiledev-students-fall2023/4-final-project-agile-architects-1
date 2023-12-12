@@ -26,6 +26,8 @@
     color: #CC564D;
     font-style: normal;
     text-decoration:none;
+    width: 20vw;
+    font-size: clamp(0.75rem, 3.5vw, 1rem);
 }
 
 .login-logout-container {

@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate} from 'react-router-dom';
 import { FaHome, FaUtensils, FaShoppingBasket, FaUser } from 'react-icons/fa';
+import { BiSolidFridge } from "react-icons/bi";
+import { GiFruitBowl } from "react-icons/gi";
+
 import './App.css';
 
 import Home from './routes/Home';
@@ -76,11 +79,11 @@ function MainContent() {
                             <span>Home</span>
                         </Link>
                         <Link className="nav-item" to="/browse">
-                            <FaUtensils size={22}/>
+                            <FaShoppingBasket size={22}/>
                             <span>Browse</span>
                         </Link>
                         <Link className="nav-item" to="/fridge">
-                            <FaShoppingBasket size={22}/>
+                            <GiFruitBowl size={22}/>
                             <span>My Fridge</span>
                         </Link>
                         <Link className="nav-item" to="/plan">
@@ -89,7 +92,7 @@ function MainContent() {
                         </Link>
                         <Link className="nav-item" to="/profile">
                             <FaUser size={22}/>
-                            <span>My Profile</span>
+                            <span>Profile</span>
                         </Link>
                     </nav>
                 )

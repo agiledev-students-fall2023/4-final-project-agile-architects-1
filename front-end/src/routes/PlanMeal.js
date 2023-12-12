@@ -13,21 +13,96 @@ function PlanMeal() {
   const [currentPage, setCurrentPage] = useState(0); // Start from the first plan
   const [currentMeals, setCurrentMeals] = useState(mealPlans[currentPage].meals);
   const [mealTypes, setMealTypes] = useState(Object.keys(currentMeals));
-
   const [isEditing, setIsEditing] = useState(false);
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const today = new Date();
+  const defaultMealPlans = [{
+    "date": "Any",
+    "meals": {
+      "Any": ["Tap edit button to enter a recipe"],
+    }
+  },{
+    "date": `${dayNames[today.getDay()]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },{
+    "date": `${dayNames[(today.getDay()+1)%7]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },{
+    "date": `${dayNames[(today.getDay()+2)%7]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },{
+    "date": `${dayNames[(today.getDay()+3)%7]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },{
+    "date": `${dayNames[(today.getDay()+4)%7]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },{
+    "date": `${dayNames[(today.getDay()+5)%7]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },{
+    "date": `${dayNames[(today.getDay()+6)%7]}`,
+    "meals": {
+      "Breakfast": ["Tap edit button to enter a recipe"],
+      "Lunch": ["Tap edit button to enter a recipe"],
+      "Dinner": ["Tap edit button to enter a recipe"]
+    }
+  },
+  ];
 
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/plan`); // Adjust the URL/port if needed
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        if (localStorage.getItem('user')) {
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (user.mealPlans){
+            // console.log("we do have meal plans")
+            setmealPlans(user.mealPlans);
+          }
+          else{
+            // console.log("we don't have meal plans")
+            user.mealPlans = defaultMealPlans;
+            setmealPlans(user.mealPlans);
+          }
+          localStorage.setItem('user', JSON.stringify(user));
+          setmealPlans(user.mealPlans);
+          setCurrentMeals(user.mealPlans[currentPage].meals);
+          setMealTypes(Object.keys(user.mealPlans[currentPage].meals));
         }
-        const data = await response.json();
-        // console.log(data);
-        setmealPlans(data);
-        setCurrentMeals(data[currentPage].meals);
-        setMealTypes(Object.keys(data[currentPage].meals));
+        else{
+          // else if no user in local storage
+          let newUser = {
+            "mealPlans": defaultMealPlans
+          };
+          localStorage.setItem('user', JSON.stringify(newUser));
+          setmealPlans(newUser.mealPlans);
+          setCurrentMeals(newUser.mealPlans[currentPage].meals);
+          setMealTypes(Object.keys(newUser.mealPlans[currentPage].meals));
+
+        }
       } catch (error) {
         console.error("Fetching recipes failed: ", error);
         // Handle errors here
@@ -56,12 +131,16 @@ function PlanMeal() {
         const newPage = Math.max(currentPage - 1, 0);
         setCurrentPage(newPage);
         setCurrentMeals(mealPlans[newPage].meals);
+        setMealTypes(Object.keys(mealPlans[newPage].meals));
       };
     
       const handleNextPage = () => {
         const newPage = Math.min(currentPage + 1, mealPlans.length - 1);
+        console.log(mealPlans[newPage]);
         setCurrentPage(newPage);
         setCurrentMeals(mealPlans[newPage].meals);
+        setMealTypes(Object.keys(mealPlans[newPage].meals));
+        console.log(mealPlans[newPage]);
       };
 
       const handleMealChange = (mealType, index, newValue) => {

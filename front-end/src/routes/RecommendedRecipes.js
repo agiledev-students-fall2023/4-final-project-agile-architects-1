@@ -59,11 +59,15 @@ function RecommendedRecipes() {
     const handlePrevPage = () => {
         const newPage = Math.max(currentPage - 1, 0);
         setCurrentPage(newPage);
+        const saveButton = document.querySelector('.save-button');
+        saveButton.style.color = '#808080';
       };
     
       const handleNextPage = () => {
         const newPage = Math.min(currentPage + 1, recipes.length - 1);
         setCurrentPage(newPage);
+        const saveButton = document.querySelector('.save-button');
+        saveButton.style.color = '#808080';
       };
 
       const handleSave = async () => {

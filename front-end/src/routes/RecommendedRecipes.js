@@ -53,9 +53,6 @@ function RecommendedRecipes() {
         fetchRecommends();
     }, []);
 
-    const updateLocalStorage = async (updatedMealPlans) => {
-    };
-
     const [currentPage, setCurrentPage] = useState(0);
 
     

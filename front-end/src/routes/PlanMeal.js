@@ -73,10 +73,16 @@ function PlanMeal() {
   },
   ];
 
-  const updateLocalStorage = (updatedMealPlans) => {
+  const updateLocalStorage = async (updatedMealPlans) => {
     const user = JSON.parse(localStorage.getItem('user'));
     user.mealPlans = updatedMealPlans;
     localStorage.setItem('user', JSON.stringify(user));
+    const currentUserId = user.userId;
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/user/editUserMeals/${currentUserId}`, {
+        method: "PUT",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({updatedMealPlans})
+    })
   };
 
   useEffect(() => {
@@ -113,6 +119,7 @@ function PlanMeal() {
         if (isEditing) {
             // Save changes to mealPlans array
             mealPlans[currentPage].meals = currentMeals;
+            updateLocalStorage(mealPlans);
         }
         setIsEditing(!isEditing);
     };
@@ -123,8 +130,6 @@ function PlanMeal() {
         ...prevMeals,
         [mealType]: [...prevMeals[mealType], ""]
         }));
-        mealPlans[currentPage].meals = currentMeals;
-        updateLocalStorage(mealPlans);
     };
 
     const handleDeleteRecipe = (mealType, index) => {
@@ -139,8 +144,6 @@ function PlanMeal() {
           return { ...prevMeals, [mealType]: updatedMeals };
         }
       });
-      mealPlans[currentPage].meals = currentMeals;
-      updateLocalStorage(mealPlans);
     };
 
     const handlePrevPage = () => {
@@ -164,8 +167,6 @@ function PlanMeal() {
           ...prevMeals,
           [mealType]: prevMeals[mealType].map((item, i) => i === index ? newValue : item)
         }));
-        mealPlans[currentPage].meals = currentMeals;
-        updateLocalStorage(mealPlans);
       };
 
     return (

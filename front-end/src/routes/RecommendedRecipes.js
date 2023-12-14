@@ -59,20 +59,18 @@ function RecommendedRecipes() {
     const handlePrevPage = () => {
         const newPage = Math.max(currentPage - 1, 0);
         setCurrentPage(newPage);
+        const saveButton = document.querySelector('.save-button');
+        saveButton.style.color = '#808080';
       };
     
       const handleNextPage = () => {
         const newPage = Math.min(currentPage + 1, recipes.length - 1);
         setCurrentPage(newPage);
+        const saveButton = document.querySelector('.save-button');
+        saveButton.style.color = '#808080';
       };
 
       const handleSave = async () => {
-        // const recipeToSave = {
-        //   title: recipes[currentPage].title,
-        //   day: selectedDay,
-        //   mealType: selectedMeal
-        // };
-
         if (localStorage.getItem('user')) {
           const user = JSON.parse(localStorage.getItem('user'));
           if (user.mealPlans == undefined){
@@ -93,7 +91,6 @@ function RecommendedRecipes() {
               return;
             }
           }
-          console.log("adding new day")
           const newDay = {
             day: selectedDay
           };
@@ -117,33 +114,15 @@ function RecommendedRecipes() {
           localStorage.setItem('user', JSON.stringify(user));
           const saveButton = document.querySelector('.save-button');
           saveButton.style.color = '#ffe11c';
-          return;
         }
-        return;
-        // try {
-        //   const response = await fetch('http://localhost:3001/plan/save-recipe', { // Replace with your actual endpoint
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(recipeToSave),
-        //   });
-      
-        //   if (!response.ok) {
-        //     throw new Error(`HTTP error! status: ${response.status}`);
-        //   }
-      
-        //   const result = await response.json();
-        //   console.log("Save successful", result);
-        //   // Further actions after save (e.g., confirmation message)
-        // } catch (error) {
-        //   console.error("Error saving recipe", error);
-        //   // Handle errors here (e.g., show error message)
-        // }
-
-        //change the color of save-button
-        const saveButton = document.querySelector('.save-button');
-        saveButton.style.color = '#ffe11c';
+        const user = JSON.parse(localStorage.getItem('user'));
+        const currentUserId = user.userId;
+        const mealPlans = user.mealPlans;
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/user/editUserMeals/${currentUserId}`, {
+            method: "PUT",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({mealPlans})
+        })
       };
       
       const handlers = useSwipeable({

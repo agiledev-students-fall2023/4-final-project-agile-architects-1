@@ -39,18 +39,24 @@
 
 .recipe-line {
     display: flex;
-    align-items: center; /* Aligns items vertically in the center */
-    justify-content: space-between; /* Spaces out the items */
-    margin-bottom: 10px; /* Add some space between each line */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; 
 }
 
-.recipe-line:first-of-type .edit-input {
+.recipe-line .edit-input, .recipe-line .notebook-line, .recipe-line .delete-recipe-button {
+    margin: 0.2rem 0rem; /* Removes default margin */
+    padding: 0.2rem 0rem; /* Adjust padding as needed */
+}
+
+.recipe-line:first-of-type {
     margin-top: 16px; /* Adjust the value as needed */
 }
 
-
 .edit-input {
     /* margin-top: 7px; */
+    display: flex;
     border: none;
     border-bottom: 1px solid #CC564D;
     background: transparent;
@@ -62,7 +68,8 @@
 }
 
 .delete-recipe-button {
-    width: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
 

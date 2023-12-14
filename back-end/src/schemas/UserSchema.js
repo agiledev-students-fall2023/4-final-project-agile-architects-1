@@ -12,6 +12,16 @@ const __dirname = path.dirname(__filename);
 
 const Schema = mongoose.Schema;
 
+const mealPlansSchema = new Schema({
+    _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
+    date: { type: String, required: true },
+    meals: {
+      Breakfast: [String],
+      Lunch: [String],
+      Dinner: [String],
+    }
+  });
+
 const userSchema = new Schema({
     _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
     username: {
@@ -35,8 +45,8 @@ const userSchema = new Schema({
         type: String,
         default: "NA"
     },
-
-}, {timestamps: true, collection: 'User'});
+    mealPlans: [mealPlansSchema]
+}, {timestamps: true, collection: 'UserTest'});
 
 // static register method
 userSchema.statics.register = async function(email, password) {
@@ -134,6 +144,20 @@ userSchema.statics.editUser = async function(_id, email, username, zipcode, usrI
     if (usrImg) user.usrImg = usrImgPath;
     await user.save()
 
+    return user
+}
+
+userSchema.statics.editUserMeals = async function(_id, meals) {
+    const user = await this.findById(_id)
+    if (!user) {
+        throw Error(`User not found, id: ${_id}`)
+    }
+
+    // console.log(meals.updatedMealPlans)
+
+    if (meals.updatedMealPlans) user.mealPlans = meals.updatedMealPlans
+    console.log(user)
+    await user.save()
     return user
 }
 

@@ -44,10 +44,20 @@ function RecommendedRecipes() {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            setRecipes(data);
+            
+            if (data.title || data.description || data.steps || data.time) {
+              setRecipes(data);
+            }
+            else{
+              console.log("API ERROR:",data)
+              setRecipes({
+                id: 1,
+                title: "Fetch Failed",
+                description: "Try again later",
+              })
+            }
           } catch (error) {
             console.error("Fetching recipes failed: ", error);
-            // Handle errors here
           }
         };
         fetchRecommends();

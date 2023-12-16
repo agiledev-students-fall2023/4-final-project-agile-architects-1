@@ -44,17 +44,19 @@ function RecommendedRecipes() {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            
-            if (data.title || data.description || data.steps || data.time) {
+            console.log("API RESPONSE:",data)
+            if (data[0].title || data[0].description || data[0].steps || data[0].time) {
+              console.log(data)
+              console.log(data[currentPage].ingredients.join('\n'))
               setRecipes(data);
             }
             else{
               console.log("API ERROR:",data)
-              setRecipes({
+              setRecipes([{
                 id: 1,
                 title: "Fetch Failed",
                 description: "Try again later",
-              })
+              }])
             }
           } catch (error) {
             console.error("Fetching recipes failed: ", error);
@@ -154,7 +156,16 @@ function RecommendedRecipes() {
             <div className="recipe-card" {...handlers}>
                 <button className="save-button" onClick={handleSave}>★</button>
                 <h2 className="recipe-title">{recipes[currentPage].title}</h2>
-                <p className="recipe-text">{recipes[currentPage].description}</p>
+                <p className="recipe-description">{recipes[currentPage].description}</p>  
+                <p className="recipe-description">Ingredients:</p>
+                {recipes[currentPage].ingredients.map((ingredient) => (
+                  <li className="recipe-description">{ingredient}</li>
+                ))}
+                <p className="recipe-description">Steps:</p>
+                {recipes[currentPage].steps.map((step) => (
+                  <li className="recipe-description">{step}</li>
+                ))}
+                <p className="recipe-description">Time: {recipes[currentPage].time}</p>
                 
                 <div className="page-indicators">
                   {recipes.map((_, index) => (

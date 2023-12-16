@@ -175,9 +175,8 @@ function PlanMeal() {
 
     return (
         <div className="container">
-            <header className="header">
-            
-                <h1 className="notebook-line ">Plan Meals</h1>
+            <header className="plan-meal-header">
+                <h1>Plan Meals</h1>
                 <button onClick={toggleEditMode}>
                     {isEditing ? '✔' : '✎'} {/* Toggle between save and edit icons */}
                 </button>

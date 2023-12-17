@@ -192,7 +192,8 @@ function MyFridge() {
 
     return (
         <div>
-            <h1 className="header">My Fridge</h1>
+            
+            <h1 className="fridge-header">My Fridge</h1>
             <div className="background">
             </div>
             <div className="fridge-grid">

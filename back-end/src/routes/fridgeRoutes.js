@@ -37,12 +37,7 @@ const itemlist  = [example_apple_item, example_beef_item, example_egg_item, exam
 
 const router = express.Router();
 
-const fridgeItemSchema = new mongoose.Schema({
-  name: String,
-  quantity: Number,
-  purchasedDate: String,
-  expiration: String,
-});
+
 
 const FridgeItem = mongoose.model('FridgeItem', fridgeItemSchema);
 

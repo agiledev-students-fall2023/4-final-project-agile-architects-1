@@ -22,6 +22,13 @@ const mealPlansSchema = new Schema({
     }
   });
 
+const fridgeItemSchema = new Schema({
+    name: String,
+    quantity: Number,
+    purchasedDate: String,
+    expiration: String,
+});
+
 const userSchema = new Schema({
     _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
     username: {
@@ -45,7 +52,8 @@ const userSchema = new Schema({
         type: String,
         default: "NA"
     },
-    mealPlans: [mealPlansSchema]
+    mealPlans: [mealPlansSchema],
+    fridgeItems: [fridgeItemSchema],
 }, {timestamps: true, collection: 'UserTest'});
 
 // static register method
@@ -156,6 +164,20 @@ userSchema.statics.editUserMeals = async function(_id, meals) {
     // console.log(meals.updatedMealPlans)
 
     if (meals.updatedMealPlans) user.mealPlans = meals.updatedMealPlans
+    console.log(user)
+    await user.save()
+    return user
+}
+
+userSchema.statics.editFridgeItems = async function(_id, items) {
+    const user = await this.findById(_id)
+    if (!user) {
+        throw Error(`User not found, id: ${_id}`)
+    }
+
+    // console.log(meals.updatedMealPlans)
+
+    if (items.updatedFridgeItems) user.fridgeItems = items.updatedFridgeItems
     console.log(user)
     await user.save()
     return user

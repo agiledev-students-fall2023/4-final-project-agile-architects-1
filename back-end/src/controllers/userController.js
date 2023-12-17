@@ -14,8 +14,8 @@ export const loginUser = async (req ,res) => {
 
         // create a token
         const token = createToken(user._id)
-
-        res.status(200).json({email, token, userId: user._id})
+        console.log(user)
+        res.status(200).json({email, token, userId: user._id, mealPlans: user.mealPlans, fridgeItems: user.fridgeItems})
     } catch (error){
         res.status(400).json({error: error.message})
     }
@@ -61,6 +61,18 @@ export const editUserMeals = async (req, res) => {
     try {
         const editedUser = await userSchema.editUserMeals(_id, meals)
         res.status(200).json({mealPlans: editedUser.meals,
+        })
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+export const editFridgeItems = async (req, res) => {
+    const { _id } = req.params
+    const items = req.body
+    try {
+        const editedUser = await userSchema.editFridgeItems(_id, items)
+        res.status(200).json({items: editedUser.fridgeItems,
         })
     } catch (error) {
         res.status(400).json({error: error.message})

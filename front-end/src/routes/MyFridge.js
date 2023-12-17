@@ -1,65 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import "./MyFridge.css";
 
-const fetchItems = async (setFridgeItems) => {
-    try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/fridge`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setFridgeItems(data);
-        console.log('Fetched fridge items: ', data);
-    } catch (error) {
-        console.error("Fetching fridge items failed: ", error);
-    }
-};
 
 function MyFridge() {
-    const example_apple_item = {
-        name: 'Apples',
+    const example_item = {
+        name: 'Example Item',
         quantity: 3,
         purchasedDate: '2023-11-05',
         expiration: '2023-11-21'
     };
-    const example_egg_item = {
-        name: 'Eggs',
-        quantity: 14,
-        purchasedDate: '2023-11-01',
-        expiration: '2023-11-30'
-    };
-    const example_milk_item = {
-        name: 'Horizon 2% Milk',
-        quantity: 1,
-        purchasedDate: '2023-11-09',
-        expiration: '2023-11-19'
-    };
-    const example_port_belly_item = {
-        name: 'Pork Belly',
-        quantity: 1,
-        purchasedDate: '2023-11-09',
-        expiration: '2023-11-16'
-    }
-    const example_beef_item = {
-        name: 'Beef',
-        quantity: 2,
-        purchasedDate: '2023-11-09',
-        expiration: '2023-11-16'
-    };
-    const example_cheese_item = {
-        name: 'Cheese',
-        quantity: 2,
-        purchasedDate: '2023-11-13',
-        expiration: '2023-12-28'
-    };
-    const example_lettuce_item = {
-        name: 'Fresh Lettuce',
-        quantity: 1,
-        purchasedDate: '2023-11-01',
-        expiration: '2023-11-11'
-    };
 
-    const [fridgeItems, setFridgeItems] = useState([example_apple_item, example_beef_item, example_cheese_item, example_egg_item, example_lettuce_item, example_milk_item, example_port_belly_item]);
+    const [fridgeItems, setFridgeItems] = useState([example_item]);
 
     const [newItem, setNewItem] = useState({ name: '', quantity: '', purchasedDate: '', expiration: '' });
     const [isAddingItem, setIsAddingItem] = useState(false);
@@ -80,10 +31,43 @@ function MyFridge() {
         // setIsEditingItem(false);
     }
 
+    const fetchItems = async () => {
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user.fridgeItems) {
+              // If there are no fridge items, set to default item
+              user.fridgeItems = [example_item];
+            }
+            localStorage.setItem('user', JSON.stringify(user));
+            setFridgeItems(user.fridgeItems);
+          } else {
+            // If no user in local storage, create a new user with default fridge item
+            let newUser = {
+              fridgeItems: [example_item]
+            };
+            localStorage.setItem('user', JSON.stringify(newUser));
+            setFridgeItems(newUser.fridgeItems);
+          }
+    };
+
+    const updateLocalStorage = async (updatedFridgeItems) => {
+        console.log(updatedFridgeItems)
+        const user = JSON.parse(localStorage.getItem('user'));
+        user.fridgeItems = updatedFridgeItems;
+        localStorage.setItem('user', JSON.stringify(user));
+        const currentUserId = user.userId;
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/user/editFridgeItems/${currentUserId}`, {
+            method: "PUT",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({updatedFridgeItems})
+        })
+      };
+
     const handleDeleteItem = () => {
         setFridgeItems(fridgeItems.filter(item => item !== clickedItem));
         setClickedItem(null);
         // setIsEditingItem(false);
+        updateLocalStorage(fridgeItems);
     }
 
     const handleEditItem = () => {
@@ -115,30 +99,13 @@ function MyFridge() {
         setClickedItem(null);
         setIsEditingItem(false);
         
-        let user = {}
-        if (localStorage.getItem('user')) {
-        user = JSON.parse(localStorage.getItem('user'));
-        }
-        user.ingredients = updatedFridgeItems;
-        localStorage.setItem('user', JSON.stringify(user));
+        
+        updateLocalStorage(fridgeItems);
     };
 
     useEffect(() => {
-        const fetchItems = async () => {
-            try {
-              const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/fridge`);
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              const data = await response.json();
-              setFridgeItems(data);  
-              console.log('Fetched fridge items: ', data);
-            } catch (error) {
-              console.error("Fetching fridge items failed: ", error);
-            }
-          };
         fetchItems();
-    }, [setFridgeItems]);
+    }, []);
     
     const handleSaveNewItem = async () => {
         try {
@@ -147,25 +114,6 @@ function MyFridge() {
                 alert('Please fill in all fields');
                 return;
             }
-
-            // Send a POST request to the backend API to add the new item
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/fridge`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newItem),
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            alert('Item added successfully');
-
-            // Fetch items after successfully adding a new item
-            await fetchItems(setFridgeItems);
-
             setIsAddingItem(false);
             setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
         } catch (error) {
@@ -175,14 +123,8 @@ function MyFridge() {
         setFridgeItems(prevItems => [...prevItems, newItem]);  // Update state directly
         setIsAddingItem(false);
         setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
-
-        
-        let user = {}
-        if (localStorage.getItem('user')) {
-        user = JSON.parse(localStorage.getItem('user'));
-        }
-        user.ingredients = fridgeItems;
-        localStorage.setItem('user', JSON.stringify(user));
+        const newFridgeItems = [...fridgeItems, newItem];
+        updateLocalStorage(newFridgeItems);
       };
 
     const handleCancelAdd = () => {

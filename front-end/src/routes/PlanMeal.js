@@ -90,7 +90,7 @@ function PlanMeal() {
       try {
         if (localStorage.getItem('user')) {
           const user = JSON.parse(localStorage.getItem('user'));
-          if (!user.mealPlans){
+          if (!user.mealPlans || user.mealPlans.length === 0 ){
             user.mealPlans = defaultMealPlans;
           }
           localStorage.setItem('user', JSON.stringify(user));

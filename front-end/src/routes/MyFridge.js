@@ -6,6 +6,25 @@ function MyFridge() {
     const { user } = useAuthContext()
     const [profile, setProfile] = useState(null)
 
+    const fetchItems = async () => {
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user.fridgeItems) {
+              // If there are no fridge items, set to default item
+              user.fridgeItems = [example_item];
+            }
+            localStorage.setItem('user', JSON.stringify(user));
+            setFridgeItems(user.fridgeItems);
+          } else {
+            // If no user in local storage, create a new user with default fridge item
+            let newUser = {
+              fridgeItems: [example_item]
+            };
+            localStorage.setItem('user', JSON.stringify(newUser));
+            setFridgeItems(newUser.fridgeItems);
+          }
+    };
+
     useEffect(() => {
         const fetchUser = async (userId) => {
           try {
@@ -23,7 +42,7 @@ function MyFridge() {
         if (user){
           fetchUser(user.userId);
         }
-        
+        fetchItems();
     }, [user]);
 
     const example_item = {
@@ -63,25 +82,6 @@ function MyFridge() {
     // Function to stop the propagation of click events from inside the modal
     const handleModalClick = (e) => {
         e.stopPropagation();
-    };
-
-    const fetchItems = async () => {
-        if (localStorage.getItem('user')) {
-            const user = JSON.parse(localStorage.getItem('user'));
-            if (!user.fridgeItems) {
-              // If there are no fridge items, set to default item
-              user.fridgeItems = [example_item];
-            }
-            localStorage.setItem('user', JSON.stringify(user));
-            setFridgeItems(user.fridgeItems);
-          } else {
-            // If no user in local storage, create a new user with default fridge item
-            let newUser = {
-              fridgeItems: [example_item]
-            };
-            localStorage.setItem('user', JSON.stringify(newUser));
-            setFridgeItems(newUser.fridgeItems);
-          }
     };
 
     const updateLocalStorage = async (updatedFridgeItems) => {

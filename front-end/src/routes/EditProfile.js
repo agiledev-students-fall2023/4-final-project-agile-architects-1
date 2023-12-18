@@ -13,6 +13,7 @@ function EditProfile() {
   const [usrImg, setUsrImg] = useState('')
   const [profile, setProfile] = useState(null)
   const [profileLoading, setProfileLoading] = useState(true);
+  const [description, setDescription] = useState("A passionate foodie! I'm always looking for new recipes to try, and love to share my cooking experience with others.")
 
   const {edit, error, isLoading} = useEdit()
   const navigate = useNavigate()
@@ -115,6 +116,17 @@ function EditProfile() {
           onChange={(e)=>setZipcode(e.target.value)} 
           type="text" 
           placeholder={profile.zipcode}
+          id="text" 
+          name="text"
+        />
+      </div>
+      <div className="form-group">
+        <label>Description</label>
+        <input 
+          className="input-field-description" 
+          value={description} 
+          type="text" 
+          placeholder={description} 
           id="text" 
           name="text"
         />

@@ -31,7 +31,6 @@
 .recipe-card {
     border: 1px solid #e0e0e0;
     padding: 2rem;
-    margin-bottom: 20px;
     flex-grow: 1;
     max-height: 55%;
     position: relative; /* To position the footer inside it */
@@ -42,7 +41,7 @@
     border-radius: 1rem;
 
     text-align: left;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .recipe-card select {
@@ -99,7 +98,7 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: 1rem;
-    bottom: 2rem;
+    top: 0rem;
   }
   
   .page-dot {

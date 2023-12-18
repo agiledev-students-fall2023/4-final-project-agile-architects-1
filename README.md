@@ -4,7 +4,7 @@
 
 Are you tired of throwing away forgotten food that has spoiled? Did you buy too much food that you can't finish? Are you passionate about cooking but unsure about what to make with your available ingredients? WasteWise is the perfect solution addressing all these issues!
 
-[WasteWise](https://github.com/agiledev-students-fall2023/4-final-project-agile-architects-1/blob/master/front-end/wastewise.site) is a web app that allows users to record and keep track of the items in their fridge, along with their expiration dates. Given the ingredients, the app provides recipe recommendations. Users can register and log in to browse community posts about meals or ingredients they can purchase or share with friends. Once logged in, they can also submit inquiries and respond to these posts.
+[WasteWise](https://wastewise.site) is a web app that allows users to record and keep track of the items in their fridge, along with their expiration dates. Given the ingredients, the app provides recipe recommendations. Users can register and log in to browse community posts about meals or ingredients they can purchase or share with friends. Once logged in, they can also submit inquiries and respond to these posts.
 
 ## Product Vision Statement
 

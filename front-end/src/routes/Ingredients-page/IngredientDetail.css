@@ -1,12 +1,17 @@
-.ingredient-detail{
+.ingredient-detail-page{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
+
 
 .ingredient-detail-top-bar{
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .ingredient-detail-top-bar .back-button {
@@ -28,12 +33,16 @@
     align-self: flex-end;
     font-size: 1.5rem;
 }
+
 .ingredient-detail { 
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    max-width: 600px;
+    flex-direction: column;
+
 }
 
 .ingredient-detail .ingredient-detail-img {
@@ -124,14 +133,20 @@
   }
  
   .ingredient-detail-comment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     margin-top: 3rem;
+    width: 100%;
+    max-width: 480px;
   }
 
   .ingredient-detail-comment-container .sending-comment {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 70vw;
+    width: 100%;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
@@ -170,7 +185,7 @@
   .ingredient-detail-comment-container .user-comments {
     display: flex;
     margin-top: 2rem;
-    width: 70vw;
+    width: 100%;
     align-items: center;
     margin-left: auto;
     margin-right: auto;

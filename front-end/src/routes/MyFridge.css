@@ -17,8 +17,9 @@
 }
 
 .fridge-header {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 5vw, 1.5rem);
   margin-bottom: 1rem;
+  margin: 0 auto;
 }
 
 .background {
@@ -37,9 +38,21 @@
 .fridge-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  width: 100%;
+  width: 90%;
   max-width: 600px; /* Adjust max width as needed */
+  padding-bottom: 15vw;
 }
+
+@media (min-width: 600px) {
+  .fridge-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* @media (min-width: 900px) {
+  .fridge-grid {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+} */
 
 .button {
   background-color: rgb(245, 243, 238);
@@ -58,26 +71,42 @@
   margin-top: 5vw;
   height: 40vw;
   width: 40vw;
-  border-radius: 5vw;
+  border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   padding: 0.5vw;
   background-color: white;
   position: relative;
-  max-width: 300px;  
-  max-height: 300px;
+  max-width: 10rem;  
+  max-height: 10rem;
   padding-top: 1em; /* Add padding to ensure content is centered */
   padding-bottom: 1em; /* Add padding to ensure content is centered */
 }
 
 .fridge-item .item-name {
-  font-size: 1.7em;
-  margin-top: auto; /* Pushes the name to the center of the available space */
-  margin-bottom: auto; /* Same here, centering the name */
+    z-index: 2;
+    display: inline-block;
+  font-size: clamp(0.5rem,7vw,1.7rem);
+  margin: auto auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: center;
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
 }
 
 .fridge-item .expiration-date {
-  font-size: 1em;
-  margin-top: auto; /* Pushes the date info to the bottom */
+  z-index: 1;
+    font-size: 1em;
+  margin-bottom: clamp(0,0.1vw,0.7rem); /* Pushes the date info to the bottom */
+  text-align: center;
+  padding-top: 0;
+    display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1; 
+   -webkit-box-orient: vertical;
 }
 
 .view-item-details {
@@ -229,8 +258,11 @@
 }
 
 .item-info .date .date-input {
-  width: 75%;
+  width: 100%;
   color: grey;
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
 }
 
 .edit-delete .button {
@@ -255,12 +287,12 @@
   margin-left: auto;
   margin-right: auto;
   bottom: 13%;
-  width: 23vw;
+  width: clamp(4rem,23vw,8rem);
   text-align: center;
   cursor: pointer;
   background-color: #CC564D;
   border: 1px solid rgb(204, 86, 77);
-  border-radius: 8vw;
+  border-radius: 30px;
   font-weight: bold;
 }
 

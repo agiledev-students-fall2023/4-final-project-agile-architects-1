@@ -135,7 +135,9 @@
   .ingredient-detail-comment-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+    padding-left: 2rem;
+    padding-right: 1rem;
     justify-content: flex-start;
     margin-top: 3rem;
     width: 100%;
@@ -182,7 +184,7 @@
     border: 1px solid black;
   }
 
-  .ingredient-detail-comment-container .user-comments {
+  /* .ingredient-detail-comment-container .user-comments {
     display: flex;
     margin-top: 2rem;
     width: 100%;
@@ -191,7 +193,7 @@
     margin-right: auto;
     font-size: .7rem;
     font-weight: bold;
-  }
+  } */
 
 .back-to-browse-button {
     /* margin-top: 10vh; */
@@ -200,4 +202,17 @@
     color: #CC564D;
     text-decoration: underline;
     font-size: 1.1rem;
+}
+
+.comment-wrapper {
+    position: relative;
+    display: flex;
+    align-items: left;
+    border-bottom: 1px solid #eee; /* Separator */
+}
+
+.comment-user {
+    font-weight: bold;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }

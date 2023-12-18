@@ -45,6 +45,26 @@ router.get('/details/:id', async (req, res) => {
     } 
 });
 
+router.post('/details/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const post = await Post.findOne({id: id});
+        if (post == null) {
+            console.log("Post not found");
+            res.json({});
+        } else {
+            post.comments.push({"user": req.body.username, "comment": req.body.commentContent});
+            post.authorID = "656650e365f589b64282a5d8";
+            post.pickUpTime = "empty";
+            await post.save();
+            res.json(post);
+        }
+    } catch (error) {
+        console.error('Error finding data:', error);
+        res.json({});
+    } 
+});
+
 router.get('/pages/:pageNum', (req, res) => {
     const pageNum = req.params.pageNum;
     const postlist = getPostList(pageNum);

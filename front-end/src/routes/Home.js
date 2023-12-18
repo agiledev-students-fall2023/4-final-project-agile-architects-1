@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import './Home.css';
 function Home() {
+    const [fridgeItems, setFridgeItems] = useState(["Get something to cook!"]);
+    const [mealPlans, setMealPlans] = useState(["Get something to eat!"]);
     const navigate  = useNavigate();
 
     function toFridge () {
@@ -13,6 +15,35 @@ function Home() {
         navigate('/plan');
     }
 
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user.fridgeItems){
+                const userIngredients = [];
+                for (let i = 0; i < user.fridgeItems.length; i++) {
+                    userIngredients.push(user.fridgeItems[i].name);
+                }
+                setFridgeItems(userIngredients);
+            }
+            if (user.mealPlans){
+                const userMealPlans = [];
+                for (let i = 0; i < user.mealPlans.length; i++) {
+                    for (const [key, value] of Object.entries(user.mealPlans[i].meals)) {
+                        for (let j = 0; j < value.length; j++) {
+                            if (value[j] != "Tap edit button to enter a recipe"){
+                                userMealPlans.push(value[j]);
+                            }
+                        }
+                    }
+                }
+                if (userMealPlans.length === 0){
+                    userMealPlans.push("Tap edit button to enter a recipe!");
+                }
+                setMealPlans(userMealPlans);
+            }
+          }
+    }, []);
+
     return (
       <div>
         {/* <h1>This is the home page</h1> */}
@@ -20,20 +51,21 @@ function Home() {
             <div className='home-ingredients-storage' onClick={toFridge}>
                 <h2>Ingredients Storage</h2>
                 <ul>
-                    <li>Flour</li>
-                    <li>Sugar</li>
-                    <li>Eggs</li>
-                    <li>Milk</li>
+                {fridgeItems.map((fridgeItem, index) => (
+                    <li key={index}>
+                        {fridgeItem}
+                    </li>
+                ))}
                 </ul>
             </div>
             <div className='home-recipe-calendar' onClick={toPlan}>
                 <h2>Recipe Calendar</h2>
                 <ul>
-                    <li>Monday: Spaghetti Bolognese</li>
-                    <li>Tuesday: Chicken Curry</li>
-                    <li>Wednesday: Beef Stew</li>
-                    <li>Thursday: Fish and Chips</li>
-                    <li>Friday: Pizza</li>
+                {mealPlans.map((mealPlan, index) => (
+                    <li key={index}>
+                        {mealPlan}
+                    </li>
+                ))}
                 </ul>
             </div>
         </div>

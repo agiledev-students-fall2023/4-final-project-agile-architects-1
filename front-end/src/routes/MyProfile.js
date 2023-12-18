@@ -33,10 +33,12 @@ function MyProfile() {
   }, [user]);
 
   useEffect(() => {
-    const fetchPost = async (username) => {
+    // console.log("Profile:",profile);
+    const fetchPost = async (userID) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/posts?username=${username}`);
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/posts?userID=${userID}`);
             const result = await response.json()
+            console.log("Got posts:",result);
             setPosts(result)
         } catch (error) {
           console.error('Error fetching data: ', error);
@@ -44,7 +46,7 @@ function MyProfile() {
       };
   
     if (profile){
-        fetchPost(profile.username);
+        fetchPost(profile._id);
     }
     }, [profile]);  
 

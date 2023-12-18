@@ -1,0 +1,137 @@
+.profile-page {
+    margin-top: 2.5rem;
+    /* background-color: rgba(188, 188, 237, 0.307); */
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: auto;
+}
+@media (max-width: 350px) {
+    .profile-page {
+        width: 90%;
+    }
+}
+.profile-page .logout-button {
+    display: flex;
+    background-color: #f0e9d7;
+    color: black;
+    width: 20vw;
+    height: 8vw;
+    text-decoration-line: none;
+    text-align: center;
+    font-size: 4vw;
+    border-radius: .5em;
+    margin-left: auto;
+    margin-right: 2vw;
+    margin-top: .5rem;
+    border: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+.profile-image-container {
+    display: inline-block;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin-left: 6vw;
+    align-items: center;
+    vertical-align: top;
+    /* background-color: aqua; */
+    border-radius: 100px;
+    overflow: hidden;
+    border: #75736e88 solid 2px;
+}
+
+.profile-picture {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; 
+
+}
+.profile-container {
+    width: 80vw;
+    margin: auto;
+    /* background-color: rgba(127, 255, 212, 0.811); */
+}
+
+.profile-basic-info {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    /* background-color: rgba(255, 255, 0, 0.411); */
+
+}
+.user-info {
+    display: inline-block;
+    margin-left: 6vw;
+    height: 4.5rem;
+    align-items: center;
+    vertical-align: top;
+}
+
+.user-info .username-wrapper {
+    font-size: 1.5rem;
+}
+
+.user-info .user-id-wrapper {
+    font-size: .5rem;
+}
+
+.user-info .user-location-wrapper {
+    font-size: .7rem;
+}
+
+.profile-page .user-discription {
+    margin-top: .7rem;
+    font-size: .6rem
+}
+
+.unknown-buttons {
+    display: flex;
+    margin-top: 2rem;
+    height: 2rem;
+}
+
+.unknown-buttons .edit-profile {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.edit-profile-container {
+    background-color: #f0e9d7;
+}
+
+.post-container {
+    margin-left: 6vw;
+    max-width: 100%;
+    min-width: 100%;
+    /* position: absolute; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-self: flex-start;
+    /* background-color: rgba(0, 255, 255, 0.511); */
+}
+
+.post-container .post-list {
+    /* position: absolute; */
+    left: 0;
+    align-self: flex-start;
+    width: 100%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 90vw;
+    max-height: 20vh;
+    padding: 10px; */
+    margin-bottom: 100px;
+  }
+
+  button {
+    background-color: #f0e9d7;
+    border: none;
+    margin: 1px;
+  }

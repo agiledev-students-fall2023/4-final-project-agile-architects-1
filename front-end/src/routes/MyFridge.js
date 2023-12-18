@@ -96,6 +96,9 @@ function MyFridge() {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({updatedFridgeItems})
             });
+            const data = await response.json();
+            user.fridgeItems = data.items;
+            localStorage.setItem('user', JSON.stringify(user));
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

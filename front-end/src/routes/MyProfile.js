@@ -10,6 +10,8 @@ function MyProfile() {
   const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState(null)
 
+  const [description, setDescription] = useState("A passionate foodie! I'm always looking for new recipes to try, and love to share my cooking experience with others.")
+
   useEffect(() => {
     const fetchUser = async (userId) => {
       try {
@@ -93,7 +95,7 @@ function MyProfile() {
             </div>
         </div>
         <div className="user-discription">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          {description}
         </div>
         <div className="unknown-buttons">
           {/*}

@@ -131,15 +131,26 @@ function IngredientDetail() {
                             <div className="ingredient-detail-number-wrapper">
                                 amount: {myPost.amount}
                             </div>
+                            <div className="ingredient-detail-label">
+                                Pick up at:
+                            </div>
                             <div className='ingredient-detail-location'>
                                 <LocationBar location={myPost.location} />
                             </div>
-                            <div className="expiration-info">
+                            {/* <div className="expiration-info">
                                 <div className='time-icon'>
                                     <BsClockHistory/>
                                 </div>
                                 <div className="expiration-wrapper">
                                     {getFormattedDate(myPost.expiration)}
+                                </div>
+                            </div> */}
+                            <div className="pickuptime-info">
+                                <div className='time-icon'>
+                                    <BsClockHistory/>
+                                </div>
+                                <div className="pickuptime-wrapper">
+                                    {myPost.pickUpTime}
                                 </div>
                             </div>
                         </div>

@@ -81,11 +81,16 @@
 }
 
 .ingredient-detail-info .ingredient-detail-number-wrapper {
-    font-size: .5rem;
+    font-size: .8rem;
 }
 
-.ingredient-detail-location {
+.ingredient-detail-info .ingredient-detail-label {
     margin-top: 0.9rem;
+    font-size: .8rem;
+}
+
+.ingredient-detail-info .ingredient-detail-location {
+    font-size: .8rem;
 }
 
 .expiration-info {
@@ -103,6 +108,23 @@
 .expiration-info .expiration-wrapper {
     margin-left: .2rem;
     font-size: .7rem;
+}
+
+.pickuptime-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pickuptime-info .time-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1rem;
+    font-size: .9rem;
+}
+.pickuptime-info .pickuptime-wrapper {
+    margin-left: .2rem;
+    font-size: .8rem;
 }
 
 .selling-info {

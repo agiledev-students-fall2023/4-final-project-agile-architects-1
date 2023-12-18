@@ -28,7 +28,7 @@ function RecommendedRecipes() {
               if (user.fridgeItems){
                 const userIngredients = [];
                 for (let i = 0; i < user.fridgeItems.length; i++) {
-                  userIngredients.push(user.ingredients[i].name);
+                  userIngredients.push(user.fridgeItems[i].name);
                 }
                 requestBody = {
                   ingredients: userIngredients

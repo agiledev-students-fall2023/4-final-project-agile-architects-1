@@ -23,6 +23,9 @@ function Home() {
                 for (let i = 0; i < user.fridgeItems.length; i++) {
                     userIngredients.push(user.fridgeItems[i].name);
                 }
+                if (userIngredients.length === 0){
+                    userIngredients.push("Get something to cook!");
+                }
                 setFridgeItems(userIngredients);
             }
             if (user.mealPlans){
@@ -37,7 +40,7 @@ function Home() {
                     }
                 }
                 if (userMealPlans.length === 0){
-                    userMealPlans.push("Tap edit button to enter a recipe!");
+                    userMealPlans.push("Get something to eat!");
                 }
                 setMealPlans(userMealPlans);
             }

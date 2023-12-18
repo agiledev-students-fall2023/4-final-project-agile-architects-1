@@ -3,6 +3,11 @@ import { FaLocationDot } from 'react-icons/fa6';
 import './TopSearchBar.css';
 
 const TopSearchBar = ({location, searchStr}) => {
+
+    const onFocus = (event) => {
+        event.target.setAttribute('autocomplete', 'AD33S893EA');
+        console.log(event.target.autocomplete);
+      }
     return (
         <div className="top-search-bar">
             <div className="top-bar-location">
@@ -12,9 +17,9 @@ const TopSearchBar = ({location, searchStr}) => {
                 <label htmlFor="location">{location}</label>
             </div>
             <div className="top-bar-search">
-                <label htmlFor="search"></label>
+                <label htmlFor="search"></label> 
                 
-                <input className="top-bar-search-box" type="text" id="search" name="search" placeholder="Search for ingredients" />
+                <input className="top-bar-search-box" id="search" name="search" placeholder="Search for ingredients" autoComplete="new-password" onFocus={onFocus} />
             </div>
             <div className="blank"></div>
         </div>

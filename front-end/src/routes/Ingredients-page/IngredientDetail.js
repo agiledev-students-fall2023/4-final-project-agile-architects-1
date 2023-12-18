@@ -33,16 +33,28 @@ function IngredientDetail() {
     console.log("Got from state:",post);
 
     const [myPost, setMyPost] = useState(post);
-    const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([
+        {
+            user: "nyuStudent1",
+            profilePic: "/static/images/example_usrimg.png",
+            comment: "This looks awesome!", 
+            time: "1 min ago"
+        },
+    ]);
     const [postNotFound, setPostNotFound] = useState(false); // New state for post not found
+    const [username, setUsername] = useState("User"); // New state for post not found
+    const [commentContent, setCommentContent] = useState(""); // New state for post not found
 
     const fetchPostDetails = async () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse/details/${myPost.id}`);
             const data = await response.json();
-            console.log("GOt from fetch:",data);
+            console.log("Got from fetch:",data);
             if (data.hasOwnProperty('id')) {
                 setMyPost(data);
+                if (data.comments) {
+                    setComments(data.comments);
+                }
                 return true;
             } else {
                 console.log("data is empty")
@@ -73,22 +85,39 @@ function IngredientDetail() {
                 setPostNotFound(true);
             }
         });
+        if (localStorage.getItem('username')) {
+            setUsername(localStorage.getItem('username'));
+        }
     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(comment);
+    const handleSubmit = async() => {
+        console.log("Comment Content:",commentContent)
+        if (!isEmpty(commentContent)) {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse/details/${myPost.id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, commentContent })
+                });
+                const data = await response.json();
+                if (data.hasOwnProperty('id')) {
+                    setMyPost(data);
+                    if (data.comments) {
+                        setComments(data.comments);
+                    }
+                    return true;
+                } else {
+                    console.log("data is empty")
+                    return false;
+                }
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
     }
-
-
-    const comments = [
-        {
-            user: "nyuStudent1",
-            profilePic: "/static/images/example_usrimg.png",
-            comment: "This looks awesome!", 
-            time: "1 min ago"
-        },
-    ]
 
     if (postNotFound) {
         return (
@@ -173,15 +202,21 @@ function IngredientDetail() {
             <section className="ingredient-detail-comment-container">
                 <div className="sending-comment">
                     <img className="detail-comment-user-img" alt="User Profile" src="/profile_pic.png"/>
-                    <form className="comment-form" onSubmit={handleSubmit}>
-                        <input className="compose-comment" value={comment} onChange={(e)=>setComment(e.target.value)} type="comment" placeholder="comment" id="comment" name="comment"/>
+                    <form className="comment-form" >
+                        <input className="compose-comment" onChange={(e)=>setCommentContent(e.target.value)} type="comment" placeholder="comment" id="comment" name="comment"/>
                     </form>
-                    <button className="send-button">
+                    <button className="send-button" onClick={handleSubmit}>
                         Send
                     </button>
                 </div>
                 <div className="user-comments">
-                    <div className="title-wrapper">Comments</div>
+                    {comments.map((comment, index) => (
+                            <p >
+                                <span className="comment-user"> {comment.user} </span>
+                                <br/>
+                                <span> {comment.comment} </span>
+                            </p>
+                    ))}
                 </div>
             </section>
         </section>

@@ -54,6 +54,10 @@ const postSchema = new Schema({
   },
   hashtags: [{
     type: String
+  },],
+  comments: [{
+    user: String,
+    comment: String,
   }]
 }, { collection: 'Post' });
 

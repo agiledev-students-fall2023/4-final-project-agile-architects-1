@@ -1,8 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import "./MyFridge.css";
-
+import { useAuthContext } from './hooks/useAuthContext';
 
 function MyFridge() {
+    const { user } = useAuthContext()
+    const [profile, setProfile] = useState(null)
+
+    useEffect(() => {
+        const fetchUser = async (userId) => {
+          try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/${userId}`)
+            const json = await response.json()
+            if (response.ok){
+                // console.log(json)
+              setProfile(json)
+            }
+          } catch(error){
+            console.error('Error fetching profile: ', error)
+          }
+        };
+    
+        if (user){
+          fetchUser(user.userId);
+        }
+        
+    }, [user]);
+
     const example_item = {
         name: 'Example Item',
         quantity: 3,
@@ -30,6 +53,16 @@ function MyFridge() {
         setEditedExpiration(item.expiration);
         // setIsEditingItem(false);
     }
+
+    // Function to close the item details view
+    const handleCloseDetails = () => {
+        setClickedItem(null); // Assuming this will close the details view
+    };
+
+    // Function to stop the propagation of click events from inside the modal
+    const handleModalClick = (e) => {
+        e.stopPropagation();
+    };
 
     const fetchItems = async () => {
         if (localStorage.getItem('user')) {
@@ -132,23 +165,37 @@ function MyFridge() {
         setNewItem({ name: '', quantity: '', purchasedDate: '', expiration: '' });
     };
 
+    const calculateDaysUntilExpiration = (expirationDate) => {
+        const today = new Date();
+        const expDate = new Date(expirationDate);
+        const timeDiff = expDate - today;
+        return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      };
+
     return (
-        <div>
-            
-            <h1 className="fridge-header">My Fridge</h1>
-            <div className="background">
-            </div>
+        <section className='fridge-page'>
+            {user && profile && (
+                <h1 className="username-wrapper">{profile.username}'s Fridge</h1>
+            )}
+            {!user && (
+                <h1 className="username-wrapper">Default Fridge</h1>
+            )}
+            {/*}<div className="background"></div>{*/}
             <div className="fridge-grid">
-                {fridgeItems.map((item, index) => (
-                    <div
-                        key={index}
-                        className="fridge-item"
-                        onClick={() => handleItemClick(item)}
-                    >
-                        <p>{item.name}</p>
+                {fridgeItems.map((item, index) => {
+                    const daysUntilExpiration = calculateDaysUntilExpiration(item.expiration);
+                    const isExpiringSoon = daysUntilExpiration < 3;
+
+                    return (
+                    <div key={index} className="fridge-item" onClick={() => handleItemClick(item)}>
+                        <p className='item-name'>{item.name}</p>
+                        <p className='expiration-date' style={{ color: isExpiringSoon ? '#CC564D' : 'inherit' }}>
+                        Expires in: {daysUntilExpiration} days
+                        </p>
                     </div>
-                ))}
-            </div>
+                    );
+                })}
+                </div>
             {clickedItem && isEditingItem ? (
                 <div className="edit-item-form">
                     <input
@@ -178,48 +225,89 @@ function MyFridge() {
                     <button onClick={handleSaveEdit}>Save</button>
                 </div>
             ) : null}
-            {clickedItem ? (
-                <div className="view-item-details">
-                    <p>Name: {clickedItem.name}</p>
-                    <p>Quantity: {clickedItem.quantity}</p>
-                    <p>Purchased Date: {clickedItem.purchasedDate}</p>
-                    <p>Expiration Date: {clickedItem.expiration}</p>
-                    <button className="button" onClick={handleEditItem}>Edit</button>
-                    <button className="button" onClick={handleDeleteItem}>Delete</button>
-                </div>
-            ) : null}
-            <button className="add-button" onClick={handleAddItem}>Add Item</button>
-            {isAddingItem && (
-                <div className="add-item-modal">
-                    <input
-                        type="text"
-                        placeholder="Name"
-                        value={newItem.name}
-                        onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Quantity"
-                        value={newItem.quantity}
-                        onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Purchased Date"
-                        value={newItem.purchasedDate}
-                        onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Expiration Date"
-                        value={newItem.expiration}
-                        onChange={(e) => setNewItem({ ...newItem, expiration: e.target.value })}
-                    />
-                    <button onClick={handleSaveNewItem}>Save</button>
-                    <button onClick={handleCancelAdd}>Cancel</button>
+            {clickedItem && (
+                <div className="backdrop" onClick={handleCloseDetails}>
+                    <div className="view-item-details" onClick={handleModalClick}>
+                        <p className='item-info'>Name: {clickedItem.name}</p>
+                        <p className='item-info'>Quantity: {clickedItem.quantity}</p>
+                        <p className='item-info'>Purchase Date: {clickedItem.purchasedDate}</p>
+                        <p className='item-info'>Expiration Date: {clickedItem.expiration}</p>
+                        <section className='edit-delete'>
+                        {/*}
+                        <button className="button" onClick={handleEditItem}>Edit</button>
+                        {*/}
+                            <button className="button" onClick={handleDeleteItem}>Delete</button>
+                        </section>
+                    </div>
                 </div>
             )}
-        </div>
+            <button className="add-button" onClick={handleAddItem}>+</button>
+            {isAddingItem && (
+                <div className="add-item-modal">
+                    <div className='item-info'>
+                        <section className='name-quantity'>
+                            <label className='text-wrapper'>Name: </label>
+                            <input
+                                className='input-box'
+                                type="text"
+                                placeholder="Name"
+                                value={newItem.name}
+                                onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                            />
+                        </section>
+                        
+                        <section className='name-quantity'>
+                            <label className='text-wrapper'>Quantity: </label>
+                            <input
+                                className='input-box'
+                                type="text"
+                                placeholder="Quantity"
+                                value={newItem.quantity}
+                                onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
+                            />
+                        </section>
+                    
+                        {/*}
+                        <input
+                            type="text"
+                            placeholder="Purchased Date"
+                            value={newItem.purchasedDate}
+                            onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
+                        />
+
+                        <input
+                            type="text"
+                            placeholder="Expiration Date"
+                            value={newItem.expiration}
+                            onChange={(e) => setNewItem({ ...newItem, expiration: e.target.value })}
+                        />
+                        {*/}
+                        <section className='date'>
+                            <label className='text-wrapper'> Purchase Date:</label>
+                            <input 
+                                className='date-input'
+                                type="date" 
+                                value={newItem.purchasedDate}
+                                onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
+                            />
+                        </section>
+                        <section className='date'>
+                            <label className='text-wrapper'> Expiration Date:</label>
+                            <input 
+                                className='date-input'
+                                type="date" 
+                                value={newItem.expiration}
+                                onChange={(e) => setNewItem({ ...newItem, expiration: e.target.value })}
+                            />
+                        </section>
+                    </div>
+                    <div className='save-cancel'>
+                        <button className='button' onClick={handleSaveNewItem}>Save</button>
+                        <button className='button' onClick={handleCancelAdd}>Cancel</button>
+                    </div>
+                </div>
+            )}
+        </section>
     );
 }
 

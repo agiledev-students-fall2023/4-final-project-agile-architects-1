@@ -1,5 +1,24 @@
-.my-fridge-page {
-  padding: 20px;
+.fridge-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.fridge-page .username-wrapper {
+  margin:0;
+  display: flex;
+  align-items: flex-start;
+  font-size: 2em;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 1.2em;
+  text-indent: .5em;
+}
+
+.fridge-header {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .background {
@@ -15,34 +34,11 @@
   border-radius: 10px;
 }
 
-.header {
-  color: black !important;
-  margin-left: 8%;
-  margin-top: 13%;
-  z-index: 0;
-  font-size: 20px;
-  line-height: 1.5;
-}
-
 .fridge-grid {
-  position: relative;
-  z-index: 0;
-  top: 5%;
-  left: 8%;
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.view-item-details {
-  margin-left: 8%;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  line-height: 0.5;
-  color: black;
-  z-index: 1; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  max-width: 600px; /* Adjust max width as needed */
 }
 
 .button {
@@ -53,18 +49,54 @@
 }
 
 .fridge-item {
-  border: 2px solid rgb(204, 86, 77);
-  padding: 10px;
-  height: 40px;
-  width: calc(33.33% - 22px);
-  box-sizing: border-box;
-  font-size: 12px;
-  background-color: rgb(245, 243, 238);
-  color: #0a0909;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border-radius: 5px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vw;
+  height: 40vw;
+  width: 40vw;
+  border-radius: 5vw;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 0.5vw;
+  background-color: white;
+  position: relative;
+  max-width: 300px;  
+  max-height: 300px;
+  padding-top: 1em; /* Add padding to ensure content is centered */
+  padding-bottom: 1em; /* Add padding to ensure content is centered */
+}
+
+.fridge-item .item-name {
+  font-size: 1.7em;
+  margin-top: auto; /* Pushes the name to the center of the available space */
+  margin-bottom: auto; /* Same here, centering the name */
+}
+
+.fridge-item .expiration-date {
+  font-size: 1em;
+  margin-top: auto; /* Pushes the date info to the bottom */
+}
+
+.view-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+  z-index: 1000;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
 }
 
 .add-item-form {
@@ -76,6 +108,9 @@
 }
 
 .add-item-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -84,24 +119,94 @@
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
   z-index: 1000;
   width: 90%;
   max-width: 300px;
   text-align: center;
 }
 
-.add-button {
-  padding: 10px 20px;
+.backdrop {
   position: fixed;
-  margin-left: 40%;
-  bottom: 13%;
-  text-align: center;
-  cursor: pointer;
-  background-color: rgb(245, 243, 238);
-  border: 1px solid rgb(204, 86, 77);
-  border-radius: 5px;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it's above other content */
 }
 
-.edit-item-form {
-  margin-left: 8%;
+.item-info {
+  display: flex;
+  flex-direction: column; /* This will stack .name-quantity sections vertically */
+  width: 100%; /* Full width of the modal */
+  margin-bottom: 1em; /* Add some space between each .item-info */
 }
+
+.item-info .name-quantity {
+  display: flex; /* Allows you to align label and input text side by side */
+  align-items: center; /* Aligns the label and input box vertically */
+  width: auto; /* Or you can set a specific width */
+}
+
+.item-info .text-wrapper {
+  margin-right: 0.5em; /* Provides some space between the label and the input */
+  color: gray;
+  margin-top: 0.5em;
+}
+
+.item-info .input-box {
+  width: 40%; /* Adjust width as needed */
+  margin-left: auto; /* This will push the input box to the right */
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
+}
+
+.item-info .date .text-wrapper {
+  display: block;
+  font-size: 1em;
+  width: 100%;
+  text-align: left;
+}
+
+.item-info .date .date-input {
+  width: 75%;
+  color: grey;
+}
+
+.edit-delete .button {
+  background-color: #CC564D;
+  color:#F5F3EE;
+}
+
+.add-item-modal .save-cancel {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.save-cancel .button {
+  background-color: #CC564D;
+  color: #F5F3EE;
+}
+.add-button {
+  font-size: 1.5em;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 13%;
+  width: 23vw;
+  text-align: center;
+  cursor: pointer;
+  background-color: #CC564D;
+  border: 1px solid rgb(204, 86, 77);
+  border-radius: 8vw;
+  font-weight: bold;
+}
+
+

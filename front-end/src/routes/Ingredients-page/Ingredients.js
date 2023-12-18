@@ -6,12 +6,14 @@ import { IoMdAdd } from "react-icons/io";
 
 import './Ingredients.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function BrowseIngredients() {
+    const { user } = useAuthContext();
     const navigate = useNavigate();
 
     const [posts, setPosts] = useState([]);
-
+    const [profile, setProfile] = useState(null)
     const [showScrollButton, setShowScrollButton] = useState(true);
 
     useEffect(() => {
@@ -22,6 +24,26 @@ function BrowseIngredients() {
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const fetchUser = async (userId) => {
+          try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/${userId}`)
+            const json = await response.json()
+            if (response.ok){
+                // console.log(json)
+              setProfile(json)
+            }
+          } catch(error){
+            console.error('Error fetching profile: ', error)
+          }
+        };
+    
+        if (user){
+          fetchUser(user.userId);
+        }
+        
+      }, [user]);
 
     const fetchData = async () => {
         try {
@@ -54,7 +76,12 @@ function BrowseIngredients() {
         <div>
             <div className='ingredients-page-container'>  
                 <div className='ingredients-top-bar-container'>
+                    {user && profile && (
+                    <TopSearchBar location={profile.zipcode} />
+                    )}
+                    {!user && (
                     <TopSearchBar location="10003" />
+                    )}
                 </div>
                 <div className='post-flow-container'>
                     <PostFLow posts={posts} />

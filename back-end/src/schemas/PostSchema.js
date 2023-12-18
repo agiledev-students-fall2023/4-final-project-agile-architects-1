@@ -41,7 +41,8 @@ const postSchema = new Schema({
   },
   pickUpTime: {
     type: String,
-    required: true
+    required: true,
+    default: "Anytime",
   },
   expiration: {
     type: Date,

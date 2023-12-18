@@ -1,6 +1,6 @@
 import express from 'express';
 import { getUser } from '../controllers/userController.js';
-
+import { ObjectId } from 'mongodb';
 import Post from '../schemas/PostSchema.js';
 
 const router = express.Router();
@@ -16,14 +16,15 @@ export const getPostListbyUser = async (userId) => {
     //     }
     // })
     // postlist = postlist.filter((post) => post.author === userId);
-    const postlist = await Post.find({author: userId});
+    const postlist = await Post.find({authorID: ObjectId(userId)});
+    console.log(postlist);
     return postlist;
 }
 
 // GET all posts
 router.get('/posts', async (req, res) => {
     // console.log('body', JSON.stringify(req.query));
-    const datalist = await getPostListbyUser(req.query.username);
+    const datalist = await getPostListbyUser(req.query.userID);
     // console.log(datalist);
     res.json(datalist);
 });

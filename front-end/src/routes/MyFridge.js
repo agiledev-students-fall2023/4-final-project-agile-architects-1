@@ -207,7 +207,7 @@ const handleSaveEdit = async () => {
                 <h1 className="username-wrapper">{profile.username}'s Fridge</h1>
             )}
             {!user && (
-                <h1 className="username-wrapper">Default Fridge</h1>
+                <h1 className="username-wrapper">My Fridge</h1>
             )}
             {/*}<div className="background"></div>{*/}
             <div className="fridge-grid">

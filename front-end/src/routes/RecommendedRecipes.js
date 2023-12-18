@@ -11,7 +11,9 @@ function RecommendedRecipes() {
         id: 1,
         title: "Recipe Title",
         description: "Fetching...",
-        //... other recipe details
+        ingredients: ["Fetching..."],
+        steps: ["Fetching..."],
+        time: "Fetching...",
     },]);
     const [selectedDay, setSelectedDay] = useState('Any');
     const [selectedMeal, setSelectedMeal] = useState('Any');
@@ -23,9 +25,9 @@ function RecommendedRecipes() {
             let requestBody = {};
             if (localStorage.getItem('user')) {
               const user = JSON.parse(localStorage.getItem('user'));
-              if (user.ingredients){
+              if (user.fridgeItems){
                 const userIngredients = [];
-                for (let i = 0; i < user.ingredients.length; i++) {
+                for (let i = 0; i < user.fridgeItems.length; i++) {
                   userIngredients.push(user.ingredients[i].name);
                 }
                 requestBody = {
@@ -85,13 +87,13 @@ function RecommendedRecipes() {
       const handleSave = async () => {
         if (localStorage.getItem('user')) {
           const user = JSON.parse(localStorage.getItem('user'));
-          if (user.mealPlans == undefined){
+          if (user.mealPlans === undefined){
             user.mealPlans = [];
           }
           for (let i = 0; i < user.mealPlans.length; i++) {
-            if (user.mealPlans[i].date == selectedDay){
+            if (user.mealPlans[i].date === selectedDay){
               console.log("adding to existing day")
-              if (user.mealPlans[i]["meals"][selectedMeal] == undefined){
+              if (user.mealPlans[i]["meals"][selectedMeal] === undefined){
                 user.mealPlans[i]["meals"][selectedMeal] = [];
               }
               user.mealPlans[i]["meals"][selectedMeal].push(recipes[currentPage].title);
@@ -114,7 +116,6 @@ function RecommendedRecipes() {
           return;
         }
         else{
-          console.log("adding new user")
           const user = {
             mealPlans: []
           };
@@ -155,17 +156,19 @@ function RecommendedRecipes() {
 
             <div className="recipe-card" {...handlers}>
                 <button className="save-button" onClick={handleSave}>★</button>
-                <h2 className="recipe-title">{recipes[currentPage].title}</h2>
-                <p className="recipe-description">{recipes[currentPage].description}</p>  
-                <p className="recipe-description">Ingredients:</p>
-                {recipes[currentPage].ingredients.map((ingredient) => (
-                  <li className="recipe-description">{ingredient}</li>
-                ))}
-                <p className="recipe-description">Steps:</p>
-                {recipes[currentPage].steps.map((step) => (
-                  <li className="recipe-description">{step}</li>
-                ))}
-                <p className="recipe-description">Time: {recipes[currentPage].time}</p>
+                {/* <div classNema="recipe-container"> */}
+                  <h2 className="recipe-title">{recipes[currentPage].title}</h2>
+                  <p className="recipe-description">{recipes[currentPage].description}</p>  
+                  <p className="recipe-description">Ingredients:</p>
+                  {recipes[currentPage].ingredients.map((ingredient) => (
+                    <li className="recipe-description">{ingredient}</li>
+                  ))}
+                  <p className="recipe-description">Steps:</p>
+                  {recipes[currentPage].steps.map((step) => (
+                    <li className="recipe-description">{step}</li>
+                  ))}
+                  <p className="recipe-description">Time: {recipes[currentPage].time}</p>
+                {/* </div> */}
                 
                 <div className="page-indicators">
                   {recipes.map((_, index) => (

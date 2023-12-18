@@ -128,6 +128,61 @@
   text-align: center;
 }
 
+.view-item-details .name-quantity {
+  display: block; /* Allows you to align label and input text side by side */
+  align-items: center; /* Aligns the label and input box vertically */
+  width: auto; /* Or you can set a specific width */
+}
+
+.view-item-details .name-quantity .text-wrapper{
+  margin-right: 0.5em; /* Provides some space between the label and the input */
+}
+
+.view-item-details .name-quantity .input-box {
+  width: 40%; /* Adjust width as needed */
+  margin-left: auto; /* This will push the input box to the right */
+  margin-right: 0;
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
+}
+
+.view-item-details .date .text-wrapper {
+  display: block;
+  font-size: 1em;
+  width: 100%;
+  text-align: left;
+}
+
+.view-item-details .date .date-input {
+  width: 75%;
+  color: grey;
+}
+
+.view-item-details .button {
+  background-color: #CC564D;
+  color: white;
+  border: none; /* Optional: Remove border if present */
+  padding: 0.5em 1em; /* Optional: Adjust padding to your preference */
+  margin: 0.2em; /* Optional: Adjust margin to your preference */
+  border-radius: 0.3em; /* Optional: Adjust border radius to your preference */
+}
+
+.view-item-details .save-edit-delete-button {
+  display: inline-block;
+  background-color: #CC564D;
+}
+
+.view-item-details .save-edit-delete-button .edit-button {
+  background-color: #CC564D;
+  color: white;
+}
+
+.view-item-details .save-edit-delete-button .delete-button {
+  background-color: #CC564D;
+  color: white;
+}
+
 .add-item-form {
   margin-top: 10px;
   display: flex;

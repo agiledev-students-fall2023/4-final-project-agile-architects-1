@@ -23,6 +23,7 @@ const mealPlansSchema = new Schema({
   });
 
 const fridgeItemSchema = new Schema({
+    _id: { type: Schema.Types.ObjectId, required: true, default: () => new mongoose.Types.ObjectId() },
     name: String,
     quantity: Number,
     purchasedDate: Date,

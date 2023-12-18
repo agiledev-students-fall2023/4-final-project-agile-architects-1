@@ -78,7 +78,7 @@ function PlanMeal() {
     user.mealPlans = updatedMealPlans;
     localStorage.setItem('user', JSON.stringify(user));
     const currentUserId = user.userId;
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/user/editUserMeals/${currentUserId}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/user/editUserMeals/${currentUserId}`, {
         method: "PUT",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({updatedMealPlans})

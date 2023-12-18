@@ -4,7 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 
 function MyFridge() {
     const { user } = useAuthContext()
-    const [profile, setProfile] = useState(null)
+    const [profile, setProfile] = useState({username: "User"})
 
     useEffect(() => {
         const fetchUser = async (userId) => {
@@ -56,7 +56,12 @@ function MyFridge() {
 
     // Function to close the item details view
     const handleCloseDetails = () => {
-        setClickedItem(null); // Assuming this will close the details view
+        setClickedItem(null); 
+    };
+
+    // Function to close the add item popup view
+    const handleCloseAdd = () => {
+        setIsAddingItem(false);
     };
 
     // Function to stop the propagation of click events from inside the modal
@@ -174,12 +179,14 @@ function MyFridge() {
 
     return (
         <section className='fridge-page'>
-            {user && profile && (
-                <h1 className="username-wrapper">{profile.username}'s Fridge</h1>
-            )}
-            {!user && (
-                <h1 className="username-wrapper">Default Fridge</h1>
-            )}
+            <div className='fridge-header'>
+                {user && profile && (
+                    <h1 className="username-wrapper">{profile.username}'s Fridge</h1>
+                )}
+                {!user && (
+                    <h1 className="username-wrapper">Default Fridge</h1>
+                )}
+            </div>
             {/*}<div className="background"></div>{*/}
             <div className="fridge-grid">
                 {fridgeItems.map((item, index) => {
@@ -237,73 +244,76 @@ function MyFridge() {
                         <button className="button" onClick={handleEditItem}>Edit</button>
                         {*/}
                             <button className="button" onClick={handleDeleteItem}>Delete</button>
+                            <button className="button" onClick={handleCloseDetails}>Done</button>
                         </section>
                     </div>
                 </div>
             )}
             <button className="add-button" onClick={handleAddItem}>+</button>
             {isAddingItem && (
-                <div className="add-item-modal">
-                    <div className='item-info'>
-                        <section className='name-quantity'>
-                            <label className='text-wrapper'>Name: </label>
-                            <input
-                                className='input-box'
-                                type="text"
-                                placeholder="Name"
-                                value={newItem.name}
-                                onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-                            />
-                        </section>
+                <div className="backdrop" onClick={handleCloseAdd}>
+                    <div className="add-item-modal">
+                        <div className='item-info'>
+                            <section className='name-quantity'>
+                                <label className='text-wrapper'>Name: </label>
+                                <input
+                                    className='input-box'
+                                    type="text"
+                                    placeholder="Name"
+                                    value={newItem.name}
+                                    onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+                                />
+                            </section>
+                            
+                            <section className='name-quantity'>
+                                <label className='text-wrapper'>Quantity: </label>
+                                <input
+                                    className='input-box'
+                                    type="text"
+                                    placeholder="Quantity"
+                                    value={newItem.quantity}
+                                    onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
+                                />
+                            </section>
                         
-                        <section className='name-quantity'>
-                            <label className='text-wrapper'>Quantity: </label>
+                            {/*}
                             <input
-                                className='input-box'
                                 type="text"
-                                placeholder="Quantity"
-                                value={newItem.quantity}
-                                onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
-                            />
-                        </section>
-                    
-                        {/*}
-                        <input
-                            type="text"
-                            placeholder="Purchased Date"
-                            value={newItem.purchasedDate}
-                            onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
-                        />
-
-                        <input
-                            type="text"
-                            placeholder="Expiration Date"
-                            value={newItem.expiration}
-                            onChange={(e) => setNewItem({ ...newItem, expiration: e.target.value })}
-                        />
-                        {*/}
-                        <section className='date'>
-                            <label className='text-wrapper'> Purchase Date:</label>
-                            <input 
-                                className='date-input'
-                                type="date" 
+                                placeholder="Purchased Date"
                                 value={newItem.purchasedDate}
                                 onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
                             />
-                        </section>
-                        <section className='date'>
-                            <label className='text-wrapper'> Expiration Date:</label>
-                            <input 
-                                className='date-input'
-                                type="date" 
+
+                            <input
+                                type="text"
+                                placeholder="Expiration Date"
                                 value={newItem.expiration}
                                 onChange={(e) => setNewItem({ ...newItem, expiration: e.target.value })}
                             />
-                        </section>
-                    </div>
-                    <div className='save-cancel'>
-                        <button className='button' onClick={handleSaveNewItem}>Save</button>
-                        <button className='button' onClick={handleCancelAdd}>Cancel</button>
+                            {*/}
+                            <section className='date'>
+                                <label className='text-wrapper'> Purchase Date:</label>
+                                <input 
+                                    className='date-input'
+                                    type="date" 
+                                    value={newItem.purchasedDate}
+                                    onChange={(e) => setNewItem({ ...newItem, purchasedDate: e.target.value })}
+                                />
+                            </section>
+                            <section className='date'>
+                                <label className='text-wrapper'> Expiration Date:</label>
+                                <input 
+                                    className='date-input'
+                                    type="date" 
+                                    value={newItem.expiration}
+                                    onChange={(e) => setNewItem({ ...newItem, expiration: e.target.value })}
+                                />
+                            </section>
+                        </div>
+                        <div className='save-cancel'>
+                            <button className='button' onClick={handleSaveNewItem}>Save</button>
+                            <button className='button' onClick={handleCancelAdd}>Cancel</button>
+                        </div>
                     </div>
                 </div>
             )}

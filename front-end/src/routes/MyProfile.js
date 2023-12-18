@@ -96,8 +96,10 @@ function MyProfile() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         </div>
         <div className="unknown-buttons">
+          {/*}
           <button className='friends'> Friends</button>
           <button className='likes'> Likes</button>
+                    {*/}
           <button className='posts'> Posts</button>
           {user && (
             <button onClick={handleEditProfile} className='edit-profile'> Edit Profile</button>

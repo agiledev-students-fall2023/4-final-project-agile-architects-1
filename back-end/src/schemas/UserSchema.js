@@ -25,8 +25,8 @@ const mealPlansSchema = new Schema({
 const fridgeItemSchema = new Schema({
     name: String,
     quantity: Number,
-    purchasedDate: String,
-    expiration: String,
+    purchasedDate: Date,
+    expiration: Date,
 });
 
 const userSchema = new Schema({
@@ -54,7 +54,7 @@ const userSchema = new Schema({
     },
     mealPlans: [mealPlansSchema],
     fridgeItems: [fridgeItemSchema],
-}, {timestamps: true, collection: 'UserTest'});
+}, {timestamps: true, collection: 'User'});
 
 // static register method
 userSchema.statics.register = async function(email, password) {

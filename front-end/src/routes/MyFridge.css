@@ -203,8 +203,11 @@
 }
 
 .item-info .date .date-input {
-  width: 75%;
+  width: 100%;
   color: grey;
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
 }
 
 .edit-delete .button {

@@ -252,7 +252,7 @@ function MyFridge() {
             <button className="add-button" onClick={handleAddItem}>+</button>
             {isAddingItem && (
                 <div className="backdrop" onClick={handleCloseAdd}>
-                    <div className="add-item-modal">
+                    <div className="add-item-modal" onClick={handleModalClick}>
                         <div className='item-info'>
                             <section className='name-quantity'>
                                 <label className='text-wrapper'>Name: </label>

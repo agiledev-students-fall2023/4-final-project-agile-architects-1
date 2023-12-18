@@ -83,7 +83,6 @@
 }
 
 .fridge-item .item-name {
-    z-index: 2;
     display: inline-block;
   font-size: clamp(0.5rem,7vw,1.7rem);
   margin: auto auto;
@@ -98,7 +97,6 @@
 }
 
 .fridge-item .expiration-date {
-  z-index: 1;
     font-size: 1em;
   margin-bottom: clamp(0,0.1vw,0.7rem); /* Pushes the date info to the bottom */
   text-align: center;

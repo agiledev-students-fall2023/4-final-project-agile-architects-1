@@ -11,7 +11,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 function BrowseIngredients() {
     const { user } = useAuthContext();
     const navigate = useNavigate();
-
+    const [searchStr, setSearchStr] = useState('')
     const [posts, setPosts] = useState([]);
     const [profile, setProfile] = useState(null)
     const [showScrollButton, setShowScrollButton] = useState(true);
@@ -72,19 +72,27 @@ function BrowseIngredients() {
         navigate('/browse/newpost');
     }
 
+    const filteredPosts = posts.filter(post => {
+        const searchLower = searchStr.toLowerCase();
+        const titleMatch = post.title.toLowerCase().includes(searchLower);
+        const descriptionMatch = post.description.toLowerCase().includes(searchLower);
+        const hashtagMatch = post.hashtags.some(hashtag => hashtag.toLowerCase().includes(searchLower));
+        return titleMatch || descriptionMatch || hashtagMatch;
+    });
+    
     return (
         <div>
             <div className='ingredients-page-container'>  
                 <div className='ingredients-top-bar-container'>
                     {user && profile && (
-                    <TopSearchBar location={profile.zipcode} />
+                    <TopSearchBar location={profile.zipcode} searchStr={searchStr} setSearchStr={setSearchStr} />
                     )}
                     {!user && (
-                    <TopSearchBar location="10003" />
+                    <TopSearchBar location="10003" searchStr={searchStr} setSearchStr={setSearchStr}/>
                     )}
                 </div>
                 <div className='post-flow-container'>
-                    <PostFLow posts={posts} />
+                    <PostFLow posts={filteredPosts} />
                 </div>
             </div>
             <div className='button-container'>

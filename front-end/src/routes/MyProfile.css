@@ -30,12 +30,12 @@
   }
 
 .profile-image-container {
-    display: inline-block;
+    display: flex;
     height: 4.5rem;
     width: 4.5rem;
     margin-left: 6vw;
     align-items: center;
-    vertical-align: top;
+    justify-content: center;
     /* background-color: aqua; */
     border-radius: 100px;
     overflow: hidden;
@@ -45,8 +45,7 @@
 .profile-picture {
     height: 100%;
     width: 100%;
-    object-fit: cover; 
-
+    object-fit: fill; 
 }
 .profile-container {
     width: 80vw;
@@ -58,13 +57,13 @@
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     /* background-color: rgba(255, 255, 0, 0.411); */
 
 }
 .user-info {
     display: inline-block;
-    margin-left: 6vw;
+    margin-left: 1rem;
     height: 4.5rem;
     align-items: center;
     vertical-align: top;
@@ -74,28 +73,66 @@
     font-size: 1.5rem;
 }
 
-.user-info .user-id-wrapper {
-    font-size: .5rem;
+.user-info .user-info-wrapper {
+    font-size: .6rem;
+    color: rgba(110, 110, 110);
 }
 
-.user-info .user-location-wrapper {
-    font-size: .7rem;
+.profile-page .user-description {
+    margin-left: 6vw;
+    margin-top: .3rem;
+    font-size: 1rem
 }
 
-.profile-page .user-discription {
-    margin-top: .7rem;
-    font-size: .6rem
-}
-
-.unknown-buttons {
-    display: flex;
-    margin-top: 2rem;
+.user-buttons {
+    margin-left: 6vw;
+    display: block;
+    margin-top: 1rem;
     height: 2rem;
 }
 
-.unknown-buttons .edit-profile {
-    margin-left: auto;
-    margin-right: 0;
+.user-buttons .floating-box {
+    width: 20rem;
+    padding: .5rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    height: 7rem;
+    border-radius: 1rem;
+}
+.floating-box .title {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 370;
+    padding-bottom: .3rem;
+}
+.floating-box .line-container {
+    display: inline-block;
+}
+.floating-box .line-container .message {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .2rem;
+    color: rgba(110, 110, 110);
+}
+.floating-box .line-container .icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-buttons .user-button {
+    margin-right: .5rem;
+    background-color: #dddddd6b;
+    border: thin solid rgb(110, 110, 110);
+    border-radius: .5rem;
+    font-weight: 650;
+    color: rgb(110, 110, 110);
+    transition: background-color 0.3s;
+}
+
+.user-buttons .user-button:hover {
+    background-color: #bbb;
+    color: #fff;
 }
 
 .edit-profile-container {

@@ -190,8 +190,12 @@ function IngredientDetail() {
                             {myPost.description}
                         </div>
                         <div className='ingredient-hashtags'>
-                            {myPost.hashtags && myPost.hashtags.map((hashtag, index) => (
-                                <div key={index} className='hashtag'>{hashtag}</div>
+                            {/*(() => {
+                                console.log("Rendering hashtags with data:", myPost.hashtags);
+                                return null; // Return null or any valid JSX from IIFE
+                            })()*/}                              
+                            {myPost.hashtags && myPost.hashtags.map((hashtag) => (
+                                <div key={hashtag} className='hashtag'>{hashtag}</div>
                             ))}
                         </div>
                     </section>
@@ -210,10 +214,13 @@ function IngredientDetail() {
                     </button>
                 </div>
                 <div className="user-comments">
-                    {comments.map((comment, index) => (
-                            <p >
+                    {/*(() => {
+                        console.log("Rendering comments with data:", comments);
+                        return null; // Return null or any valid JSX from IIFE
+                    })()*/}                    
+                    {comments.map((comment) => (
+                            <p key={comment._id}> {/*Using MongoDB's default _id field*/}
                                 <span className="comment-user"> {comment.user} </span>
-                                <br/>
                                 <span> {comment.comment} </span>
                             </p>
                     ))}

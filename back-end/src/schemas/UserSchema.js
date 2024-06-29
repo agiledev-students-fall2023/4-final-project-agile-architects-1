@@ -53,6 +53,10 @@ const userSchema = new Schema({
         type: String,
         default: "NA"
     },
+    description: {
+        type: String,
+        default: "A passionate foodie! I'm always looking for new recipes to try, and love to share my cooking experience with others.",
+    },
     mealPlans: [mealPlansSchema],
     fridgeItems: [fridgeItemSchema],
 }, {timestamps: true, collection: 'User'});
@@ -107,7 +111,7 @@ userSchema.statics.login = async function(email, password) {
 
 
 //static edit profile method
-userSchema.statics.editUser = async function(_id, email, username, zipcode, usrImg) {
+userSchema.statics.editUser = async function(_id, email, username, zipcode, usrImg, description) {
     // validation
     if (email && (!validator.isEmail(email))){
         throw Error('Email is not valid')
@@ -145,12 +149,14 @@ userSchema.statics.editUser = async function(_id, email, username, zipcode, usrI
         console.log(`User image Stored in: ${usrImgPath}`)
     }
 
-    if (!usrImg) console.log(`User image not uploaded`)
+
     if (email) user.email = email
     if (username) user.username = username;
     if (zipcode) user.zipcode = zipcode;
-    if (usrImg) console.log(`User image uploaded ${usrImg}`)
+    //if (!usrImg) console.log(`User image not uploaded`)
+    //if (usrImg) console.log(`User image uploaded ${usrImg}`)
     if (usrImg) user.usrImg = usrImgPath;
+    if (description) user.description = description;
     await user.save()
 
     return user

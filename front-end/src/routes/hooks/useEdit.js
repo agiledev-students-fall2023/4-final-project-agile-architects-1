@@ -9,14 +9,14 @@ export const useEdit = () => {
     const navigate = useNavigate()
 
     const edit = async (userData) => {
-        const { userId, email, username, zipcode, usrImg } = userData
+        const { userId, email, username, zipcode, usrImg, description } = userData
         setIsLoading(true)
         setError(null)
 
         const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/user/editUser/${userId}`, {
             method: "PUT",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email, username, zipcode, usrImg})
+            body: JSON.stringify({email, username, zipcode, usrImg, description})
         })
         const json = await response.json()
 

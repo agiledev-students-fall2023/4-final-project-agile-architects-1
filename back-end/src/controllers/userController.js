@@ -40,14 +40,15 @@ export const registerUser = async (req ,res) => {
 // Edit user
 export const editUser = async (req, res) => {
     const { _id } = req.params
-    const {email, username, zipcode, usrImg } = req.body
+    const {email, username, zipcode, usrImg, description } = req.body
     
     try {
-        const editedUser = await userSchema.editUser(_id, email, username, zipcode, usrImg)
+        const editedUser = await userSchema.editUser(_id, email, username, zipcode, usrImg, description)
         res.status(200).json({email: editedUser.email,
                               username: editedUser.username,
                               zipcode: editedUser.zipcode,
                               usrImg: editedUser.usrImg,
+                              description: editedUser.description,
         })
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -85,6 +86,9 @@ export const getUser = async (req, res) => {
     const user = await userSchema.findById(id)
     if (!user) {
         return res.status(404).json({error: 'No such user'})
+    }
+    if (user){
+        console.log("Found user:", user);
     }
     res.status(200).json(user)
 }

@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import "./MyProfile.css";
 import PostFLow from '../components/PostFlow';
 import { useAuthContext } from './hooks/useAuthContext';
+import { GiOpenedFoodCan, GiCook } from "react-icons/gi";
+import { AiOutlineMessage } from "react-icons/ai";
 
 function MyProfile() {
   const { user } = useAuthContext()
 
   const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState(null)
+  const [description, setDescription] = useState('');
 
-  const [description, setDescription] = useState("A passionate foodie! I'm always looking for new recipes to try, and love to share my cooking experience with others.")
 
   useEffect(() => {
     const fetchUser = async (userId) => {
@@ -18,7 +20,7 @@ function MyProfile() {
         const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/${userId}`)
         const json = await response.json()
         if (response.ok){
-            // console.log(json)
+          console.log(json)
           setProfile(json)
         }
       } catch(error){
@@ -66,7 +68,7 @@ function MyProfile() {
                 <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}${profile.usrImg}`}/>
                 )}
                 {!user && (
-                <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}/static/images/grey.png`}/>
+                <img className="profile-picture" alt="User Profile" src={`${process.env.REACT_APP_BACKEND_HOST}/static/images/profile_pic.png`}/>
                 )}
             </div>
             <div className="user-info">
@@ -75,48 +77,74 @@ function MyProfile() {
                         <span>{profile.username}</span>
                     )}
                     {!user && (
-                        <span>Not Logged In</span>
+                        <span>Unregistered User</span>
                     )}
                 </div>
-                <div className="user-id-wrapper">
+
+                <div className="user-info-wrapper">
                     {user && profile && (
                         <span>User id: {profile._id}</span>
                     )}
-                    {!user && (
-                        <span>User ID: User not logged in</span>
-                    )}
                 </div>
-                <div className="user-location-wrapper">
+
+                <div className="user-info-wrapper">
                     {user && profile && (
                         <span>Zipcode: {profile.zipcode}</span>
-                    )}
-                    {!user && (
-                        <span>Zipcode: user not logged in</span>
                     )}
                 </div>
             </div>
         </div>
-        <div className="user-discription">
-          {description}
+
+        <div className="user-description">
+            {user && profile && (
+                <span>{profile.description}</span>
+            )}
+            {/*!user && (
+                <span>User is not logged in</span>
+            )*/}
         </div>
-        <div className="unknown-buttons">
+
+        <div className="user-buttons">
           {/*}
           <button className='friends'> Friends</button>
           <button className='likes'> Likes</button>
                     {*/}
-          <button className='posts'> Posts</button>
+          {!user &&(
+            <div className='floating-box'>
+              <span className='title'>Please Login to:</span>
+              <div className='line-container'>
+                <GiOpenedFoodCan className='icon'></GiOpenedFoodCan>
+                <span className='message'>Post your ingredients</span>
+              </div>
+              <div className='line-container'>
+                <AiOutlineMessage className='icon'></AiOutlineMessage>
+                <span className='message'>Comment on other users' posts</span>
+                </div>
+              <div className='line-container'>
+                <GiCook className='icon'></GiCook>
+                <span className='message'>Get your customised recipes</span>
+                </div>
+            </div>
+          )}
           {user && (
-            <button onClick={handleEditProfile} className='edit-profile'> Edit Profile</button>
+            <button className='user-button'> Posts</button>
           )}
           
-
+          {user && (
+            <button onClick={handleEditProfile} className='user-button'> Edit Profile</button>
+          )}
+          
+          
         </div>
       </section>
-      <section className='post-container'>
+      {user && (
+        <section className='post-container'>
         <div className="post-list">
           <PostFLow posts={posts}/>
         </div>
       </section>
+      )}
+      
     </div>
   );
 }

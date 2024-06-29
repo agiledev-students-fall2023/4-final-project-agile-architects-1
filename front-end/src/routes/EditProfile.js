@@ -7,13 +7,14 @@ import './EditProfile.css'
 
 function EditProfile() {
   const { user } = useAuthContext()
+  const [profile, setProfile] = useState(null)
+  const [profileLoading, setProfileLoading] = useState(true);
+
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [zipcode, setZipcode] = useState('')
   const [usrImg, setUsrImg] = useState('')
-  const [profile, setProfile] = useState(null)
-  const [profileLoading, setProfileLoading] = useState(true);
-  const [description, setDescription] = useState("A passionate foodie! I'm always looking for new recipes to try, and love to share my cooking experience with others.")
+  const [description, setDescription] = useState('');
 
   const {edit, error, isLoading} = useEdit()
   const navigate = useNavigate()
@@ -48,6 +49,7 @@ function EditProfile() {
       username,
       zipcode,
       usrImg,
+      description,
     }
     console.log(`accessing user id: ${user.userId}`)
     await edit(userData)
@@ -103,8 +105,8 @@ function EditProfile() {
           onChange={(e)=>setUsername(e.target.value)} 
           type="text" 
           placeholder={profile.username}
-          id="text" 
-          name="text"
+          id="username" 
+          name="username"
         />
       </div>
 
@@ -116,8 +118,8 @@ function EditProfile() {
           onChange={(e)=>setZipcode(e.target.value)} 
           type="text" 
           placeholder={profile.zipcode}
-          id="text" 
-          name="text"
+          id="zipcode" 
+          name="zipcode"
         />
       </div>
       <div className="form-group">
@@ -125,10 +127,11 @@ function EditProfile() {
         <input 
           className="input-field-description" 
           value={description} 
+          onChange={(e)=> setDescription(e.target.value)}
           type="text" 
-          placeholder={description} 
-          id="text" 
-          name="text"
+          placeholder={profile.description} 
+          id="description" 
+          name="description"
         />
       </div>
       <div className="form-group">

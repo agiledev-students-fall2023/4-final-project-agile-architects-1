@@ -135,11 +135,6 @@
     margin-top: 3rem;
 }
 
-.ingredient-details-description .ingredient-discription {   
-    margin-top: .8rem;
-    font-size: .6rem
-}
-
 .ingredient-hashtags {
     display: flex;
     flex-wrap: wrap;

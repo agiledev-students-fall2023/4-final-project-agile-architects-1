@@ -82,15 +82,16 @@ function BrowseIngredients() {
     
     return (
         <div>
-            <div className='ingredients-page-container'>  
-                <div className='ingredients-top-bar-container'>
-                    {user && profile && (
+            <div className='ingredients-top-bar-container'>
+                {user && profile && (
                     <TopSearchBar location={profile.zipcode} searchStr={searchStr} setSearchStr={setSearchStr} />
-                    )}
-                    {!user && (
+                )}
+                {!user && (
                     <TopSearchBar location="10003" searchStr={searchStr} setSearchStr={setSearchStr}/>
-                    )}
-                </div>
+                )}
+            </div>
+
+            <div className='ingredients-page-container'>  
                 <div className='post-flow-container'>
                     <PostFLow posts={filteredPosts} />
                 </div>

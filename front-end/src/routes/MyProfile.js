@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./MyProfile.css";
 import PostFLow from '../components/PostFlow';
 import { useAuthContext } from './hooks/useAuthContext';
 import { GiOpenedFoodCan, GiCook } from "react-icons/gi";
 import { AiOutlineMessage } from "react-icons/ai";
+import "./MyProfile.css";
 
 function MyProfile() {
-  const { user } = useAuthContext()
-
+  const { user } = useAuthContext();
   const [posts, setPosts] = useState([]);
-  const [profile, setProfile] = useState(null)
-  const [description, setDescription] = useState('');
-
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     const fetchUser = async (userId) => {
@@ -41,7 +38,27 @@ function MyProfile() {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/profile/posts?userID=${userID}`);
             const result = await response.json()
             console.log("Got posts:",result);
-            setPosts(result)
+            if (result.length === 0) {
+              setPosts([{
+                _id: `fake-id-${Date.now}`,
+                id: Date.now(), 
+                image: '/static/images/add_post.png', // Path to your placeholder image
+                title: 'Create your first post',
+                author: profile.username,
+                authorID: userID,
+                usrImg: profile.usrImg,
+                amount: 1,
+                location: 'Your Location',
+                pickUpTime: 'Anytime',
+                expiration: new Date(), // Current date as placeholder
+                description: 'This is a placeholder post. Start your adventure by posting your story!',
+                hashtags: [],
+                comments: []
+              }]);
+            } else {
+              setPosts(result)
+            }
+
         } catch (error) {
           console.error('Error fetching data: ', error);
         }
@@ -133,17 +150,16 @@ function MyProfile() {
           {user && (
             <button onClick={handleEditProfile} className='user-button'> Edit Profile</button>
           )}
-          
-          
+    
         </div>
+          {user && (
+            <section className='post-container'>
+              <div className="post-list">
+                <PostFLow posts={posts}/>
+              </div>
+            </section>
+          )}
       </section>
-      {user && (
-        <section className='post-container'>
-        <div className="post-list">
-          <PostFLow posts={posts}/>
-        </div>
-      </section>
-      )}
       
     </div>
   );

@@ -1,11 +1,11 @@
+
+
 .post-flow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 100%;
-  margin-bottom: 100px;
-  /* background-color: #f0e9d7; */
-}
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+  }
 
 @media (max-width: 300px) {
     .post-block {
@@ -13,7 +13,6 @@
         margin-right: 0;
         margin-left: 0;
         height: clamp(34vh, 30vw, 45vh);
-
     }
 }
 @media (min-width: 300px){ 

@@ -1,4 +1,16 @@
+.ingredients-top-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky; 
+    overflow-y: overlay;
+    top: 0;
+}
+
 .ingredients-page-container {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,17 +18,11 @@
     width: 100%;
 }
 
-.ingredients-top-bar-container {
-    width: 100%;
-    position: sticky;
-    position: -webkit-sticky; 
-    overflow-y: overlay;
-
-    top: 0;
-}
-
 .post-flow-container {
-    padding: 0.5rem;
+    padding-top: .5rem;
+    margin: 0 auto; /* Center align the container if necessary */
+    width: 100%; /* Full width to use all available space */
+    justify-content: center;
 }
 
 .button-container {

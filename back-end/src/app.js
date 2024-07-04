@@ -23,11 +23,22 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
-app.use(cors());
+const corsOptions = {
+    origin: [  'http://wastewise.site',
+        'https://wastewise.site',
+        'http://www.wastewise.site',
+        'https://www.wastewise.site'],
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization',
+    credentials: true,
+}
+app.use(cors(corsOptions));
 
+// Setting path for serving static files
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use("/static", express.static(path.join(__dirname, "public")));
+const publicPath = path.join(__dirname, '../public');
+app.use('/static', express.static(publicPath));
 
 // Routes
 app.use('/api/', homeRoutes);

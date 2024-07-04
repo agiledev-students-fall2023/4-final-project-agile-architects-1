@@ -3,6 +3,7 @@ import path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
 import multer from 'multer';
+import { fileURLToPath } from 'url';
 
 import homeRoutes from './routes/homeRoutes.js';
 import BrowseRoutes from './routes/BrowseRoutes.js';
@@ -23,7 +24,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 app.use(cors());
-app.use("/static", express.static("public"));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/static", express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use('/api/', homeRoutes);

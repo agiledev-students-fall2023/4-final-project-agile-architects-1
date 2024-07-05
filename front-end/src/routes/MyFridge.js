@@ -7,6 +7,7 @@ function MyFridge() {
     const [profile, setProfile] = useState({username: "User"})
 
     const fetchItems = async () => {
+        /*
         if (localStorage.getItem('user')) {
             const user = JSON.parse(localStorage.getItem('user'));
             if (!user.fridgeItems) {
@@ -23,6 +24,18 @@ function MyFridge() {
             localStorage.setItem('user', JSON.stringify(newUser));
             setFridgeItems(newUser.fridgeItems);
           }
+        */
+        if (user) {
+            if (!user.fridgeItems) {
+                user.fridgeItems = [example_item]
+            }
+            setFridgeItems(user.fridgeItems);
+       } else {
+            let newUser = {
+                fridgeItems: [example_item],
+            };
+            setFridgeItems(newUser.fridgeItems)
+       }
     };
 
     useEffect(() => {

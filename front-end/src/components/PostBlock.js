@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState}from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import './PostBlock.css';
 
 const PostBlock = ({ post }) => {
@@ -7,22 +7,30 @@ const PostBlock = ({ post }) => {
     const imgRef = useRef(null); // Create a ref for the image
     const [loaded, setLoaded] = useState(false);
 
+    const updateContainerHeight = (img) => {
+        if (img && img.naturalWidth && img.naturalHeight) {
+            setTimeout(() => { // Delaying the height update to ensure it computes correctly
+                const container = img.closest('.post-block-image-container');
+                const height = (img.naturalHeight / img.naturalWidth) * container.offsetWidth;
+                container.style.height = `${height}px`;
+            }, 50); // Adjust the timeout as necessary
+        }
+    };
+
     useEffect(() => {
         const image = imgRef.current;
-    
-        const updateContainerHeight = (img) => {
-            const container = img.closest('.post-block-image-container');
-            const height = (img.naturalHeight / img.naturalWidth) * container.offsetWidth;
-            container.style.height = `${height}px`;
-        };
-    
+
+        const handleResize = () => {
+            updateContainerHeight(image);
+        }
+
         const handleLoad = () => {
             updateContainerHeight(image);
             setLoaded(true);
         };
     
         if (image) {
-            window.addEventListener('resize', () => updateContainerHeight(image));
+            window.addEventListener('resize', handleResize);
             if (image.complete) {
                 handleLoad();
             } else {
@@ -34,7 +42,7 @@ const PostBlock = ({ post }) => {
             if (image) {
                 image.removeEventListener('load', handleLoad);
             }
-            window.removeEventListener('resize', () => updateContainerHeight(image));
+            window.removeEventListener('resize', handleResize);
         };
     }, [post.image]);
 

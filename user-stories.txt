@@ -1,0 +1,17 @@
+1. As a user, I want to be able to create an account and log in.
+2. As a user, I want to be able to log out of my account.
+3. As a user, I want to be able to add food items to my inventory manually.
+4. As a user, I want to receive notifications when my items are about to expire.
+5. As a user, I want to be able to view and edit the details of items in my inventory.
+6. As a user, I want to be able to plan meals and generate shopping lists.
+7. As a user, I want to be able to request recipe suggestions based on the items in my inventory.
+8. As a user, I want to be able to share or sell surplus food items to my community.
+9. As a user, I want to be able to see and purchase surplus food items from my community.
+10. As a user, I want to be able to post meals I plan to prepare and invite others to join.
+11. As a user, I want to be able to RSVP for shared meals in my community.
+12. As a user, I want to be able to set my profile preferences and notification settings.
+
+13. As a user, I want to be able to participate in environmental challenges and earn rewards.
+14. As a user, I want to be able to view my earned badges and points.
+15. As a user, I want to be able to redeem rewards or discounts from partner businesses.
+

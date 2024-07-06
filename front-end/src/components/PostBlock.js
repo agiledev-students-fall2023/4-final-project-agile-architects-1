@@ -1,40 +1,36 @@
 import React, { useRef, useEffect, useState}from 'react';
 import { useNavigate} from 'react-router-dom';
 import './PostBlock.css';
+import { update } from 'lodash';
 
 const PostBlock = ({ post }) => {
     const navigate = useNavigate();
     const imgRef = useRef(null); // Create a ref for the image
     const [loaded, setLoaded] = useState(false);
 
-    const updateContainerHeight = (img) => {
-        if (img && img.naturalWidth && img.naturalHeight) {
-            setTimeout(() => { // Delaying the height update to ensure it computes correctly
-                const container = img.closest('.post-block-image-container');
-                const height = (img.naturalHeight / img.naturalWidth) * container.offsetWidth;
-                container.style.height = `${height}px`;
-            }, 50); // Adjust the timeout as necessary
-        }
-    };
-
     useEffect(() => {
         const image = imgRef.current;
 
-        const handleResize = () => {
-            updateContainerHeight(image);
-        }
+        const updateContainerHeight = (img) => {
+            if (img && img.naturalWidth && img.naturalHeight) {
+                const container = img.closest('.post-block-image-container');
+                if (container) {
+                    const height = (img.naturalHeight / img.naturalWidth) * container.offsetWidth;
+                    container.style.height = `${height}px`;
+                }
+            }
+        };
 
         const handleLoad = () => {
-            updateContainerHeight(image);
             setLoaded(true);
+            updateContainerHeight();
         };
     
         if (image) {
-            window.addEventListener('resize', handleResize);
-            if (image.complete) {
+            image.addEventListener('load', handleLoad);
+            window.addEventListener('resize', updateContainerHeight);
+            if (image.complete && !loaded) {
                 handleLoad();
-            } else {
-                image.addEventListener('load', handleLoad);
             }
         }
     
@@ -42,7 +38,7 @@ const PostBlock = ({ post }) => {
             if (image) {
                 image.removeEventListener('load', handleLoad);
             }
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', updateContainerHeight);
         };
     }, [post.image]);
 

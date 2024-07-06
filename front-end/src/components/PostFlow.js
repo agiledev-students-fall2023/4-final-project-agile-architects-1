@@ -47,7 +47,7 @@ const PostFlow = ({ posts }) => {
             window.addEventListener('resize', resizeMasonryGrid);
 
             layoutAndCenter(); //Initial layout
-            setTimeout(layoutAndCenter, 500);
+            setTimeout(layoutAndCenter, 700);
 
             return () => {
                 window.removeEventListener('resize', resizeMasonryGrid);

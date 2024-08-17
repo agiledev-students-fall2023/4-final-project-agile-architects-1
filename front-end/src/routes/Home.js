@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
+import Animation from './Animation';
 import './Home.css';
+
+
 function Home() {
     const [fridgeItems, setFridgeItems] = useState(["Get something to cook!"]);
     const [mealPlans, setMealPlans] = useState(["Get something to eat!"]);

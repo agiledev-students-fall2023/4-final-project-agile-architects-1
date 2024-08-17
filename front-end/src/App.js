@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate}
 import { FaHome, FaUtensils, FaShoppingBasket, FaUser } from 'react-icons/fa';
 import './App.css';
 
+import { useLogout } from './routes/hooks/useLogout';
+import { AuthContextProvider } from './context/AuthContext';
+import { useAuthContext } from './routes/hooks/useAuthContext';
 import Home from './routes/Home';
 import MyFridge from './routes/MyFridge';
 import MyProfile from './routes/MyProfile';
@@ -13,10 +16,9 @@ import Register from './routes/Login-Register/Register';
 import RecommendedRecipes from './routes/RecommendedRecipes';
 import IngredientDetail from './routes/Ingredients-page/IngredientDetail';
 import NewIngredientPost from './routes/Ingredients-page/NewIngredientPost';
-import { useLogout } from './routes/hooks/useLogout';
-import { AuthContextProvider } from './context/AuthContext';
-import { useAuthContext } from './routes/hooks/useAuthContext';
 import EditProfile from './routes/EditProfile';
+import Test from './routes/Test';
+import Animation from './routes/Animation';
 
 function MainContent() {
     const location = useLocation();
@@ -66,34 +68,33 @@ function MainContent() {
                 <Route path="/browse/details/:id" element={<IngredientDetail />} />
                 <Route path="/browse/newpost" element={<NewIngredientPost />} />
                 <Route path="/profile/edit-profile" element={<EditProfile />} />
+                <Route path="/test" element={<Test />} />
             </Routes>
 
-            {
-                ["/", "/browse", "/fridge", "/plan", "/profile"].indexOf(location.pathname) !== -1 && (
-                    <nav className="Navigation-Bar">
-                        <Link className="nav-item" to="/">
-                            <FaHome size={22}/>
-                            <span>Home</span>
-                        </Link>
-                        <Link className="nav-item" to="/browse">
-                            <FaUtensils size={22}/>
-                            <span>Browse</span>
-                        </Link>
-                        <Link className="nav-item" to="/fridge">
-                            <FaShoppingBasket size={22}/>
-                            <span>My Fridge</span>
-                        </Link>
-                        <Link className="nav-item" to="/plan">
-                            <FaUtensils size={22}/>
-                            <span>Plan Meal</span>
-                        </Link>
-                        <Link className="nav-item" to="/profile">
-                            <FaUser size={22}/>
-                            <span>My Profile</span>
-                        </Link>
-                    </nav>
-                )
-            }
+            {["/", "/browse", "/fridge", "/plan", "/profile"].indexOf(location.pathname) !== -1 && (
+                <nav className="Navigation-Bar">
+                    <Link className="nav-item" to="/">
+                        <FaHome size={22}/>
+                        <span>Home</span>
+                    </Link>
+                    <Link className="nav-item" to="/browse">
+                        <FaUtensils size={22}/>
+                        <span>Browse</span>
+                    </Link>
+                    <Link className="nav-item" to="/fridge">
+                        <FaShoppingBasket size={22}/>
+                        <span>My Fridge</span>
+                    </Link>
+                    <Link className="nav-item" to="/plan">
+                        <FaUtensils size={22}/>
+                        <span>Plan Meal</span>
+                    </Link>
+                    <Link className="nav-item" to="/profile">
+                        <FaUser size={22}/>
+                        <span>My Profile</span>
+                    </Link>
+                </nav>
+            )}
         </div>
     );
 }

@@ -1,0 +1,12 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: #2294b3;
+    overflow: hidden;
+    z-index: -999;
+}
+
+.home-animation {
+  z-index: -999;
+}

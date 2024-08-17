@@ -1,5 +1,5 @@
 .post-block {
-    margin-bottom: 20px; /* Space between posts */
+    margin-bottom: 1rem; /* Space between posts */
     width: 33%; /* Example for three columns layout */
     float: left; /* Helps in positioning with Masonry */
     /*background-color: #cc554d60;*/
@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 5%;
+    padding: 4%;
     /* background-color: rgba(0, 255, 255, 0.638); */
 }
 

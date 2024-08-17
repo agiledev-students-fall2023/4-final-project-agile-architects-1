@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState}from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import './PostBlock.css';
+import { update } from 'lodash';
 
 const PostBlock = ({ post }) => {
     const navigate = useNavigate();
@@ -9,24 +10,27 @@ const PostBlock = ({ post }) => {
 
     useEffect(() => {
         const image = imgRef.current;
-    
+
         const updateContainerHeight = (img) => {
-            const container = img.closest('.post-block-image-container');
-            const height = (img.naturalHeight / img.naturalWidth) * container.offsetWidth;
-            container.style.height = `${height}px`;
+            if (img && img.naturalWidth && img.naturalHeight) {
+                const container = img.closest('.post-block-image-container');
+                if (container) {
+                    const height = (img.naturalHeight / img.naturalWidth) * container.offsetWidth;
+                    container.style.height = `${height}px`;
+                }
+            }
         };
-    
+
         const handleLoad = () => {
-            updateContainerHeight(image);
             setLoaded(true);
+            updateContainerHeight();
         };
     
         if (image) {
-            window.addEventListener('resize', () => updateContainerHeight(image));
-            if (image.complete) {
+            image.addEventListener('load', handleLoad);
+            window.addEventListener('resize', updateContainerHeight);
+            if (image.complete && !loaded) {
                 handleLoad();
-            } else {
-                image.addEventListener('load', handleLoad);
             }
         }
     
@@ -34,7 +38,7 @@ const PostBlock = ({ post }) => {
             if (image) {
                 image.removeEventListener('load', handleLoad);
             }
-            window.removeEventListener('resize', () => updateContainerHeight(image));
+            window.removeEventListener('resize', updateContainerHeight);
         };
     }, [post.image]);
 

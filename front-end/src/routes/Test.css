@@ -1,12 +1,11 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    background: #2294b3;
-    overflow: hidden;
-    z-index: -999;
+.component-container {
+  width: 80vw;
+  margin: 0 auto;
 }
 
-.home-animation {
-  z-index: -999;
+.component-container .post-block {
+  border: solid;
+  border-color: red;
+  border-width: 1px;
 }
+

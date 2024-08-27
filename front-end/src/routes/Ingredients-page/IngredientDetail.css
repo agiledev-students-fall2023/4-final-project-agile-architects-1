@@ -1,0 +1,235 @@
+.ingredient-detail-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.ingredient-detail-top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.ingredient-detail-top-bar .back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    margin-left: 3vw;
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: .1rem solid black;
+
+}
+
+.ingredient-detail-top-bar .ingredient-detail-name {
+    margin-left: 2rem;
+    align-self: flex-end;
+    font-size: 1.5rem;
+}
+
+.ingredient-detail { 
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+    flex-direction: column;
+
+}
+
+.ingredient-detail .ingredient-detail-img {
+    margin-top: 2rem;
+    max-width: 80%;
+    height: auto;
+    border-radius: .8em;
+}
+
+.selling-info {
+    margin-top: 2rem;
+    max-width: 80%;
+}
+
+.ingredient-detail-info {
+    display: inline-block;
+    margin-left: 6vw;
+    height: 4.5rem;
+    align-items: center;
+    vertical-align: top;
+}
+
+.selling-info .profile-picture {
+    display: inline-block;
+    height: 10vw;
+    width: 10vw;
+    margin-left: 0;
+    align-items: center;
+    vertical-align: top;
+    background-color: lightgrey;
+    border-radius: 1.5rem;
+}
+
+.ingredient-detail-info .ingredient-detail-name-wrapper {
+    font-size: 1.3rem;
+}
+
+.ingredient-detail-info .ingredient-detail-number-wrapper {
+    font-size: .8rem;
+}
+
+.ingredient-detail-info .ingredient-detail-label {
+    margin-top: 0.9rem;
+    font-size: .8rem;
+}
+
+.ingredient-detail-info .ingredient-detail-location {
+    font-size: .8rem;
+}
+
+.expiration-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.expiration-info .time-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1rem;
+    font-size: .9rem;
+}
+.expiration-info .expiration-wrapper {
+    margin-left: .2rem;
+    font-size: .7rem;
+}
+
+.pickuptime-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pickuptime-info .time-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1rem;
+    font-size: .9rem;
+}
+.pickuptime-info .pickuptime-wrapper {
+    margin-left: .2rem;
+    font-size: .8rem;
+}
+
+.selling-info {
+    width: 70vw;
+}
+
+.selling-info .ingredient-details-description {
+    margin-top: 3rem;
+}
+
+.ingredient-hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    gap: 10px; 
+    font-size: .5rem;
+  }
+  
+  .ingredient-hashtags .hashtag {
+    flex: 0 1 auto;
+    margin: 0;
+    white-space: nowrap;
+  }
+ 
+  .ingredient-detail-comment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    justify-content: flex-start;
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .ingredient-detail-comment-container .sending-comment {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sending-comment .detail-comment-user-img {
+    display: inline-block;
+    height: auto;
+    width: 8%;
+    margin-left: 0;
+    align-items: center;
+    vertical-align: top;
+    background-color: lightgrey;
+    border-radius: 1.5rem;
+  }
+
+  .sending-comment .comment-form {
+    width: 60%;
+  }
+
+  .sending-comment .comment-form .compose-comment {
+    border-radius: .5rem;
+    color: gray;
+    width: 100%;
+  }
+
+  .sending-comment .send-button {
+    display: inline-block;
+    margin-right: 0;
+    font-size: 1em;
+    border-radius: 1rem;
+    background-color: lightgray;
+    border: 1px solid black;
+  }
+
+  /* .ingredient-detail-comment-container .user-comments {
+    display: flex;
+    margin-top: 2rem;
+    width: 80%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: .7rem;
+    font-weight: bold;
+  } */
+
+.back-to-browse-button {
+    /* margin-top: 10vh; */
+    padding: 4rem;
+    background-color: transparent;
+    color: #CC564D;
+    text-decoration: underline;
+    font-size: 1.1rem;
+}
+
+.comment-wrapper {
+    position: relative;
+    display: flex;
+    align-items: left;
+    border-bottom: 1px solid #eee; /* Separator */
+}
+
+.comment-user {
+    font-weight: bold;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

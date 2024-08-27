@@ -1,0 +1,11 @@
+.component-container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.component-container .post-block {
+  border: solid;
+  border-color: red;
+  border-width: 1px;
+}
+

@@ -1,0 +1,297 @@
+.fridge-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.fridge-page .username-wrapper {
+  margin:0;
+  display: flex;
+  align-items: flex-start;
+  font-size: 2em;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 1.2em;
+  text-indent: .5em;
+}
+
+.fridge-header {
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  margin-bottom: 1rem;
+  margin: 0 auto;
+}
+
+.background {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  width: 85%;
+  height: 80%;
+  background-color: rgb(252, 242, 230);
+  opacity: 0.3;
+  z-index: -1;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.fridge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 90%;
+  max-width: 600px; /* Adjust max width as needed */
+  padding-bottom: 15vw;
+}
+
+@media (min-width: 600px) {
+  .fridge-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* @media (min-width: 900px) {
+  .fridge-grid {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+} */
+
+.button {
+  background-color: rgb(245, 243, 238);
+  border: 0.5px solid rgb(204, 86, 77);
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.fridge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vw;
+  height: 40vw;
+  width: 40vw;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  padding: 0.5vw;
+  background-color: white;
+  position: relative;
+  max-width: 10rem;  
+  max-height: 10rem;
+  padding-top: 1em; /* Add padding to ensure content is centered */
+  padding-bottom: 1em; /* Add padding to ensure content is centered */
+}
+
+.fridge-item .item-name {
+    display: inline-block;
+  font-size: clamp(0.5rem,7vw,1.7rem);
+  margin: auto auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: center;
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+}
+
+.fridge-item .expiration-date {
+    font-size: 1em;
+  margin-bottom: clamp(0,0.1vw,0.7rem); /* Pushes the date info to the bottom */
+  text-align: center;
+  padding-top: 0;
+    display: -webkit-box;
+   -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1; 
+   -webkit-box-orient: vertical;
+}
+
+.view-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+  z-index: 1000;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.view-item-details .name-quantity {
+  display: block; /* Allows you to align label and input text side by side */
+  align-items: center; /* Aligns the label and input box vertically */
+  width: auto; /* Or you can set a specific width */
+}
+
+.view-item-details .name-quantity .text-wrapper{
+  margin-right: 0.5em; /* Provides some space between the label and the input */
+}
+
+.view-item-details .name-quantity .input-box {
+  width: 40%; /* Adjust width as needed */
+  margin-left: auto; /* This will push the input box to the right */
+  margin-right: 0;
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
+}
+
+.view-item-details .date .text-wrapper {
+  display: block;
+  font-size: 1em;
+  width: 100%;
+  text-align: left;
+}
+
+.view-item-details .date .date-input {
+  width: 75%;
+  color: grey;
+}
+
+.view-item-details .button {
+  background-color: #CC564D;
+  color: white;
+  border: none; /* Optional: Remove border if present */
+  padding: 0.5em 1em; /* Optional: Adjust padding to your preference */
+  margin: 0.2em; /* Optional: Adjust margin to your preference */
+  border-radius: 0.3em; /* Optional: Adjust border radius to your preference */
+}
+
+.view-item-details .save-edit-delete-button {
+  display: inline-block;
+  background-color: #CC564D;
+}
+
+.view-item-details .save-edit-delete-button .edit-button {
+  background-color: #CC564D;
+  color: white;
+}
+
+.view-item-details .save-edit-delete-button .delete-button {
+  background-color: #CC564D;
+  color: white;
+}
+
+.add-item-form {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.add-item-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+  z-index: 1000;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it's above other content */
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column; /* This will stack .name-quantity sections vertically */
+  width: 100%; /* Full width of the modal */
+  margin-bottom: 1em; /* Add some space between each .item-info */
+}
+
+.item-info .name-quantity {
+  display: flex; /* Allows you to align label and input text side by side */
+  align-items: center; /* Aligns the label and input box vertically */
+  width: auto; /* Or you can set a specific width */
+}
+
+.item-info .text-wrapper {
+  margin-right: 0.5em; /* Provides some space between the label and the input */
+  color: gray;
+  margin-top: 0.5em;
+}
+
+.item-info .input-box {
+  width: 40%; /* Adjust width as needed */
+  margin-left: auto; /* This will push the input box to the right */
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
+}
+
+.item-info .date .text-wrapper {
+  display: block;
+  font-size: 1em;
+  width: 100%;
+  text-align: left;
+}
+
+.item-info .date .date-input {
+  width: 100%;
+  color: grey;
+  border-color: lightgray;
+  border-width: .1em;
+  border-radius: .3em;
+}
+
+.edit-delete .button {
+  background-color: #CC564D;
+  color:#F5F3EE;
+}
+
+.add-item-modal .save-cancel {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.save-cancel .button {
+  background-color: #CC564D;
+  color: #F5F3EE;
+}
+.add-button {
+  font-size: 1.5em;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 13%;
+  width: clamp(4rem,23vw,8rem);
+  text-align: center;
+  cursor: pointer;
+  background-color: #CC564D;
+  border: 1px solid rgb(204, 86, 77);
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+

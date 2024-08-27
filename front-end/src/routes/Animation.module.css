@@ -1,0 +1,396 @@
+/*
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: #2294b3;
+    overflow: hidden;
+    z-index: -999;
+}
+*/
+
+.howlsCastleContainer {
+    padding-top: 62.5%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.howlsCastleContainer .active {
+    cursor: ew-resize;
+}
+
+.howlsCastleContainer img,
+.howlsCastleContainer,
+.moundGroup,
+.housesGroup,
+.flbottomGroup,
+.blbottomGroup,
+.brleg,
+.frleg,
+.blleg,
+.flleg {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.castleContainer {
+    position: absolute;
+    left: 100%;
+    bottom: 0%;
+}
+
+.castle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 750px;
+    perspective: 1000px;
+    transform-origin: 50% 70%;
+    transform: translate(-50%, -70%) rotateZ(9deg);
+}
+
+.brleg {
+    left: 400px;
+    top: 625px;
+    transform-origin: 10px -10px;
+    transform: rotateZ(0deg);
+}
+
+.brfoot {
+    left: -18px;
+    top: 82px;
+    transform-origin: 56% 44%;
+    transform: rotateZ(0deg);
+}
+
+.brbottom {}
+
+.frleg {
+    left: 240px;
+    top: 653px;
+    transform-origin: 8px -10px;
+    transform: rotateZ(0deg);
+}
+
+.frfoot {
+    left: -18px;
+    top: 51px;
+    transform-origin: 56% 44%;
+    transform: rotateZ(0deg);
+}
+
+.frbottom {}
+
+.chimney3 {
+    left: 400px;
+    top: 30px;
+    transform-origin: 45% 120%;
+    transform: rotateZ(0deg);
+}
+
+.housesGroup {
+    left: 305px;
+    top: 130px;
+    transform-origin: -50px 300px;
+    transform: rotateZ(1deg);
+}
+
+.point6 {
+    left: 84px;
+    top: 19px;
+    transform-origin: 40% 120%;
+    transform: rotateZ(0deg);
+}
+
+.point5 {
+    left: 70px;
+    top: -23px;
+    transform-origin: -40% 200%;
+    transform: rotateZ(0deg);
+}
+
+.point4 {
+    left: 40px;
+    top: -17px;
+    transform-origin: 0% 100%;
+    transform: rotateZ(0deg);
+}
+
+.houses {}
+
+.treehouse {
+    left: 220px;
+    top: 10px;
+    transform-origin: 50% 150%;
+    transform: rotateZ(0deg);
+}
+
+.chimney2 {
+    left: 430px;
+    top: 120px;
+    transform-origin: 0% 90%;
+    transform: rotateZ(0deg);
+}
+
+.chimney1 {
+    left: 420px;
+    top: 90px;
+    transform-origin: -10% 90%;
+    transform: rotateZ(0deg);
+}
+
+.wing {
+    left: 420px;
+    top: 370px;
+    transform-origin: 0% 50%;
+    transform: rotateZ(0deg);
+}
+
+.antenna {
+    left: -100px;
+    top: 90px;
+    transform-origin: 100% 65%;
+    transform: rotateZ(0deg);
+}
+
+.moundGroup {
+    left: 115px;
+    top: 110px;
+    transform-origin: 110px 220px;
+    transform: rotateZ(0deg);
+}
+
+.point3 {
+    left: 125px;
+    top: -13px;
+    transform-origin: 50% 400%;
+    transform: rotateZ(0deg);
+}
+
+.point2 {
+    left: 50px;
+    top: -22px;
+    transform-origin: 120% 200%;
+    transform: rotateZ(0deg);
+}
+
+.point1 {
+    left: 4px;
+    top: 55px;
+    transform-origin: 150% 150%;
+    transform: rotateZ(0deg);
+}
+
+.mound {}
+
+.wind {
+    left: 400px;
+    top: 260px;
+    transform-origin: 0% 90%;
+    transform: rotateZ(0deg);
+}
+
+.cannon {
+    left: 30px;
+    top: 460px;
+    transform-origin: 100% 60%;
+    transform: rotateZ(0deg);
+}
+
+.main {
+    left: 80px;
+    top: 230px;
+    transform-origin: 50% 50%;
+    transform: rotateZ(0deg);
+}
+
+.blleg {
+    left: 410px;
+    top: 615px;
+    transform-origin: 10px 15px;
+    transform: rotateZ(0deg);
+}
+
+.blbottomGroup {
+    left: 0px;
+    top: 60px;
+    transform-origin: 10px 0px;
+    transform: rotateZ(0deg);
+}
+
+.blfoot {
+    left: -19px;
+    top: 68px;
+    transform-origin: 56% 44%;
+    transform: rotateZ(0deg);
+}
+
+.blbottom {}
+
+.bltop {}
+
+.blcover {
+    left: 360px;
+    top: 573px;
+}
+
+.knob {
+    left: 214px;
+    top: 524px;
+    transform-origin: 30% 63%;
+    transform: rotateZ(0deg);
+}
+
+.tele {
+    left: 90px;
+    top: 430px;
+    transform-origin: 90% 50%;
+    transform: rotateZ(0deg);
+}
+
+.telecover {
+    left: 161px;
+    top: 399px;
+}
+
+.flleg {
+    left: 250px;
+    top: 615px;
+    transform-origin: 10px 15px;
+    transform: rotateZ(0deg);
+}
+
+.flbottomGroup {
+    left: 0px;
+    top: 60px;
+    transform-origin: 10px 0px;
+    transform: rotateZ(0deg);
+}
+
+.flfoot {
+    left: -19px;
+    top: 68px;
+    transform-origin: 56% 44%;
+    transform: rotateZ(0deg);
+}
+
+.flbottom {}
+
+.fltop {}
+
+.flcover {
+    left: 244px;
+    top: 567px;
+}
+
+.foreground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:100%;
+}
+
+.background {
+    position: absolute;
+    bottom: 25.5%;
+    left: 0;
+    width: 100%;
+}
+
+.cloudBg {
+    bottom: 17%;
+    width: 80%;
+    right: 100%;
+}
+
+.cloudBg2 {
+    bottom: 17%;
+    width: 80%;
+    right: 100%;
+}
+
+.cloudShadow1 {
+    bottom: 43%;
+    right: 100%;
+    width: 80%;
+    transform: rotate(5deg);
+}
+
+.cloud1 {
+    bottom: 30%;
+    right: 100%;
+    width: 80%;
+}
+
+.cloudShadow2 {
+    bottom: 12%;
+    left: 36%;
+    width: 80%;
+    transform: rotate(5deg);
+}
+
+.cloudShadow3 {
+    bottom: 31%;
+    left: -30%;
+    width: 80%;
+    transform: rotate(5deg);
+}
+
+.cloud2 {
+    bottom: 46%;
+    left: -29%;
+    width: 80%;
+}
+
+.cloud3 {
+    bottom: 38%;
+    left: 17%;
+    width: 80%;
+}
+
+.cloud4 {
+    bottom: 18%;
+    left: -18%;
+    width: 80%;
+}
+
+.cloud5 {
+    bottom: 8%;
+    left: 40%;
+    width: 80%;
+}
+
+.controlToggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 1);
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    opacity: 0.1;
+    cursor: pointer;
+}
+
+.controlToggle:hover {
+    opacity: 1.0;
+}
+
+.loadGate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 20px;
+}

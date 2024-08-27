@@ -1,0 +1,22 @@
+.login-button {
+  display: flex;
+  background-color: #F5F3EE;
+  color: black;
+  width: 6rem;
+  height: 3rem;
+  text-decoration-line: none;
+  text-align: center;
+  font-size: 20px;
+  border-radius: .5em;
+  margin-left: auto;
+  margin-right: 2vw;
+  margin-top: .5rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+  
+  .login-button:hover {
+    background-color: grey;
+  }
+  

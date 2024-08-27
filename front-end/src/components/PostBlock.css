@@ -7,6 +7,7 @@
     border-radius: 20px;
     box-shadow: 2px 2px 5px #d7cbb3;
     container-type: inline-size;
+    cursor: pointer;
 }
 
 .post-block .post-block-image-container {

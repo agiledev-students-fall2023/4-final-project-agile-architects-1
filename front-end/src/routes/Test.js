@@ -1,134 +1,124 @@
 import React, { useState, useEffect } from "react";
-import { Masonry } from "react-masonry";
-import PostBlock from '../components/PostBlock';
+import { useAuthContext } from './hooks/useAuthContext';
 import './Test.css';
+
 /*
-function Test(){
 
-    const numberOfBoxes = 16;
-    const heightOptions = [100, 130, 180, 200, 260, 80];
-  
-    // State to store the heights for each box
-    const [boxHeights, setBoxHeights] = useState([]);
-  
-    // Function to generate random heights for the boxes
-    const generateRandomHeights = () => {
-      const heights = Array.from({ length: numberOfBoxes }, () =>
-        heightOptions[Math.floor(Math.random() * heightOptions.length)]
-      );
-      setBoxHeights(heights);
-    };
-  
-    // Generate random heights when the component mounts
-    useEffect(() => {
-      generateRandomHeights();
-    }, []); // Empty dependency array to ensure this only runs once
-  
-    // Function to generate a random color
-    function generateColor() {
-      return "#" + Math.floor(Math.random() * 16777215).toString(16);
-    }
-    
-    const [posts, setPosts] = useState([]);
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse`);
-            const result = await response.json();
-            setPosts(result);
-            console.log(result);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-    
-    return (
-        <Masonry className="component-container">
-            {posts.map((post) => (
-                <PostBlock key={post.id} post={post} />
-            ))}
-        </Masonry>
-    );
-}
-
-export default Test;
+    <iframe className='video'
+            title='Youtube player'
+            sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
+            src={`https://youtube.com/embed/${youtubeID}?autoplay=0`}>
+    </iframe>
 */
-
-
 function Test() {
-  const numberOfBoxes = 16;
-  const heightOptions = [100, 130, 180, 200, 260, 80];
+  const { user } = useAuthContext();
+  const [profile, setProfile] = useState({ username: "User" });
+  const [fridgeItems, setFridgeItems] = useState([]);
+  const [recommendedVideos, setRecommendedVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]); // State for selected items
 
-  // State to store the heights for each box
-  const [boxHeights, setBoxHeights] = useState([]);
-
-  // Function to generate random heights for the boxes
-  const generateRandomHeights = () => {
-    const heights = Array.from({ length: numberOfBoxes }, () =>
-      heightOptions[Math.floor(Math.random() * heightOptions.length)]
-    );
-    setBoxHeights(heights);
+  const example_item = {
+    _id: 0,
+    name: 'Example Item',
+    quantity: 3,
+    purchasedDate: '2023-11-05',
+    expiration: '2023-11-21'
   };
 
-  // Generate random heights when the component mounts
+  const fetchItems = async () => {
+    if (user) {
+      if (!user.fridgeItems) {
+        user.fridgeItems = [example_item];
+      }
+      setFridgeItems(user.fridgeItems);
+    } else {
+      let newUser = { fridgeItems: [example_item] };
+      setFridgeItems(newUser.fridgeItems);
+    }
+  };
+
+  const fetchRecommendedVideos = async () => {
+    setIsLoading(true);
+    const selectedItemNames = selectedItems.map(item => item.name);
+    try {
+      const response = await fetch("http://127.0.0.1:5000/get-videos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fridge_items: selectedItemNames }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setRecommendedVideos(data.videos);
+      } else {
+        console.error("Failed to fetch videos:", data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching videos:", error);
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    generateRandomHeights();
-  }, []); // Empty dependency array to ensure this only runs once
+    fetchItems();
+  }, [user]);
 
-  // Function to generate a random color
-  function generateColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
-  }
-
-  const [posts, setPosts] = useState([]);
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}/api/browse`);
-            const result = await response.json();
-            setPosts(result);
-            console.log(result);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+  // Function to toggle selected items
+  const toggleItemSelection = (item) => {
+    setSelectedItems(prevSelected => {
+      if (prevSelected.includes(item)) {
+        return prevSelected.filter(i => i !== item); // Deselect item
+      } else {
+        return [...prevSelected, item]; // Select item
+      }
+    });
+  };
 
   return (
-    <Masonry className="component-container">
-    
-      {boxHeights.map((height, index) => (
-        <div className="component"
-          key={index}
-          style={{
-            width: "50%",
-            height: height,
-            backgroundColor: generateColor(),
-          }}
-        >
-          {index}
+    <section className="fridge-page">
+      <div className="fridge-header">
+        {user && profile && (
+          <h1 className="username-wrapper">{profile.username}'s Fridge</h1>
+        )}
+        {!user && <h1 className="username-wrapper">Default Fridge</h1>}
+      </div>
+
+      <div className="fridge-grid-test">
+        {fridgeItems.map((item, index) => (
+          <div
+            key={index}
+            className={`fridge-item-test ${selectedItems.includes(item) ? "selected" : ""}`}
+            onClick={() => toggleItemSelection(item)}
+          >
+            <p className="item-name">{item.name}</p>
+          </div>
+        ))}
+      </div>
+
+      <button
+        className="recommend-button"
+        onClick={fetchRecommendedVideos}
+        disabled={selectedItems.length === 0 || isLoading}
+      >
+        {isLoading ? "Loading..." : "Get Recipe Videos"}
+      </button>
+      {recommendedVideos.length > 0 && (<h2>Recommended Videos</h2>)}
+      {recommendedVideos.length > 0 && (
+        <div className="video-list">
+          {recommendedVideos.map((video, index) => (
+            <div key={index} className="video-item">
+              <h3>{video.title}</h3>
+              <iframe
+                src={`https://www.youtube.com/embed/${video.id}`}
+                title={video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ))}
         </div>
-      ))}
-      
-      {posts.map((post) => (
-        <div key={post.id}>
-          <PostBlock post={post} />
-        </div>
-      ))}
-
-
-      {posts.map((post) => (
-        <PostBlock key={post.id} post={post} />
-      ))}
-
-    </Masonry>
+      )}
+    </section>
   );
 }
 

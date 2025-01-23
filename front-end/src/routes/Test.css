@@ -1,11 +1,78 @@
-.component-container {
-  width: 80vw;
-  margin: 0 auto;
+.fridge-grid-test {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 90%;
+  max-width: 800px; /* Adjust max width as needed */
 }
 
-.component-container .post-block {
-  border: solid;
-  border-color: red;
-  border-width: 1px;
+@media (min-width: 600px) {
+  .fridge-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.fridge-item-test {
+  padding: 1px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #F5F3EE;
+  transition: background-color 0.2s ease-in-out;
 }
 
+.fridge-item-test:hover {
+  background-color: #f1ecdf;
+}
+
+.fridge-item-test.selected {
+  background-color: #CC564D; /* Darker background for selected items */
+  color: white;
+  border-color: #d14b42;
+}
+
+.recommend-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #CC564D;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.recommend-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  gap: 1.5rem; /* Space between grid items */
+  margin-top: 2rem;
+  width: 80%;
+}
+
+.video-item {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Subtle border */
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  text-align: center;
+}
+
+.video-item h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.video-item iframe {
+  width: 100%; /* Ensure the iframe takes full container width */
+  height: 300px; /* Fixed height for uniformity */
+  border: none;
+  border-radius: 8px;
+}

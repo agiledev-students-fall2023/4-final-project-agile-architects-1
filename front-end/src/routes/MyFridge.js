@@ -247,7 +247,7 @@ const handleSaveEdit = async () => {
                     </div>
                     );
                 })}
-                </div>
+            </div>
             {/*}
             {clickedItem && isEditingItem ? (
                 <div className="edit-item-form">

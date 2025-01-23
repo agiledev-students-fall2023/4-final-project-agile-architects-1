@@ -108,6 +108,9 @@
     padding: 10px 20px; /* Adjust padding to align with the meal-box padding */
 }
 
+.footer .recommend-recipe-button {
+    cursor: pointer;
+}
 .back-button {
     text-decoration: none;
     color: inherit;  /* To ensure the link has the same color as the surrounding text */

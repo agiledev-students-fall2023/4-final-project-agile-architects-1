@@ -69,12 +69,12 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 5vw;
-  height: 40vw;
-  width: 40vw;
+  height: 13vw;
+  width: 13vw;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   padding: 0.5vw;
-  background-color: white;
+  background-color: #F5F3EE;
   position: relative;
   max-width: 10rem;  
   max-height: 10rem;

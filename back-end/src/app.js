@@ -10,7 +10,8 @@ import BrowseRoutes from './routes/BrowseRoutes.js';
 import RecommendRoutes from './routes/RecommendRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import connectDB from './database.js'
+import connectDB from './database.js';
+import youtubeRoutes from './routes/youtubeRoutes.js';
 
 connectDB();
 
@@ -30,6 +31,7 @@ const corsOptions = {
         'https://www.wastewise.site',
         'http://localhost:3000',
         'http://localhost:3001',
+        "http://localhost:5000",
     ],
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization',
@@ -48,6 +50,7 @@ app.use('/api/', homeRoutes);
 app.use('/api/browse', BrowseRoutes);
 app.use('/api/recommend', RecommendRoutes);
 app.use('/api/profile', profileRoutes);
-app.use('/api/user', userRoutes)
+app.use('/api/user', userRoutes);
+app.use('/api/youtube', youtubeRoutes);
 
 export default app;

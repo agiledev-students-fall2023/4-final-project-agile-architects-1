@@ -277,7 +277,7 @@ function PlanMeal() {
 
         <div className="footer">
           <Link to="/recommended-recipes">
-            <button>
+            <button className='recommend-recipe-button'>
               Recommend Recipe
             </button>
           </Link>

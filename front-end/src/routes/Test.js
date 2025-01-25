@@ -2,14 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useAuthContext } from './hooks/useAuthContext';
 import './Test.css';
 
-/*
-
-    <iframe className='video'
-            title='Youtube player'
-            sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
-            src={`https://youtube.com/embed/${youtubeID}?autoplay=0`}>
-    </iframe>
-*/
 function Test() {
   const { user } = useAuthContext();
   const [profile, setProfile] = useState({ username: "User" });
@@ -17,6 +9,7 @@ function Test() {
   const [recommendedVideos, setRecommendedVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]); // State for selected items
+  const REACT_APP_FLASK_HOST = process.env.REACT_APP_FLASK_HOST;
 
   const example_item = {
     _id: 0,
@@ -39,10 +32,11 @@ function Test() {
   };
 
   const fetchRecommendedVideos = async () => {
+    console.log("Flask API Host:", REACT_APP_FLASK_HOST);
     setIsLoading(true);
     const selectedItemNames = selectedItems.map(item => item.name);
     try {
-      const response = await fetch("http://127.0.0.1:5000/get-videos", {
+      const response = await fetch(`${REACT_APP_FLASK_HOST}/get-videos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fridge_items: selectedItemNames }),

@@ -4,9 +4,15 @@ from services.youtube_service import searchByKeyword
 import random
 
 app = Flask(__name__)
-CORS(app)  # Allow all origins for testing purposes
+CORS(app)
 
 fridge_items = ["apple", "potato", "bacon", "cream cheese", "onion", "spinach", "chicken"]
+
+@app.before_request
+def handle_options():
+    if request.method == 'OPTIONS':
+        # Preflight request handling
+        return '', 200
 
 @app.route('/get-videos', methods=['POST', 'GET'])
 def get_videos():

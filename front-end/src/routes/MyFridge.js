@@ -241,8 +241,9 @@ const handleSaveEdit = async () => {
                     return (
                     <div key={index} className="fridge-item" onClick={() => handleItemClick(item)}>
                         <p className='item-name'>{item.name}</p>
-                        <p className='expiration-date' style={{ color: isExpiringSoon ? '#CC564D' : 'inherit' }}>
-                        Expires in: {daysUntilExpiration} days
+                        <p className='expiration-date' 
+                            style={{ color: isExpiringSoon ? '#CC564D' : 'inherit' }}>
+                            Expires in: {daysUntilExpiration} days
                         </p>
                     </div>
                     );

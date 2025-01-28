@@ -11,13 +11,13 @@
     column-gap: 20px; /* Space between columns */
   }
   
-@media (max-width: 768px) {
+@media (max-width: 200px) {
     .post-flow {
         column-count: 1; /* Single column for smaller screens */
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 800px) {
     .post-flow {
         column-count: 3; /* More columns for larger screens */
     }

@@ -29,6 +29,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     padding: 4%;
+    font-size: min(3cqw, 24px);
     /* background-color: rgba(0, 255, 255, 0.638); */
 }
 

@@ -9,7 +9,6 @@
   margin:0;
   display: flex;
   align-items: flex-start;
-  font-size: 2em;
   font-weight: bold;
   width: 100%;
   margin-top: 1.2em;
@@ -17,7 +16,7 @@
 }
 
 .fridge-header {
-  font-size: clamp(1rem, 5vw, 1.5rem);
+  font-size: min(4cqw, 40px);
   margin-bottom: 1rem;
   margin: 0 auto;
 }
@@ -38,12 +37,12 @@
 .fridge-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  width: 90%;
+  width: 80%;
   max-width: 600px; /* Adjust max width as needed */
   padding-bottom: 15vw;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 300px) {
   .fridge-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -69,42 +68,33 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 5vw;
-  height: 13vw;
-  width: 13vw;
+  height: 20vw;
+  width: 20vw;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   padding: 0.5vw;
   background-color: #F5F3EE;
   position: relative;
-  max-width: 10rem;  
-  max-height: 10rem;
+  min-width: 60px;  
+  min-height: 60px;
   padding-top: 1em; /* Add padding to ensure content is centered */
   padding-bottom: 1em; /* Add padding to ensure content is centered */
 }
 
 .fridge-item .item-name {
-    display: inline-block;
-  font-size: clamp(0.5rem,7vw,1.7rem);
+  font-size: max(2cqw, 8px);
+  
+  font-weight: bold;
   margin: auto auto;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   text-align: center;
-  overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
+  margin:0;
 }
 
 .fridge-item .expiration-date {
-    font-size: 1em;
-  margin-bottom: clamp(0,0.1vw,0.7rem); /* Pushes the date info to the bottom */
+  font-size: max(1.5cqw, 5px);
   text-align: center;
-  padding-top: 0;
-    display: -webkit-box;
-   -webkit-line-clamp: 1; /* number of lines to show */
-           line-clamp: 1; 
-   -webkit-box-orient: vertical;
+  margin: auto auto;
+  padding-top: 0em;
 }
 
 .view-item-details {

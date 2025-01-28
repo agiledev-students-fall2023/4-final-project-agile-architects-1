@@ -16,7 +16,12 @@ const PostBlock = ({ post }) => {
                     <span>{post.title}</span>
                 </div>
                 <div className='post-author'>
-                    <img src={`${process.env.REACT_APP_BACKEND_HOST}${post.usrImg}`} alt="Post" className="post-author-img" />
+                    <img
+                        src={`${process.env.REACT_APP_BACKEND_HOST}${post.usrImg}`}
+                        alt="Post"
+                        className="post-author-img"
+                        loading="lazy"
+                    />
 
                     <div className='post-author-name'>
                         {post.author}

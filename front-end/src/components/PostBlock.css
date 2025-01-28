@@ -1,13 +1,13 @@
 .post-block {
-    margin-bottom: 1rem; /* Space between posts */
-    width: 33%; /* Example for three columns layout */
-    float: left; /* Helps in positioning with Masonry */
-    /*background-color: #cc554d60;*/
+    display: block; /* Prevent inline-block from conflicting */
+    margin-bottom: 1rem; /* Consistent vertical spacing */
+    width: 100%; /* Full column width */
     background-color: #F5F3EE;
     border-radius: 20px;
     box-shadow: 2px 2px 5px #d7cbb3;
-    container-type: inline-size;
     cursor: pointer;
+    break-inside: avoid; /* Prevent breaking */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 .post-block .post-block-image-container {
@@ -71,4 +71,8 @@
     margin-right: 0.5em;
     /*border: .05em solid #efe2c0;*/
     box-shadow: 0 0 .1em .05em #efe2c0;
+}
+
+.post-block:hover {
+    transform: translateY(-5px);
 }

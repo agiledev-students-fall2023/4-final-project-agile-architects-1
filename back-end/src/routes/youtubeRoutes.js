@@ -7,6 +7,7 @@ dotenv.config();
 const youtubeRoutes = express.Router();
 
 youtubeRoutes.get('/get-videos', async (req, res) => {
+    console.log("Calling Flask API at:", process.env.FLASK_API_URL);
     try {
         const flaskResponse = await axios.get(`${process.env.FLASK_API_URL}/get-videos`); // Flask API URL
         res.status(200).json(flaskResponse.data); // Forward Flask response to the client

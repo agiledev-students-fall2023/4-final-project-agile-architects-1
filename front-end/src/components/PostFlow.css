@@ -3,6 +3,7 @@
 .post-flow-container {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .post-flow {

@@ -137,3 +137,5 @@ venv/
 
 # Ignore user-uploaded images
 back-end/public/images/userImages/
+public/images/userImages/
+

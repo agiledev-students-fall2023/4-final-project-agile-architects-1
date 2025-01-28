@@ -91,8 +91,8 @@ function BrowseIngredients() {
                 )}
             </div>
 
-            <div className='ingredients-page-container'>  
-                <div className='post-flow-container'>
+            <div className='ingredients-page-container'>
+                <div className='ingredients-page-post-flow-container'>
                     <PostFLow posts={filteredPosts} />
                 </div>
             </div>

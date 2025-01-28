@@ -38,7 +38,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 80%;
-  max-width: 600px; /* Adjust max width as needed */
+  max-width: 900px; /* Adjust max width as needed */
   padding-bottom: 15vw;
 }
 
@@ -77,13 +77,15 @@
   position: relative;
   min-width: 60px;  
   min-height: 60px;
+  max-width: 180px;
+  max-height: 180px;
   padding-top: 1em; /* Add padding to ensure content is centered */
   padding-bottom: 1em; /* Add padding to ensure content is centered */
 }
 
 .fridge-item .item-name {
-  font-size: max(2cqw, 8px);
-  
+  font-size: max(2.5cqw, 20px);
+  padding-top: 20%;
   font-weight: bold;
   margin: auto auto;
   text-align: center;

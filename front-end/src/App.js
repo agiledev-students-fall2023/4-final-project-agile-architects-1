@@ -40,7 +40,7 @@ function MainContent() {
             {user && (
                 <div>
                 {["/", "/fridge", "/plan", "/recommended-recipes", "/profile"].indexOf(location.pathname) !== -1 && (
-                    <button onClick = {handleLogoutClick} className="logout-button">Log Out</button>
+                    <button onClick = {handleLogoutClick} className="login-logout-button">Log Out</button>
                 )}
                 </div>
             )}
@@ -49,7 +49,7 @@ function MainContent() {
                 <div>
          
                 {["/", "/fridge", "/plan", "/recommended-recipes", "/profile"].indexOf(location.pathname) !== -1 && (
-                        <button onClick = {handleLoginClick} className="login-button" >Log In</button>
+                        <button onClick = {handleLoginClick} className="login-logout-button" >Log In</button>
                     )}
                 </div>
             )}

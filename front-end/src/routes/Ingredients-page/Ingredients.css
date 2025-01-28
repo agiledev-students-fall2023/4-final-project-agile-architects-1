@@ -18,11 +18,9 @@
     width: 100%;
 }
 
-.post-flow-container {
-    padding-top: .5rem;
-    margin: 0 auto; /* Center align the container if necessary */
-    width: 100%; /* Full width to use all available space */
-    justify-content: center;
+.ingredients-page-container .ingredients-page-post-flow-container {
+    margin-top: 10px;
+    box-sizing: border-box;
 }
 
 .button-container {
@@ -53,5 +51,4 @@
     padding-top: 5px;
     background-color: #CC564D;
     color: white;
-
 }

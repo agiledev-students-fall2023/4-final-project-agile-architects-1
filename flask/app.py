@@ -1,41 +1,21 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 from flask_cors import CORS
-from services.youtube_service import searchByKeyword
-import random
+from routes.youtube_routes import youtube_bp
+from routes.recipe_routes import * #TODO
+from config import Config
 
-app = Flask(__name__)
-CORS(app)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    CORS(app)
 
-fridge_items = ["apple", "potato", "bacon", "cream cheese", "onion", "spinach", "chicken"]
+    # Register Blueprints
+    app.register_blueprint(youtube_bp, url_prefix='/youtube')
+    #app.register_blueprint(fridge_bp, url_prefix='/fridge')
 
-@app.before_request
-def handle_options():
-    if request.method == 'OPTIONS':
-        # Preflight request handling
-        return '', 200
+    return app
 
-@app.route('/get-videos', methods=['POST', 'GET'])
-def get_videos():
-    if request.method == 'POST':
-        # Extract fridge items from POST request
-        data = request.json
-        fridge_items = data.get('fridge_items', [])
-        print(f"Request received! Fridge Items: {fridge_items}")
-    else:
-        # Generate random items for GET request
-        fridge_items = random.sample(fridge_items, 3)
-        print("GET request received!")
-
-    # Create search query and fetch videos
-    search_query = " ".join(fridge_items) + " recipe"
-    print(f"Search Query: {search_query}")
-
-    videos = searchByKeyword(search_query, limit=3)
-
-    return jsonify({
-        "fridge_items": fridge_items,
-        "videos": videos
-    })
-
+app = create_app()
+print(app.url_map)
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

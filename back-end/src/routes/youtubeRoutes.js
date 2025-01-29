@@ -1,20 +1,22 @@
 import express from 'express';
-import axios from 'axios'; // Use axios to call Flask API
-import dotenv from 'dotenv';
-
-dotenv.config();
+import proxyToFlask from './flaskProxy.js';
 
 const youtubeRoutes = express.Router();
 
+youtubeRoutes.options('/get-videos', (req, res) => {
+    console.log("Received OPTIONS request from frontend");
+    res.sendStatus(200);
+});
+
+// GET videos (calls Flask service)
 youtubeRoutes.get('/get-videos', async (req, res) => {
-    console.log("Calling Flask API at:", process.env.FLASK_API_URL);
     try {
-        const flaskResponse = await axios.get(`${process.env.FLASK_API_URL}/get-videos`); // Flask API URL
-        res.status(200).json(flaskResponse.data); // Forward Flask response to the client
+        const data = await proxyToFlask('/youtube/get-videos', "GET");
+        res.status(200).json(data);
     } catch (error) {
-        console.error('Error fetching YouTube data:', error);
-        res.status(500).json({ error: 'Failed to fetch YouTube data' });
+        res.status(500).json({ error: "Failed to fetch YouTube data" });
     }
 });
+
 
 export default youtubeRoutes;

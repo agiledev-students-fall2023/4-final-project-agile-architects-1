@@ -36,7 +36,7 @@ function Test() {
     setIsLoading(true);
     const selectedItemNames = selectedItems.map(item => item.name);
     try {
-      const response = await fetch(`${REACT_APP_FLASK_HOST}/get-videos`, {
+      const response = await fetch(`${REACT_APP_FLASK_HOST}/youtube/get-videos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fridge_items: selectedItemNames }),

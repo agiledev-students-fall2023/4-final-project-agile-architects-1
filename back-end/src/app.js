@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
-import multer from 'multer';
 import { fileURLToPath } from 'url';
 
 import homeRoutes from './routes/homeRoutes.js';
@@ -12,6 +11,7 @@ import profileRoutes from './routes/profileRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import connectDB from './database.js';
 import youtubeRoutes from './routes/youtubeRoutes.js';
+//import recipeRoutes from './routes/recipeRoutes.js';
 
 connectDB();
 
@@ -25,7 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 const corsOptions = {
-    origin: [  'http://wastewise.site',
+    origin: [
+        'http://wastewise.site',
         'https://wastewise.site',
         'http://www.wastewise.site',
         'https://www.wastewise.site',
@@ -51,6 +52,7 @@ app.use('/api/browse', BrowseRoutes);
 app.use('/api/recommend', RecommendRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/youtube', youtubeRoutes);
+app.use('/youtube', youtubeRoutes);
+//app.use('/api/recipe', recipeRoutes);
 
 export default app;

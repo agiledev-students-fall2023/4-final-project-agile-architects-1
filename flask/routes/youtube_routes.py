@@ -5,7 +5,10 @@ youtube_bp = Blueprint('youtube', __name__)
 
 
 @youtube_bp.route('/get-videos', methods=['POST', 'OPTIONS'])
+
 def get_videos():
+    print(f"Received request in Flask: {request.json}")  # Add debug
+
     if request.method == 'OPTIONS':
         return '', 200
 

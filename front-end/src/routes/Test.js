@@ -9,7 +9,7 @@ function Test() {
   const [recommendedVideos, setRecommendedVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]); // State for selected items
-  const REACT_APP_FLASK_HOST = process.env.REACT_APP_FLASK_HOST;
+  const REACT_APP_BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 
   const example_item = {
     _id: 0,
@@ -32,16 +32,18 @@ function Test() {
   };
 
   const fetchRecommendedVideos = async () => {
-    console.log("Flask API Host:", REACT_APP_FLASK_HOST);
+    console.log("Flask API Host:", REACT_APP_BACKEND_HOST);
     setIsLoading(true);
     const selectedItemNames = selectedItems.map(item => item.name);
     try {
-      const response = await fetch(`${REACT_APP_FLASK_HOST}/youtube/get-videos`, {
+      const response = await fetch(`${REACT_APP_BACKEND_HOST}/youtube/get-videos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fridge_items: selectedItemNames }),
       });
+      console.log("Raw Response:", response);
       const data = await response.json();
+      console.log("API Response:", data)
       if (response.ok) {
         setRecommendedVideos(data.videos);
       } else {

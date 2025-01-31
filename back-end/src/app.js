@@ -53,6 +53,6 @@ app.use('/api/recommend', RecommendRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/user', userRoutes);
 app.use('/youtube', youtubeRoutes);
-//app.use('/api/recipe', recipeRoutes);
+//app.use('/recipe', recipeRoutes);
 
 export default app;

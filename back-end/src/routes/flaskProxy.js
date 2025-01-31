@@ -13,9 +13,22 @@ const proxyToFlask = async (endpoint, method = "GET", data = null) => {
     try {
         const FLASK_API_URL = process.env.FLASK_API_URL || "http://127.0.0.1:5000";
         const url = `${FLASK_API_URL}${endpoint}`;
-        const response = method === "POST"
-            ? await axios.post(url, data)
-            : await axios.get(url);
+        
+        console.log(`Forwarding request to Flask: ${url}, Method: ${method}, Data:`, data);
+       
+        const response = await axios({
+            method,
+            url,
+            data,
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            withCredentials: true, // Allow cross-origin cookies
+            validateStatus: (status) => status < 500, // Prevent Axios from throwing on 403
+        });
+        console.log("Flask Response Headers:", response.headers);
+        console.log(`Flask Response:`, response.data);
         return response.data;
     } catch (error) {
         console.error(`Error calling Flask endpoint ${endpoint}:`, error.message);

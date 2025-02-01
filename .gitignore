@@ -131,6 +131,7 @@ typings/
 # Ignore Python cache files
 __pycache__/
 *.pyc
+flask/a.out
 
 # Ignore virtual environments
 venv/

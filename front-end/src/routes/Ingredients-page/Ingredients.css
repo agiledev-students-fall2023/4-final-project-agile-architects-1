@@ -1,0 +1,54 @@
+.ingredients-top-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    position: sticky;
+    position: -webkit-sticky; 
+    overflow-y: overlay;
+    top: 0;
+}
+
+.ingredients-page-container {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.ingredients-page-container .ingredients-page-post-flow-container {
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 13vh;
+    right: 1rem;
+    float: right;
+    height: 15vh;
+}
+
+.scroll-to-top-button{
+    height: 2.8rem;
+    width: 2.8rem;
+    border-radius: 1000px;
+    padding-top: 5px;
+    /* background-color: #CC564D; */
+    /* color: white; */
+}
+
+.new-post-button{
+    height: 2.8rem;
+    width: 2.8rem;
+    border-radius: 1000px;
+    padding-top: 5px;
+    background-color: #CC564D;
+    color: white;
+}

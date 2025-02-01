@@ -127,3 +127,16 @@ typings/
 ## Jekyll artifacts
 **/.jekyll-cache
 **/_site/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+flask/a.out
+
+# Ignore virtual environments
+venv/
+
+# Ignore user-uploaded images
+back-end/public/images/userImages/
+public/images/userImages/
+

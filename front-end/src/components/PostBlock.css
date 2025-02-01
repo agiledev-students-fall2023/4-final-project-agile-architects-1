@@ -1,0 +1,82 @@
+.post-block {
+    display: block; /* Prevent inline-block from conflicting */
+    margin-bottom: 1rem; /* Consistent vertical spacing */
+    width: 100%; /* Full column width */
+    background-color: #F5F3EE;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px #d7cbb3;
+    cursor: pointer;
+    break-inside: avoid; /* Prevent breaking */
+    overflow: hidden; /* Prevent content overflow */
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animations */
+}
+
+.post-block:hover {
+    transform: translateY(-5px);
+    margin-top:5px;
+}
+
+.post-block .post-block-image-container {
+    width: 100%;
+    overflow: hidden; 
+    position: relative;
+    border-radius: 20px;
+}
+
+.post-block .post-block-image{
+    width: 100%;
+    height: auto; 
+    object-fit: contain; 
+    border-radius: 20px;
+}
+
+.post-block .post-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 4%;
+    font-size: min(3cqw, 24px);
+    /* background-color: rgba(0, 255, 255, 0.638); */
+}
+
+.post-block .post-title-box{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    margin: auto 0;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    vertical-align: middle;
+    white-space:pre-wrap;
+    word-break:break-word;
+    font-size: 1.2em;
+    /* background-color: blueviolet; */
+}
+
+/* Container query adjusting font size based on the width of the container */
+@container (min-width: 0px) {
+    .post-block .post-title-box {
+        font-size: clamp(0.5rem,  3vw , 1.1rem); /* Larger font size for wider containers */
+    }
+}
+
+.post-block .post-author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/* Container query adjusting font size based on the width of the container */
+@container (min-width: 0px) {
+    .post-block .post-author {
+        font-size: clamp(0.5rem,  1.5vw , 1.2rem); /* Larger font size for wider containers */
+    }
+}
+
+.post-block .post-author-img {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.5em;
+    /*border: .05em solid #efe2c0;*/
+    box-shadow: 0 0 .1em .05em #efe2c0;
+}

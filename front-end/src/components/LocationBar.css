@@ -1,0 +1,13 @@
+.location-info {
+    display: flex;
+}
+
+.location-info .location-icon{
+    width: 1rem;
+    font-size: 1rem;
+}
+
+.location-info .location-wrapper {
+    margin-left: .2rem;
+    font-size: .8rem;
+}

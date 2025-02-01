@@ -1,0 +1,47 @@
+/* PostFlow.css */
+
+.post-flow-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.post-flow {
+    width: 70%;
+    column-count: 2; /* Number of columns (adjust for responsiveness) */
+    column-gap: 20px; /* Space between columns */
+  }
+  
+@media (max-width: 200px) {
+    .post-flow {
+        column-count: 1; /* Single column for smaller screens */
+    }
+}
+
+@media (min-width: 800px) {
+    .post-flow {
+        column-count: 3; /* More columns for larger screens */
+    }
+}
+
+.post-block {
+    display: inline-block; /* Ensures items are treated individually */
+    width: 100%; /* Block spans full column width */
+    margin-bottom: 20px; /* Consistent vertical spacing between items */
+    background-color: #F5F3EE;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px #d7cbb3;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 2px 4px 10px #d7cbb3;
+}
+
+.post-block .post-block-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensure the image fits within the block */
+    border-radius: 20px;
+}

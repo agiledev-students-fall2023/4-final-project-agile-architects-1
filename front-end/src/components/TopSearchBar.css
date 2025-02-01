@@ -1,0 +1,33 @@
+.top-search-bar {
+    background-color: white;
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.top-bar-location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.top-bar-location-icon{
+    margin-right: 0.2rem;
+    margin-top: 0.2rem;
+}
+.top-bar-search {
+    width: 60%;
+}
+.top-bar-search-box {
+    width: 90%;
+    height: 2rem;
+    border-radius: 10px;
+    padding: 0.2rem;
+    padding-left: 1rem;
+}
